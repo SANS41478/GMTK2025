@@ -34,7 +34,6 @@ namespace Space.ILifecycleManagerFramework.PipelineLifeController.Test.ECS
         private void Awake()
         {
             lifecyclePipelineManager = new LifecyclePipelineManager();
-            lifecyclePipelineManager.InitLifecycle();
             Instance = lifecyclePipelineManager;
             //TODO: 可以实现一个类似适配器的东西   目前反正是硬编码无所谓了
             lifecyclePipelineManager.AddPhase(new ControllerUpdatePipe<GameWorldUpdate>().SetParams(

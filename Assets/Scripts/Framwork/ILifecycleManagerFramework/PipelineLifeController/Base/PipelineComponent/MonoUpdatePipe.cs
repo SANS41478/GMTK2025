@@ -28,7 +28,7 @@ namespace Space.LifeControllerFramework.PipelineLifeController.PipelineComponent
             }
         }
 
-        public  IPipelineStage<LifecyclePipelineManager.LifecyclePipelineContext> SetParams(in PipeCreatInfo parameters)
+        public  ILifecyclePhase SetParams(in PipeCreatInfo parameters)
         {
             DefaultPriority=parameters.Priority;
             PhaseName = parameters.PipeName;

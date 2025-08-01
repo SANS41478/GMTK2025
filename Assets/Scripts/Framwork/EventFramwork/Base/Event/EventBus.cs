@@ -29,7 +29,7 @@ namespace Space.EventFramework
             }
             public void Publish(in T eventData)
             {
-                handlers.Invoke(eventData);
+                handlers?.Invoke(eventData);
             }
         }
         /// <summary>
