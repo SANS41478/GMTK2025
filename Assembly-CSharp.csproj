@@ -45,8 +45,10 @@
     <Analyzer Include="D:\UnityEngin\Unity 2022.3.61f1c1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\EventExcample.cs" />
     <Compile Include="Assets\Scripts\Framwork\EventFramwork\Base\Event\EventBus.cs" />
     <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Test\CustomLife\TestLifePipeline.cs" />
+    <Compile Include="Assets\Scripts\Event\ClipePlayInfo.cs" />
     <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Test\ECS\TestObj.cs" />
     <Compile Include="Assets\Scripts\Framwork\EventFramwork\Excample\UniTest\RedGreen\Car.cs" />
     <Compile Include="Assets\Scripts\Framwork\EventFramwork\Excample\UniTest\TickTock\SimpleUniEventTest.cs" />
