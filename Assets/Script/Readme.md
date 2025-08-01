@@ -1,0 +1,8 @@
+﻿整个框架的运行依赖于FramworkFactory，其中配置的内容会决定使用的架构
+，框架的管线框架(PipelineFramework)是必须项，因为框架生命周期由该内容管理
+运行时，由外部类调用PipelineFramework中的Global单例，来实现调用框架生命周期
+
+外部的内容可以不注册进入生命周期，但是推荐注册进入统一管理
+
+具体参加LifeController相关的内容
+
