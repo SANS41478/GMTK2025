@@ -59,12 +59,83 @@
     <Analyzer Include="D:\unity\2022.3.61f1c1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\UI\Panel\StartPanel.cs" />
+    <Compile Include="Assets\Scripts\Json\LitJson\IJsonWrapper.cs" />
+    <Compile Include="Assets\Script\Framwork\GlobalInterface\Buff\IBuff.cs" />
+    <Compile Include="Assets\Script\Framwork\PipelineFramework\Simple\Example\DamagePipeLine\DamagePipeLine.cs" />
+    <Compile Include="Assets\Scripts\Json\LitJson\JsonWriter.cs" />
+    <Compile Include="Assets\Script\Framwork\PipelineFramework\Simple\Example\TestPipeline\MonoPipelineTest.cs" />
+    <Compile Include="Assets\Script\Framwork\EventFramwork\Excample\UniTest\TickTock\SimpleUniEventTest.cs" />
+    <Compile Include="Assets\Script\Framwork\GlobalInterface\Event\IEventComponent.cs" />
+    <Compile Include="Assets\Script\Framwork\GlobalInterface\ILifecycleManager\ILifecycleSubscriber.cs" />
+    <Compile Include="Assets\Script\Framwork\GlobalInterface\Event\IEventData.cs" />
+    <Compile Include="Assets\Script\Framwork\Collections\SortList.cs" />
+    <Compile Include="Assets\Scripts\Json\LitJson\JsonMapper.cs" />
+    <Compile Include="Assets\Script\Framwork\ILifecycleManagerFramework\PipelineLifeController\Base\PipelineComponent\ControllerUpdatePipe.cs" />
     <Compile Include="Assets\Scripts\Audio\AudioBootstrapper.cs" />
-    <Compile Include="Assets\Scripts\Audio\AudioManager.cs" />
-    <Compile Include="Assets\Scripts\Audio\SFXPoolPlayer.cs" />
-    <Compile Include="Assets\Scripts\Test\AudioManagerTest.cs" />
-    <Compile Include="Assets\Scripts\Audio\AudioClipLoader.cs" />
+    <Compile Include="Assets\Script\Framwork\ILifecycleManagerFramework\PipelineLifeController\Base\LifecyclePipelineManager.cs" />
+    <Compile Include="Assets\Script\Framwork\ILifecycleManagerFramework\PipelineLifeController\Test\CustomLife\TestObjC.cs" />
+    <Compile Include="Assets\Script\Framwork\ILifecycleManagerFramework\PipelineLifeController\Base\PipelineComponent\MonoTimerPipe.cs" />
+    <Compile Include="Assets\Script\Framwork\PipelineFramework\Simple\Example\DamagePipeLine\Stage\ApplyDamageTypeStep.cs" />
+    <Compile Include="Assets\Script\Framwork\GlobalInterface\ILifecycleManager\ILifecyclePhase.cs" />
+    <Compile Include="Assets\Script\Framwork\PipelineFramework\Simple\Base\Pipeline.cs" />
+    <Compile Include="Assets\Script\Framwork\ILifecycleManagerFramework\PipelineLifeController\Test\CustomLife\TestObj.cs" />
+    <Compile Include="Assets\Script\Framwork\GlobalInterface\ILifecycleManager\ILifecycleManager.cs" />
+    <Compile Include="Assets\Script\Framwork\EventFramwork\GlobalEventBus.cs" />
+    <Compile Include="Assets\Scripts\Json\LitJson\Lexer.cs" />
+    <Compile Include="Assets\Script\Framwork\GlobalInterface\Perpline\IPipelineStageFactory.cs" />
+    <Compile Include="Assets\Script\Framwork\GlobalInterface\Buff\IBuffComponent.cs" />
+    <Compile Include="Assets\Script\Framwork\ILifecycleManagerFramework\PipelineLifeController\Base\PipelineComponent\ApplySubscriberPipe.cs" />
+    <Compile Include="Assets\Script\Framwork\PipelineFramework\Simple\Example\DamagePipeLine\Stage\BaseDamageCalculate.cs" />
+    <Compile Include="Assets\Script\Framwork\EventFramwork\Excample\UniTest\RedGreen\Light.cs" />
+    <Compile Include="Assets\Script\Framwork\ILifecycleManagerFramework\PipelineLifeController\Test\CustomLife\TestLifePipeline.cs" />
     <Compile Include="Assets\Scripts\Audio\MusicPlayer.cs" />
+    <Compile Include="Assets\Script\Framwork\EventFramwork\Base\Event\Mono\GameObjectDestroyedEvent.cs" />
+    <Compile Include="Assets\Scripts\Json\JsonMgr.cs" />
+    <Compile Include="Assets\Script\Framwork\ILifecycleManagerFramework\PipelineLifeController\Base\ALifePipelineComponent.cs" />
+    <Compile Include="Assets\Script\Framwork\ILifecycleManagerFramework\PipelineLifeController\Test\ECS\TestObj.cs" />
+    <Compile Include="Assets\Scripts\Json\LitJson\JsonException.cs" />
+    <Compile Include="Assets\Script\Framwork\Utility\ReflectionUtility.cs" />
+    <Compile Include="Assets\Scripts\Audio\AudioClipLoader.cs" />
+    <Compile Include="Assets\Script\Framwork\GlobalInterface\Perpline\IPipelineStage.cs" />
+    <Compile Include="Assets\Script\Framwork\ILifecycleManagerFramework\PipelineLifeController\Base\LifecyclePipeline.cs" />
+    <Compile Include="Assets\Scripts\UI\GameEventListener.cs" />
+    <Compile Include="Assets\Script\Framwork\ILifecycleManagerFramework\PipelineLifeController\Test\ECS\GameController.cs" />
+    <Compile Include="Assets\Scripts\UI\UIRootLauncher.cs" />
+    <Compile Include="Assets\Scripts\Json\LitJson\JsonData.cs" />
+    <Compile Include="Assets\Script\Framwork\ILifecycleManagerFramework\PipelineLifeController\Test\CustomLife\GameController.cs" />
+    <Compile Include="Assets\Scripts\UI\Panel\GamePanel.cs" />
+    <Compile Include="Assets\Script\Framwork\GlobalInterface\Event\IEventBus.cs" />
+    <Compile Include="Assets\Script\Framwork\PipelineFramework\GlobalPipelineStageFactory.cs" />
+    <Compile Include="Assets\Script\Framwork\GlobalInterface\Buff\IBuffContext.cs" />
+    <Compile Include="Assets\Scripts\UI\UIManager.cs" />
+    <Compile Include="Assets\Script\Framwork\FramworkFactory.cs" />
+    <Compile Include="Assets\Script\Framwork\ILifecycleManagerFramework\PipelineLifeController\Base\PipelineComponent\MonoOncePipe.cs" />
+    <Compile Include="Assets\Scripts\Audio\AudioManager.cs" />
+    <Compile Include="Assets\Scripts\Json\LitJson\JsonMockWrapper.cs" />
+    <Compile Include="Assets\Script\Framwork\PipelineFramework\Simple\Base\Factory\DictionaryPipelineStageFactory.cs" />
+    <Compile Include="Assets\Script\Framwork\PipelineFramework\Simple\Base\APipelineStage.cs" />
+    <Compile Include="Assets\Script\Framwork\EventFramwork\Base\Event\Mono\MonoEventSubComponent.cs" />
+    <Compile Include="Assets\Scripts\Json\LitJson\Netstandard15Polyfill.cs" />
+    <Compile Include="Assets\Script\Framwork\EventFramwork\Excample\UniTest\RedGreen\LightUI.cs" />
+    <Compile Include="Assets\Scripts\Audio\SFXPoolPlayer.cs" />
+    <Compile Include="Assets\Script\Framwork\GlobalInterface\Perpline\IPipelineContext.cs" />
+    <Compile Include="Assets\Script\Framwork\EventFramwork\Base\Event\EventBus.cs" />
+    <Compile Include="Assets\Script\Framwork\PipelineFramework\Simple\Example\TestPipeline\TestPrameterPipeline.cs" />
+    <Compile Include="Assets\Scripts\UI\BasePanel.cs" />
+    <Compile Include="Assets\Scripts\UI\Panel\SettingsPanel.cs" />
+    <Compile Include="Assets\Scripts\Json\LitJson\JsonReader.cs" />
+    <Compile Include="Assets\Script\Framwork\PipelineFramework\Simple\Example\TestPipeline\TestPipelineStage.cs" />
+    <Compile Include="Assets\Script\Framwork\EventFramwork\Base\Event\EventSubscribeComponent.cs" />
+    <Compile Include="Assets\Script\Framwork\EventFramwork\Excample\UniTest\RedGreen\Car.cs" />
+    <Compile Include="Assets\Scripts\Json\LitJson\ParserToken.cs" />
+    <Compile Include="Assets\Script\Framwork\ILifecycleManagerFramework\PipelineLifeController\Test\ECS\TestLifePipeline.cs" />
+    <Compile Include="Assets\Scripts\Test\AudioManagerTest.cs" />
+    <Compile Include="Assets\Script\Framwork\ILifecycleManagerFramework\PipelineLifeController\Base\PipelineComponent\MonoUpdatePipe.cs" />
+    <Compile Include="Assets\Script\Framwork\ILifecycleManagerFramework\PipelineLifeController\Test\ECS\TestObjC.cs" />
+    <Compile Include="Assets\Script\Framwork\GlobalInterface\Perpline\IPipeline.cs" />
+    <Compile Include="Assets\Script\Framwork\PipelineFramework\Simple\Base\PipelineContext.cs" />
+    <Compile Include="Assets\Script\Framwork\PipelineFramework\Simple\Example\DamagePipeLine\Player.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -315,6 +386,9 @@
     </Reference>
     <Reference Include="UnityEditor.UnityConnectModule">
       <HintPath>D:\unity\2022.3.61f1c1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
+      <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.8\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:\unity\2022.3.61f1c1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
@@ -684,9 +758,57 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Unity.Timeline.csproj">
+      <Project>{8BCC51B4-BF61-534D-15D7-F03D89D34951}</Project>
+      <Name>Unity.Timeline</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualScripting.SettingsProvider.Editor.csproj">
+      <Project>{A6A3A396-4F5C-F1DF-DEC4-DCE374063238}</Project>
+      <Name>Unity.VisualScripting.SettingsProvider.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualScripting.State.Editor.csproj">
+      <Project>{D8398902-76F4-327A-2315-A16784FC5C20}</Project>
+      <Name>Unity.VisualScripting.State.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Timeline.Editor.csproj">
+      <Project>{20E042F2-BE1A-E8E6-010E-EF2B10A167C9}</Project>
+      <Name>Unity.Timeline.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualScripting.Shared.Editor.csproj">
+      <Project>{8B9C95C6-A344-0D57-6242-4CAB1A942D0B}</Project>
+      <Name>Unity.VisualScripting.Shared.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.VisualStudio.Editor.csproj">
       <Project>{182DD162-FF97-26DC-A660-C6B50027238D}</Project>
       <Name>Unity.VisualStudio.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEditor.UI.csproj">
+      <Project>{882B01AE-1209-45CE-9AE9-36689A4E1EB4}</Project>
+      <Name>UnityEditor.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualScripting.Core.csproj">
+      <Project>{E0109351-C6CB-0923-35D0-883316906A8D}</Project>
+      <Name>Unity.VisualScripting.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEngine.UI.csproj">
+      <Project>{4E006DE5-0E80-E0B6-684E-7118AEB68753}</Project>
+      <Name>UnityEngine.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualScripting.Core.Editor.csproj">
+      <Project>{B0B46092-1597-71B4-DD39-0EF82A531807}</Project>
+      <Name>Unity.VisualScripting.Core.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualScripting.State.csproj">
+      <Project>{537EC088-AB5E-246D-D046-398B3CC44968}</Project>
+      <Name>Unity.VisualScripting.State</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualScripting.Flow.csproj">
+      <Project>{BC9E8FD3-E0B8-139F-C93F-31F7F4DA95B7}</Project>
+      <Name>Unity.VisualScripting.Flow</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualScripting.Flow.Editor.csproj">
+      <Project>{6AA5448A-6655-A2B0-D887-3432B811F0A8}</Project>
+      <Name>Unity.VisualScripting.Flow.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

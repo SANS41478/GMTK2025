@@ -3,20 +3,72 @@
   "WorkspaceRootPath": "F:\\linshi\\GMTK2025\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|F:\\linshi\\GMTK2025\\assets\\scripts\\ui\\panel\\startpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\panel\\startpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|f:\\linshi\\gmtk2025\\assets\\scripts\\ui\\panel\\gamepanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\panel\\gamepanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|F:\\linshi\\GMTK2025\\assets\\script\\framwork\\eventframwork\\excample\\unitest\\ticktock\\simpleunieventtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\framwork\\eventframwork\\excample\\unitest\\ticktock\\simpleunieventtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|F:\\linshi\\GMTK2025\\assets\\script\\framwork\\eventframwork\\excample\\unitest\\redgreen\\light.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\framwork\\eventframwork\\excample\\unitest\\redgreen\\light.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|F:\\linshi\\GMTK2025\\assets\\scripts\\ui\\panel\\settingspanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\panel\\settingspanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|F:\\linshi\\GMTK2025\\assets\\script\\framwork\\eventframwork\\excample\\unitest\\redgreen\\lightui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\framwork\\eventframwork\\excample\\unitest\\redgreen\\lightui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|F:\\linshi\\GMTK2025\\assets\\scripts\\ui\\uirootlauncher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\uirootlauncher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|f:\\linshi\\gmtk2025\\assets\\scripts\\ui\\gameeventlistener.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\gameeventlistener.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|f:\\linshi\\gmtk2025\\assets\\script\\framwork\\eventframwork\\base\\event\\eventbus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\framwork\\eventframwork\\base\\event\\eventbus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|F:\\linshi\\GMTK2025\\assets\\script\\framwork\\eventframwork\\base\\event\\mono\\monoeventsubcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\framwork\\eventframwork\\base\\event\\mono\\monoeventsubcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|F:\\linshi\\GMTK2025\\assets\\scripts\\ui\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|F:\\linshi\\GMTK2025\\assets\\scripts\\ui\\basepanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\basepanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|F:\\linshi\\GMTK2025\\assets\\script\\framwork\\ilifecyclemanagerframework\\pipelinelifecontroller\\test\\customlife\\testobjc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\framwork\\ilifecyclemanagerframework\\pipelinelifecontroller\\test\\customlife\\testobjc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|F:\\linshi\\GMTK2025\\assets\\scripts\\audio\\audiomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\audio\\audiomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|F:\\linshi\\GMTK2025\\assets\\scripts\\audio\\musicplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\audio\\musicplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|F:\\linshi\\GMTK2025\\assets\\scripts\\audio\\sfxpoolplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\audio\\sfxpoolplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|f:\\linshi\\gmtk2025\\assets\\scripts\\test\\audiomanagertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|F:\\linshi\\GMTK2025\\assets\\scripts\\test\\audiomanagertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\test\\audiomanagertest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|F:\\linshi\\GMTK2025\\assets\\scripts\\audio\\musicplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\audio\\musicplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +78,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,20 +94,185 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AudioManagerTest.cs",
-              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\Test\\AudioManagerTest.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Test\\AudioManagerTest.cs",
-              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\Test\\AudioManagerTest.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Test\\AudioManagerTest.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAowCEAAAAgAAAAAAAAAA==",
+              "DocumentIndex": 8,
+              "Title": "EventBus.cs",
+              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Script\\Framwork\\EventFramwork\\Base\\Event\\EventBus.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Framwork\\EventFramwork\\Base\\Event\\EventBus.cs",
+              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Script\\Framwork\\EventFramwork\\Base\\Event\\EventBus.cs",
+              "RelativeToolTip": "Assets\\Script\\Framwork\\EventFramwork\\Base\\Event\\EventBus.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBwAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-01T05:19:06.414Z",
+              "WhenOpened": "2025-08-02T07:38:21.579Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "GameEventListener.cs",
+              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\GameEventListener.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\GameEventListener.cs",
+              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\GameEventListener.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\GameEventListener.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-02T06:37:35.723Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UIRootLauncher.cs",
+              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\UIRootLauncher.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\UIRootLauncher.cs",
+              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\UIRootLauncher.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\UIRootLauncher.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-02T06:03:47.081Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LightUI.cs",
+              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Script\\Framwork\\EventFramwork\\Excample\\UniTest\\RedGreen\\LightUI.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Framwork\\EventFramwork\\Excample\\UniTest\\RedGreen\\LightUI.cs",
+              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Script\\Framwork\\EventFramwork\\Excample\\UniTest\\RedGreen\\LightUI.cs",
+              "RelativeToolTip": "Assets\\Script\\Framwork\\EventFramwork\\Excample\\UniTest\\RedGreen\\LightUI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-02T03:02:04.583Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SettingsPanel.cs",
+              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\Panel\\SettingsPanel.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\Panel\\SettingsPanel.cs",
+              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\Panel\\SettingsPanel.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\Panel\\SettingsPanel.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAqwDsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-02T02:43:05.36Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Light.cs",
+              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Script\\Framwork\\EventFramwork\\Excample\\UniTest\\RedGreen\\Light.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Framwork\\EventFramwork\\Excample\\UniTest\\RedGreen\\Light.cs",
+              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Script\\Framwork\\EventFramwork\\Excample\\UniTest\\RedGreen\\Light.cs",
+              "RelativeToolTip": "Assets\\Script\\Framwork\\EventFramwork\\Excample\\UniTest\\RedGreen\\Light.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-01T14:03:20.694Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SimpleUniEventTest.cs",
+              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Script\\Framwork\\EventFramwork\\Excample\\UniTest\\TickTock\\SimpleUniEventTest.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Framwork\\EventFramwork\\Excample\\UniTest\\TickTock\\SimpleUniEventTest.cs",
+              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Script\\Framwork\\EventFramwork\\Excample\\UniTest\\TickTock\\SimpleUniEventTest.cs",
+              "RelativeToolTip": "Assets\\Script\\Framwork\\EventFramwork\\Excample\\UniTest\\TickTock\\SimpleUniEventTest.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwCMAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-01T13:51:49.66Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "GamePanel.cs",
+              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\Panel\\GamePanel.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\Panel\\GamePanel.cs",
+              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\Panel\\GamePanel.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\Panel\\GamePanel.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAIwFkAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-01T13:42:16.227Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "StartPanel.cs",
+              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\Panel\\StartPanel.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\Panel\\StartPanel.cs",
+              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\Panel\\StartPanel.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\Panel\\StartPanel.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAgwDEAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-01T13:21:18.553Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MonoEventSubComponent.cs",
+              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Script\\Framwork\\EventFramwork\\Base\\Event\\Mono\\MonoEventSubComponent.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Framwork\\EventFramwork\\Base\\Event\\Mono\\MonoEventSubComponent.cs",
+              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Script\\Framwork\\EventFramwork\\Base\\Event\\Mono\\MonoEventSubComponent.cs",
+              "RelativeToolTip": "Assets\\Script\\Framwork\\EventFramwork\\Base\\Event\\Mono\\MonoEventSubComponent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-01T13:12:13.256Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UIManager.cs",
+              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\UIManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\UIManager.cs",
+              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\UIManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\UIManager.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAApwCgAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-01T12:02:53.296Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "BasePanel.cs",
+              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\BasePanel.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\BasePanel.cs",
+              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\BasePanel.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\BasePanel.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAowD4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-01T12:01:44.633Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "TestObjC.cs",
+              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Script\\Framwork\\ILifecycleManagerFramework\\PipelineLifeController\\Test\\CustomLife\\TestObjC.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Framwork\\ILifecycleManagerFramework\\PipelineLifeController\\Test\\CustomLife\\TestObjC.cs",
+              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Script\\Framwork\\ILifecycleManagerFramework\\PipelineLifeController\\Test\\CustomLife\\TestObjC.cs",
+              "RelativeToolTip": "Assets\\Script\\Framwork\\ILifecycleManagerFramework\\PipelineLifeController\\Test\\CustomLife\\TestObjC.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAqwBAAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-01T10:48:17.022Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "AudioManagerTest.cs",
+              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\Test\\AudioManagerTest.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Test\\AudioManagerTest.cs",
+              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\Test\\AudioManagerTest.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Test\\AudioManagerTest.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAowCIAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-01T05:19:06.414Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "SFXPoolPlayer.cs",
               "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\Audio\\SFXPoolPlayer.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Audio\\SFXPoolPlayer.cs",
@@ -63,12 +280,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Audio\\SFXPoolPlayer.cs",
               "ViewState": "AgIAACoAAAAAAAAAAAAYwAUAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-01T04:59:00.164Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-01T04:59:00.164Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 14,
               "Title": "MusicPlayer.cs",
               "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\Audio\\MusicPlayer.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Audio\\MusicPlayer.cs",
@@ -76,21 +292,19 @@
               "RelativeToolTip": "Assets\\Scripts\\Audio\\MusicPlayer.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAhwCAAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-01T04:58:43.065Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-01T04:58:43.065Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 13,
               "Title": "AudioManager.cs",
               "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\Audio\\AudioManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Audio\\AudioManager.cs",
               "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\Audio\\AudioManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\Audio\\AudioManager.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAIAwwCwAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAxwD4AAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-01T04:58:40.009Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-01T04:58:40.009Z"
             }
           ]
         }
