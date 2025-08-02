@@ -9,7 +9,7 @@ namespace GamePlay
     {
         public const  string BOX = "Box";
         public const string Player = "Player";
-        public const string Shadow = "Shadow";
+        public const string Shadow = "PlayerShadow";
         /// <summary>
         ///     阻挡物
         /// </summary>

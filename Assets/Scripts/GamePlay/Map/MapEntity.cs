@@ -39,7 +39,9 @@ public interface IBox :  IPushAble , ITakeAble
 }
 public interface IRecordAble
 {
-    public IList<IMoveEventData> Data{ get; }
+    public string ID { get; }
+    public GameObject ShadowPrefab { get; }
+    public  IList<IList<IMoveEventData>> GerDatas(Vector2Int startPos);
 }
 public interface ITakeAble : IBlackPlayer ,IPutCube
 {

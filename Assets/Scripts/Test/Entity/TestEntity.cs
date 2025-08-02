@@ -11,7 +11,7 @@ public class TestEntity : MonoBehaviour
         entityInfo = new EntityInfo
         {
             gameObject = gameObject,
-            position = WorldCellTool.WorldToCell(transform.position),
+            Position = WorldCellTool.WorldToCell(transform.position),
             Tags = new List<string>
                 { "Test" },
         };
@@ -19,6 +19,6 @@ public class TestEntity : MonoBehaviour
     }
     private void Update()
     {
-        entityInfo.position = WorldCellTool.WorldToCell(transform.position);
+        entityInfo.Position = WorldCellTool.WorldToCell(transform.position);
     }
 }

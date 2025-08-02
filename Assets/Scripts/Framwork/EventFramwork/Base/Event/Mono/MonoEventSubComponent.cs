@@ -7,6 +7,7 @@ namespace Space.EventFramework
     public class MonoEventSubComponent : MonoBehaviour
     {
         IEventComponent _eventSubscribeComponent;
+        
         private void Awake()
         {
             _eventSubscribeComponent =FrameworkFactory.GetInstance<IEventComponent>();

@@ -21,7 +21,7 @@ namespace GamePlay
         private EntityInfo preEntityInfo ;
         private void Update()
         {
-            preEntityInfo.position = WorldCellTool.WorldToCell(this.transform.position);
+            preEntityInfo.Position = WorldCellTool.WorldToCell(this.transform.position);
         }
         public void ShowPreClip()
         {

@@ -49,6 +49,10 @@ namespace Lifecycels
 
         Refresh = 65,
 
+        /// <summary>
+        /// 确认动画
+        /// </summary>
+        AnimationClip = 70,
     }
 
     /// <summary>
@@ -100,6 +104,8 @@ namespace Lifecycels
     {
         public void Refresh();
     }
-
-
+    public interface IAnimationMake : ILifecycleSubscriber
+    {
+        public void Update(ILifecycleManager.UpdateContext ctx);
+    }
 }

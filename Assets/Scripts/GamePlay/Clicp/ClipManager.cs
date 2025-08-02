@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Event;
 using GamePlay;
+using GamePlay.Entity;
 using Lifecycels;
 using Space.EventFramework;
 using Space.GlobalInterface.Lifecycle;
@@ -15,9 +16,7 @@ public class ClipManager : MonoBehaviour , IClipAction , IPlayClip
     
     [SerializeField] private int maxRecordCount = 5;
     private readonly List<ClipContener> clipList = new List<ClipContener>();
-    private List<PlayerCharactor.PlayerMoveEventData> currentPlayerList = new List<PlayerCharactor.PlayerMoveEventData>();
     private MonoEventSubComponent currentSubComponent;
-    private  List<List<PlayerCharactor.PlayerMoveEventData>> playerListBuffer = new List<List<PlayerCharactor.PlayerMoveEventData>>();
     private int recordCount  ;
     private  bool recordMode  ;
     private ClipModel _model=ClipModel.Play;
@@ -37,50 +36,48 @@ public class ClipManager : MonoBehaviour , IClipAction , IPlayClip
     private void Start()
     {
         currentSubComponent = GetComponent<MonoEventSubComponent>();
-        currentSubComponent.Subscribe<PlayerCharactor.PlayerMoveEventData>( OnPlayerMove);
         GlobalLifecycle.Instance.Subscribe(GameUpdateLifePipeline.ClipAction.ToString(), this);
         GlobalLifecycle.Instance.Subscribe(GameUpdateLifePipeline.PlayClip.ToString(), this);
     }
     
+    private Vector2Int startPosition;
     void IClipAction.Update(ILifecycleManager.UpdateContext ctx)
     {
-
         if (InputHandler.Instance.Info.RecordClip && !recordMode)
         {
             recordMode = true;
-            playerListBuffer.Clear();
             recordCount = 0;
-            playerListBuffer = new List<List<PlayerCharactor.PlayerMoveEventData>>();
-            currentSubComponent.Publish(new ClipRecordEvent
-                { recordModel = recordMode });
+            recordList.Clear();
+            startPosition=WorldInfo.GetPlayer().prePosition;
             Debug.Log("开始记录");
         }
+        if(!recordMode)return;
         if (recordCount > maxRecordCount)
         {
             recordMode = false;
-            MakeResult();
-            currentSubComponent.Publish(new ClipRecordEvent
-                { recordModel = recordMode });
         }
-        if (!recordMode) return;
-        currentPlayerList = new List<PlayerCharactor.PlayerMoveEventData>();
-        playerListBuffer.Add(currentPlayerList);
+        currentSubComponent.Publish(new ClipRecordEvent
+            { recordModel = recordMode });
+        if(!recordMode) MakeResult();
         recordCount ++;
-
+    }
+    List<RecordComponent> recordList = new List<RecordComponent>();
+    public void AddDirty(RecordComponent record)
+    {
+        recordList.Add(record);
     }
     private void MakeResult()
     {
-        ClipContener  res = new ClipContener
-            { Datas = playerListBuffer };
-        clipList.Add(res);
+        Debug.Log("结束记录");
+        ClipContener record = new ClipContener();
+        foreach (var dirty in recordList)
+        {
+            record.IRecordAblesList.Add(dirty);
+            record.dataDict.Add(dirty.ID,dirty.GerDatas(startPosition));
+        }
+        clipList.Add(record);
     }
-    private void OnPlayerMove(in PlayerCharactor.PlayerMoveEventData data)
-    {
-        if (!recordMode) return;
-        currentPlayerList.Add(data);
-        Debug.Log( $"{recordCount}数据记录  ：endpos {data.endPosition}  startpos {data.startPosition}");
 
-    }
     [SerializeField] private GameObject shadowPrefab ;
     void IPlayClip.Update(ILifecycleManager.UpdateContext ctx)
     {
@@ -98,10 +95,16 @@ public class ClipManager : MonoBehaviour , IClipAction , IPlayClip
         if (num == -1) return;
         if (InputHandler.Instance.Info.ClipPlayInfo.playType == ClipePlayType.Play)
         {
-            Vector2Int creatPos  = WorldInfo.GetPlayer().prePosition;
-            GameObject obj =  Instantiate(shadowPrefab , WorldCellTool.CellToWorld(creatPos), quaternion.identity);
-            //TODO ： 播放序列
-            obj.GetComponent<Shadow>().Init(clipList[num], creatPos);
+            EntityInfo player = WorldInfo.GetPlayer();
+            ClipContener shadowInfo = clipList[num];
+            foreach (var info in shadowInfo.IRecordAblesList)
+            {
+               GameObject  obj= Instantiate(info.ShadowPrefab, 
+                    WorldCellTool.CellToWorld(player.prePosition+shadowInfo.dataDict[info.ID][0][0].startPosition),
+                    Quaternion.identity);
+               obj.GetComponent<IShadow>().Init(shadowInfo.dataDict[info.ID],player.prePosition);
+            }
+
             num = -1;
         }
     }

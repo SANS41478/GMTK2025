@@ -7,8 +7,8 @@ namespace GamePlay
 
         public bool UpdateGravity(EntityInfo info)
         {
-            if (WorldInfo.IsBlocked(info.position + Vector2Int.down)) return false;
-            info.position += Vector2Int.down;
+            if (WorldInfo.IsBlocked(info.Position + Vector2Int.down)) return false;
+            info.Position += Vector2Int.down;
             return true;
         }
     }

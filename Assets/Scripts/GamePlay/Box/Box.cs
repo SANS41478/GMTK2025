@@ -25,7 +25,7 @@ public class Box : MonoBehaviour  , IBox, ITakeAble
     {
         _entityInfo = new EntityInfo()
         {
-            position = WorldCellTool.WorldToCell(transform.position),
+            Position = WorldCellTool.WorldToCell(transform.position),
             prePosition = WorldCellTool.WorldToCell(transform.position),
             gameObject = gameObject,
             Self = this,
@@ -37,13 +37,16 @@ public class Box : MonoBehaviour  , IBox, ITakeAble
         WorldInfo.AddInfo(_entityInfo);
         eventSubComponent=GetComponent<MonoEventSubComponent>();
         gravity = GetComponent<GravityComponent>();
-        eventSubComponent.Subscribe<TakeEventData>(OnTakeEvent);
         GlobalLifecycle.Instance.Subscribe(GameUpdateLifePipeline.PutCube.ToString(),this);
+    }
+    private void Start()
+    {
+        eventSubComponent.Subscribe<TakeEventData>(OnTakeEvent);
     }
     private void OnTakeEvent(in TakeEventData data)
     {
-        Debug.Log($"OnTakeEvent{_entityInfo.position}");
-        if (data.takePosition.Equals(_entityInfo.position))
+        Debug.Log($"OnTakeEvent{_entityInfo.Position}");
+        if (data.takePosition.Equals(_entityInfo.Position))
         {
             owner = data.player;
             owner.Take(this);
@@ -52,15 +55,15 @@ public class Box : MonoBehaviour  , IBox, ITakeAble
     public bool active => blackMask;
     public bool BlockInPos(Vector2Int pos)
     {
-        return _entityInfo.position.Equals(pos);
+        return _entityInfo.Position.Equals(pos);
     }
     public bool Push(Vector2Int direc)
     {
-        if (WorldInfo.IsBlocked(_entityInfo.position + direc))
+        if (WorldInfo.IsBlocked(_entityInfo.Position + direc))
         {
             return false;
         }
-        _entityInfo.position += direc;
+        _entityInfo.Position += direc;
         return true;
     }
     public void BeforeFollow()
@@ -69,9 +72,9 @@ public class Box : MonoBehaviour  , IBox, ITakeAble
     }
     public void Follow(EntityInfo entityInfo)
     {
-        _entityInfo.prePosition=_entityInfo.position;
+        _entityInfo.prePosition=_entityInfo.Position;
       //TODO: 暂时写直接在上面了
-      _entityInfo.position=entityInfo.position+Vector2Int.up;
+      _entityInfo.Position=entityInfo.Position+Vector2Int.up;
     }
     public void FollowFinish()
     {
@@ -89,19 +92,19 @@ public class Box : MonoBehaviour  , IBox, ITakeAble
     {
         owner.RemoveTake(this);
         takeMark = false;
-        if (!WorldInfo.IsBlocked(_entityInfo.position + owner.Direction))
+        if (!WorldInfo.IsBlocked(_entityInfo.Position + owner.Direction))
         {
-            _entityInfo.position = _entityInfo.position + owner.Direction;
+            _entityInfo.Position = _entityInfo.Position + owner.Direction;
         }
         else
         {
             //TODO: 没有其它判断惹
-            _entityInfo.position = _entityInfo.position - owner.Direction;
+            _entityInfo.Position = _entityInfo.Position - owner.Direction;
         }
     }
     void Update()
     {
-        gameObject.transform.position = WorldCellTool.CellToWorld(_entityInfo.position);
+        gameObject.transform.position = WorldCellTool.CellToWorld(_entityInfo.Position);
         if(! takeMark)         gravity.UpdateGravity(_entityInfo);
 
     }

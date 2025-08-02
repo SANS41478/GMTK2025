@@ -29,28 +29,38 @@ public class PlayerCharactor : MonoBehaviour ,
     private  Vector2Int direction = Vector2Int.right;
     private Vector2Int preDirection ;
     public Vector2Int Direction => direction;
+    private RecordComponent _recordComponent;
 
     private void Awake()
     {
-        _monoEventSubComponent = gameObject.AddComponent<MonoEventSubComponent>();
-        _gravityComponent = gameObject.AddComponent<GravityComponent>();
+        _monoEventSubComponent = gameObject.GetComponent<MonoEventSubComponent>();
+        _recordComponent= gameObject.GetComponent<RecordComponent>();
+        _gravityComponent = gameObject.GetComponent<GravityComponent>();
         _entityInfo = new EntityInfo
         {
             gameObject = gameObject,
-            position = WorldCellTool.WorldToCell(transform.position),
+            Position = WorldCellTool.WorldToCell(transform.position),
             prePosition = WorldCellTool.WorldToCell(transform.position),
             Self = this,
             Tags = new List<string>
                 { WorldEntityType.Player ,WorldEntityType.PushAble, WorldEntityType.Block },
         };
         WorldInfo.AddInfo(_entityInfo);
-
     }
     private void Start()
     {
         GlobalLifecycle.Instance.Subscribe(GameUpdateLifePipeline.PlayerMoveCharge.ToString(), this);
         GlobalLifecycle.Instance.Subscribe(GameUpdateLifePipeline.PlayerMove.ToString(), this);
         GlobalLifecycle.Instance.Subscribe(GameUpdateLifePipeline.TakeCube.ToString(), this);
+        _recordComponent.Init(_entityInfo, (a, oldPos, newPos) => 
+            new PlayerMoveEventData()
+            {
+                direction = direction,
+                PlayerMoveEnum = _playerMoveEnum
+                ,endPosition = newPos,
+                startPosition = oldPos
+            }
+        );
     }
     private void Update()
     {
@@ -59,15 +69,15 @@ public class PlayerCharactor : MonoBehaviour ,
             _monoEventSubComponent.Publish(new PlayerMoveEventData
             {
                 direction = direction,
-                startPosition = _entityInfo.position + Vector2Int.up,
+                startPosition = _entityInfo.Position + Vector2Int.up,
                 PlayerMoveEnum = PlayerMoveEnum.down,
-                endPosition = _entityInfo.position 
+                endPosition = _entityInfo.Position 
             });
         }
 
         //TODO: 动画队列播放
 
-        transform.position = WorldCellTool.CellToWorld(_entityInfo.position);
+        transform.position = WorldCellTool.CellToWorld(_entityInfo.Position);
     }
     private void OnDestroy()
     {
@@ -77,27 +87,27 @@ public class PlayerCharactor : MonoBehaviour ,
     void IPlayerMove.Update(ILifecycleManager.UpdateContext ctx)
     {
         // Debug.Log($"PlayerMoveEnum : {_playerMoveEnum.ToString()}");
-        _entityInfo.prePosition = _entityInfo.position;
+        _entityInfo.prePosition = _entityInfo.Position;
         switch (_playerMoveEnum)
         {
             case PlayerMoveEnum.jump:
-                _entityInfo.position = _entityInfo.position + direction + Vector2Int.up;
+                _entityInfo.Position = _entityInfo.Position + direction + Vector2Int.up;
                 _monoEventSubComponent.Publish(new PlayerMoveEventData
                 {
                     direction = direction,
                     startPosition = _entityInfo.prePosition,
                     PlayerMoveEnum = _playerMoveEnum,
-                    endPosition = _entityInfo.position 
+                    endPosition = _entityInfo.Position 
                 });
                 break;
             case PlayerMoveEnum.move:
-                _entityInfo.position += direction;
+                _entityInfo.Position += direction;
                 _monoEventSubComponent.Publish(new PlayerMoveEventData
                 {
                     direction = direction,
                     startPosition = _entityInfo.prePosition,
                     PlayerMoveEnum = _playerMoveEnum,
-                    endPosition = _entityInfo.position 
+                    endPosition = _entityInfo.Position 
                 });
                 break;
         }
@@ -126,14 +136,14 @@ public class PlayerCharactor : MonoBehaviour ,
     {
         bool mark;
         //朝着方向走
-        mark =  WorldInfo.IsBlocked(_entityInfo.position + direction) || 
-                WorldInfo.IsShadowPrePos(_entityInfo.position + direction);
+        mark =  WorldInfo.IsBlocked(_entityInfo.Position + direction) || 
+                WorldInfo.IsShadowPrePos(_entityInfo.Position + direction);
         if (!mark) return PlayerMoveEnum.move;
         //朝着方向跳
-        mark =  WorldInfo.IsBlocked(_entityInfo.position + direction + Vector2Int.up) 
-                || WorldInfo.IsBlocked(_entityInfo.position  + Vector2Int.up)
-                || WorldInfo.IsShadowPrePos(_entityInfo.position + Vector2Int.up)
-                || WorldInfo.IsShadowPrePos(_entityInfo.position + direction + Vector2Int.up);
+        mark =  WorldInfo.IsBlocked(_entityInfo.Position + direction + Vector2Int.up) 
+                || WorldInfo.IsBlocked(_entityInfo.Position  + Vector2Int.up)
+                || WorldInfo.IsShadowPrePos(_entityInfo.Position + Vector2Int.up)
+                || WorldInfo.IsShadowPrePos(_entityInfo.Position + direction + Vector2Int.up);
         if (!mark) return PlayerMoveEnum.jump;
         return PlayerMoveEnum.CantMove;
     }
@@ -143,7 +153,7 @@ public class PlayerCharactor : MonoBehaviour ,
         public PlayerMoveEnum PlayerMoveEnum { get; set; }
         public Vector2Int startPosition { get; set; }
         public Vector2Int endPosition { get; set; }
-        public PlayerMoveEventData Clone()
+        public IMoveEventData Clone()
         {
             return   new PlayerMoveEventData
             {
@@ -157,12 +167,12 @@ public class PlayerCharactor : MonoBehaviour ,
     public bool active => true;
     public bool BlockInPos(Vector2Int pos)
     {
-        return _entityInfo.position.Equals(pos);
+        return _entityInfo.Position.Equals(pos);
     }
     public bool Push(Vector2Int direc)
     {
-        if (WorldInfo.IsBlocked(_entityInfo.position + direc)) return false;
-        _entityInfo.position += direc;
+        if (WorldInfo.IsBlocked(_entityInfo.Position + direc)) return false;
+        _entityInfo.Position += direc;
         return true;
     }
     public void Update(ILifecycleManager.UpdateContext ctx)
@@ -172,7 +182,7 @@ public class PlayerCharactor : MonoBehaviour ,
             _monoEventSubComponent.Publish(new TakeEventData()
             {
                 player = this,
-                takePosition = _entityInfo.position+direction,
+                takePosition = _entityInfo.Position+direction,
             });
         }
     }

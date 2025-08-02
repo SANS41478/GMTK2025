@@ -19,6 +19,7 @@ namespace Lifecycels
             timer -= Time.deltaTime;
             while (timer <= 0)
             {
+                timer += FixedDeltaTime;
                 lifeManager.Update(new ILifecycleManager.UpdateContext
                 {
                     DeltaTime = FixedDeltaTime,
@@ -27,7 +28,6 @@ namespace Lifecycels
                     RealtimeSinceStartup = Time.realtimeSinceStartup,
                     UnscaledDeltaTime = Time.unscaledDeltaTime,
                 });
-                timer += FixedDeltaTime;
             }
         }
     }

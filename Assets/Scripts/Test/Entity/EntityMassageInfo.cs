@@ -14,7 +14,7 @@ namespace GamePlay.Test
                 foreach (EntityInfo ww in te)
                 {
                     Debug.Log(!ww.gameObject);
-                    Debug.Log($"Entity{ww.gameObject.name} :: {ww.position} ");
+                    Debug.Log($"Entity{ww.gameObject.name} :: {ww.Position} ");
                 }
             }
         }
