@@ -1,19 +1,18 @@
 ﻿using Space.GlobalInterface.Lifecycle;
+using Space.LifeControllerFramework.PipelineLifeController;
 using Space.LifeControllerFramework.PipelineLifeController.PipelineComponent;
-using UnityEngine;
 namespace Lifecycels
 {
-    public class LifecycleManager : MonoBehaviour
+    /// <summary>
+    /// 生命周期管线
+    /// </summary>
+    public class LifeManager
     {
-        //TODO: 修改
-        public static LifecycleManager Instance;
-        [SerializeField] private float FixedDeltaTime = 0.5f;
-        public ILifecycleManager pipelineManager = GlobalLifecycle.Instance;
-        private float timer ;
-        private void Awake()
+        public ILifecycleManager pipelineManager;
+        public LifeManager(ILifecycleManager lifecyclePipelineManager)
         {
-            Instance = this;
-            pipelineManager.AddPhase(new MonoUpdatePipe<IClipMove>().SetParams(new MonoUpdatePipe<IClipMove>.PipeCreatInfo(
+            pipelineManager = lifecyclePipelineManager;
+               pipelineManager.AddPhase(new MonoUpdatePipe<IClipMove>().SetParams(new MonoUpdatePipe<IClipMove>.PipeCreatInfo(
                 (int)GameUpdateLifePipeline.ClipMove, GameUpdateLifePipeline.ClipMove.ToString(),
                 (a, ctx) => a.Update(ctx.UpdateContext))));
             pipelineManager.AddPhase(new MonoUpdatePipe<IClipMoveCharge>().SetParams(new MonoUpdatePipe<IClipMoveCharge>.PipeCreatInfo(
@@ -44,21 +43,9 @@ namespace Lifecycels
                 (int)GameUpdateLifePipeline.Refresh, GameUpdateLifePipeline.Refresh.ToString(),
                 (a, c) => a.Refresh())));
         }
-        public void Update()
+        public void Update(ILifecycleManager.UpdateContext context)
         {
-            timer -= Time.deltaTime;
-            while (timer <= 0)
-            {
-                pipelineManager.Update(new ILifecycleManager.UpdateContext
-                {
-                    DeltaTime = FixedDeltaTime,
-                    FrameCount = Time.frameCount,
-                    GameTime = Time.time,
-                    RealtimeSinceStartup = Time.realtimeSinceStartup,
-                    UnscaledDeltaTime = Time.unscaledDeltaTime,
-                });
-                timer += FixedDeltaTime;
-            }
+            pipelineManager.Update(context);
         }
     }
 }

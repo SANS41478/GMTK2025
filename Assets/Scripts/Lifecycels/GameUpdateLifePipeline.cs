@@ -6,6 +6,11 @@ namespace Lifecycels
     /// </summary>
     public enum GameUpdateLifePipeline
     {
+        
+        /// <summary>
+        ///     拿走方块
+        /// </summary>
+        TakeCube = 5,
         /// <summary>
         ///     影像移动判断
         /// </summary>
@@ -14,10 +19,7 @@ namespace Lifecycels
         ///     影像移动
         /// </summary>
         ClipMove = 15,
-        /// <summary>
-        ///     排挤
-        /// </summary>
-        ClipPush = 20,
+
         /// <summary>
         ///     录制开始结束倒反倍速暂停等
         /// </summary>
@@ -30,10 +32,12 @@ namespace Lifecycels
         ///     玩家移动
         /// </summary>
         PlayerMove = 35,
+
+        
         /// <summary>
-        ///     拿走方块
+        ///     排挤
         /// </summary>
-        TakeCube = 40,
+        ClipPush = 40,
         /// <summary>
         ///     释放影像
         /// </summary>

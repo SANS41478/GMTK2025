@@ -10,8 +10,6 @@ namespace GamePlay
         public const  string BOX = "Box";
         public const string Player = "Player";
         public const string Shadow = "Shadow";
-        public const string CI = "Ci";
-        public const string POS = "POS";
         /// <summary>
         ///     阻挡物
         /// </summary>
@@ -20,6 +18,8 @@ namespace GamePlay
         ///     墙壁
         /// </summary>
         public const string Wall = "Wall";
+        
+        public const string PushAble = "PushAble";
     }
     public static class WorldInfo
     {
@@ -61,17 +61,21 @@ namespace GamePlay
         }
         public static IEnumerable<EntityInfo> GetInfo(string tag)
         {
-            IEnumerable<EntityInfo> infos = null;
+            List<EntityInfo> infos = null;
             if (dictWorldInfo.TryGetValue(tag, out List<EntityInfo> info))
             {
-                infos = info.Where(a => a.gameObject == null || !a.gameObject);
+                infos = info.Where(a => a.gameObject == null || !a.gameObject).ToList();
             }
             if (infos != null)
-                foreach (EntityInfo oEntityInfo in infos)
+                lock (dictWorldInfo)
                 {
-                    foreach (string tempTag in oEntityInfo.Tags)
+                    if (infos.Count>0)
                     {
-                        RemoveInfo(tempTag, oEntityInfo);
+                        foreach (EntityInfo oEntityInfo in infos)
+                        {
+                            RemoveInfo(oEntityInfo);
+                        }
+                        infos.Clear();
                     }
                 }
             if (dictWorldInfo.TryGetValue(tag, out List<EntityInfo> reinfo)) return reinfo;
@@ -88,10 +92,45 @@ namespace GamePlay
         public static bool IsBlocked(Vector2Int pos)
         {
             IEnumerable<IBlackPlayer>   blocker = GetInfo<IBlackPlayer>(WorldEntityType.Block);
+            if (blocker == null) return false;
+
             foreach (IBlackPlayer bba in blocker)
             {
                 if (!bba.active) continue;
                 if (bba.BlockInPos(pos)) return true;
+            }
+            return false;
+        }
+        public static bool IsBox(Vector2Int pos)
+        {
+            IEnumerable<IBox> blocker = GetInfo<IBox>(WorldEntityType.BOX);
+            if (blocker == null) return false;
+
+            foreach (var box in blocker)
+            {
+                if (box.BlockInPos(pos)) return true;
+            }
+            return false;
+        }
+        public static bool IsPush(Vector2Int pos)
+        {
+            IEnumerable<IPushAble> blocker = GetInfo<IPushAble>(WorldEntityType.PushAble);
+            if (blocker == null) return false;
+
+            foreach (var box in blocker)
+            {
+                if (box.BlockInPos(pos)) return true;
+            }
+            return false;
+        }
+
+        public static bool IsShadowPrePos(Vector2Int pos)
+        {
+            IEnumerable<EntityInfo> blocker = GetInfo(WorldEntityType.Shadow);
+            if (blocker == null) return false;
+            foreach (var box in blocker)
+            {
+                if (box.prePosition.Equals(pos)) return true;
             }
             return false;
         }

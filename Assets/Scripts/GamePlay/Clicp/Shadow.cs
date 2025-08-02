@@ -4,72 +4,40 @@ using GamePlay.Entity;
 using Lifecycels;
 using Space.GlobalInterface.Lifecycle;
 using UnityEngine;
+using Utility;
 namespace GamePlay
 {
-    public class Shadow : MonoBehaviour,   IClipMove , IClipMoveCharge , IClipPush , IBlackPlayer
+    public class Shadow : MonoBehaviour
     {
-        /// <summary>
-        ///     暂时的buffer
-        ///     因为影子可能会踩玩家
-        /// </summary>
-        private readonly List<PlayerCharactor.PlayerMoveEventData> buffer = new List<PlayerCharactor.PlayerMoveEventData>();
-        private EntityInfo _entityInfo;
-        private PlayerCharactor.PlayerMoveEnum _playerMoveEnum;
-        private ClipContener clipContener;
-        private int count  ;
-        private Vector2Int direction;
+        private EntityInfo worldEntityInfo=new EntityInfo();
+        private ShadowCalculate worldShadowCalculate=new ShadowCalculate();
 
-        private bool reflect;
-        private void OnDestroy()
+        private void Update()
         {
-            GlobalLifecycle.Instance.Unsubscribe(GameUpdateLifePipeline.ClipMove.ToString(), this);
-            GlobalLifecycle.Instance.Unsubscribe(GameUpdateLifePipeline.ClipMoveCharge.ToString(), this);
-            GlobalLifecycle.Instance.Unsubscribe(GameUpdateLifePipeline.ClipPush.ToString(), this);
-        }
-        public bool active {
-            get {
-                return true;
-            }
-        }
-        public bool BlockInPos(Vector2Int pos)
-        {
-            if (_entityInfo.prePosition.Equals(pos) || _entityInfo.position.Equals(pos)) return true;
-            return false;
-        }
-        void IClipMove.Update(ILifecycleManager.UpdateContext ctx)
-        {
- 
-        }
-        void IClipMoveCharge.Update(ILifecycleManager.UpdateContext ctx)
-        {
-     
+            //TODO: 动画
+            gameObject.transform.position= WorldCellTool.CellToWorld(worldEntityInfo.position) ;
         }
         private void KillShadow()
         {
+            Destroy(gameObject,Time.deltaTime);
             //TODO: 影子爆炸
         }
-        void IClipPush.Update(ILifecycleManager.UpdateContext ctx)
+        public void Init(ClipContener clip, Vector2Int creatPos)
         {
-        
-        }
-
-        public Shadow Init(ClipContener content)
-        {
-            GlobalLifecycle.Instance.Subscribe(GameUpdateLifePipeline.ClipMove.ToString(), this);
-            GlobalLifecycle.Instance.Subscribe(GameUpdateLifePipeline.ClipMoveCharge.ToString(), this);
-            GlobalLifecycle.Instance.Subscribe(GameUpdateLifePipeline.ClipPush.ToString(), this);
-            clipContener = content;
-            _entityInfo = new EntityInfo
+            worldEntityInfo = new EntityInfo
             {
-                prePosition = content.Datas[0][0].startPosition,
-                position = content.Datas[0][0].startPosition,
+                prePosition = creatPos,
+                position = creatPos,
                 gameObject =   gameObject,
-                Self = this,
+                Self = worldShadowCalculate,
                 Tags = new List<string>
                     { WorldEntityType.Shadow, WorldEntityType.Block },
             };
-            count = 0;
-            return this;
+            WorldInfo.AddInfo(worldEntityInfo);
+            worldShadowCalculate.Init(clip, worldEntityInfo,GlobalLifecycle.Instance, () => {
+                WorldInfo.RemoveInfo(worldEntityInfo);
+                Destroy(gameObject);
+            });
         }
     }
 }
