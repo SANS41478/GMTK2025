@@ -1,8 +1,8 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 /// <summary>
-/// Manages a pool of AudioSources for one-shot SFX playback.
+///     Manages a pool of AudioSources for one-shot SFX playback.
 /// </summary>
 public class SFXPoolPlayer : MonoBehaviour
 {
@@ -21,7 +21,7 @@ public class SFXPoolPlayer : MonoBehaviour
             audioSourcePrefab = Resources.Load<GameObject>("Prefabs/Audio/AudioSourcePrefab");
             if (audioSourcePrefab == null)
             {
-                Debug.LogError("AudioSourcePrefab Î´ÕÒµ½£¬Çë½«Æä·ÅÔÚ Resources/Prefabs/Audio ÏÂ²¢ÃüÃûÎª AudioSourcePrefab");
+                Debug.LogError("AudioSourcePrefab Î´ï¿½Òµï¿½ï¿½ï¿½ï¿½ë½«ï¿½ï¿½ï¿½ï¿½ï¿½ Resources/Prefabs/Audio ï¿½Â²ï¿½ï¿½ï¿½ï¿½ï¿½Îª AudioSourcePrefab");
                 return;
             }
         }
@@ -34,8 +34,8 @@ public class SFXPoolPlayer : MonoBehaviour
 
     private AudioSource CreateNewSource()
     {
-        var go = Instantiate(audioSourcePrefab, poolRoot);
-        var src = go.GetComponent<AudioSource>();
+        GameObject go = Instantiate(audioSourcePrefab, poolRoot);
+        AudioSource src = go.GetComponent<AudioSource>();
         src.playOnAwake = false;
         go.SetActive(false);
         pool.Enqueue(src);
@@ -45,7 +45,7 @@ public class SFXPoolPlayer : MonoBehaviour
     public void PlaySFX(AudioClip clip, float volume = 1f)
     {
         if (clip == null) return;
-        var src = GetSource();
+        AudioSource src = GetSource();
         src.clip = clip;
         src.volume = volume;
         src.gameObject.SetActive(true);
@@ -60,7 +60,7 @@ public class SFXPoolPlayer : MonoBehaviour
         return CreateNewSource();
     }
 
-    private System.Collections.IEnumerator ReleaseAfterPlay(AudioSource src)
+    private IEnumerator ReleaseAfterPlay(AudioSource src)
     {
         yield return new WaitForSeconds(src.clip.length);
         src.Stop();
@@ -73,13 +73,17 @@ public class SFXPoolPlayer : MonoBehaviour
     {
 
 
-        foreach (var src in pool)
+        foreach (AudioSource src in pool)
+        {
             src.volume = vol;
+        }
     }
 
     public void SetMute(bool mute)
     {
-        foreach (var src in pool)
+        foreach (AudioSource src in pool)
+        {
             src.mute = mute;
+        }
     }
 }

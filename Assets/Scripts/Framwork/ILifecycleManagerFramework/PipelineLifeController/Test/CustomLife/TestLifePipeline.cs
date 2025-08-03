@@ -1,13 +1,10 @@
 ﻿using Space.GlobalInterface.Lifecycle;
-using Space.LifeControllerFramework.PipelineLifeController;
-using UnityEditor.Timeline.Actions;
-using UnityEngine;
 namespace Space.ILifecycleManagerFramework.PipelineLifeController.Test.CustomLife
 {
     /// <summary>
-    /// 自定义的周期
-    /// 重定义接口是为了显示实现
-    /// 详见TestObj
+    ///     自定义的周期
+    ///     重定义接口是为了显示实现
+    ///     详见TestObj
     /// </summary>
     public class TestCustomPhase
     {
@@ -27,11 +24,11 @@ namespace Space.ILifecycleManagerFramework.PipelineLifeController.Test.CustomLif
     }
     public interface IGamePhysics : ILifecycleSubscriber
     {
-        void PhysicsUpdate(in ILifecycleManager.UpdateContext context,float deltaTime);
+        void PhysicsUpdate(in ILifecycleManager.UpdateContext context, float deltaTime);
     }
     public interface IGameStart : ILifecycleSubscriber
     {
-       public void Invoke();
+        public void Invoke();
     }
     public interface IGameBOOOOOM : ILifecycleSubscriber
     {

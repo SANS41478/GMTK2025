@@ -1,11 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
-
 public class UIRootLauncher : MonoBehaviour
 {
-    void Start()
+    private void Start()
     {
-        var canvas = GameObject.Find("Canvas");
+        GameObject canvas = GameObject.Find("Canvas");
         if (canvas == null)
         {
             canvas = new GameObject("Canvas", typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));

@@ -1,33 +1,31 @@
 using UnityEngine;
-
-
 /// <summary>
-/// ²âÊÔÒôÐ§²¢·¢²¥·ÅÓë¶ÔÏó³Ø»ØÊÕµÄ½Å±¾
-/// °´ 1~4 ¼ü²¥·Å¶ÔÓ¦ÒôÐ§£¬²»Ö§³ÖÊÖ¶¯Í£Ö¹£¬²¥·Åºó×Ô¶¯»ØÊÕ¡£
-/// °´ P ¼ü²é¿´¶ÔÏó³Ø×´Ì¬¡£
+///     ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø»ï¿½ï¿½ÕµÄ½Å±ï¿½
+///     ï¿½ï¿½ 1~4 ï¿½ï¿½ï¿½ï¿½ï¿½Å¶ï¿½Ó¦ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½Ö¶ï¿½Í£Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½Åºï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½Õ¡ï¿½
+///     ï¿½ï¿½ P ï¿½ï¿½ï¿½é¿´ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½
 /// </summary>
 public class AudioManagerTest : MonoBehaviour
 {
 
-    void Update()
+    private void Update()
     {
 
-        // °´¿Õ¸ñ¼ü²¥·ÅÒôÀÖ
+        // ï¿½ï¿½ï¿½Õ¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("Play BGM");
             AudioManager.Instance.PlayMusic("bgm");
         }
-        // °´»Ø³µ¼üÍ£Ö¹ÒôÀÖ
+        // ï¿½ï¿½ï¿½Ø³ï¿½ï¿½ï¿½Í£Ö¹ï¿½ï¿½ï¿½ï¿½
         if (Input.GetKeyDown(KeyCode.Return))
         {
             Debug.Log("Stop BGM");
             AudioManager.Instance.StopMusic();
         }
-        if (Input.GetKeyDown(KeyCode.Alpha1)) 
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Debug.Log("Play 1");
-            AudioManager.Instance.PlaySFX("1",0.2f);
+            AudioManager.Instance.PlaySFX("1", 0.2f);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
@@ -48,5 +46,3 @@ public class AudioManagerTest : MonoBehaviour
 
     }
 }
-
-

@@ -1,5 +1,4 @@
-﻿using System;
-using Space.GlobalInterface.Lifecycle;
+﻿using Space.GlobalInterface.Lifecycle;
 using Space.LifeControllerFramework.PipelineLifeController;
 using Space.LifeControllerFramework.PipelineLifeController.PipelineComponent;
 using UnityEngine;
@@ -25,34 +24,33 @@ namespace Space.ILifecycleManagerFramework.PipelineLifeController.Test.CustomLif
                 as ILifecyclePhase);
             //TODO: 更替创建方式
             lifecyclePipelineManager.AddPhase(new MonoUpdatePipe<IGameAnimation>().SetParams(
-                    new MonoUpdatePipe<IGameAnimation>.PipeCreatInfo(
-                        51,
-                        TestCustomPhase.ANIMATION,
-                        (a, context) => {
-                            a.AniUpdate(context.UpdateContext);
-                        }))
-                as ILifecyclePhase);
+                new MonoUpdatePipe<IGameAnimation>.PipeCreatInfo(
+                    51,
+                    TestCustomPhase.ANIMATION,
+                    (a, context) => {
+                        a.AniUpdate(context.UpdateContext);
+                    })));
             lifecyclePipelineManager.AddPhase(new MonoUpdatePipe<IGameWorldUpdate>().SetParams(new MonoUpdatePipe<IGameWorldUpdate>.PipeCreatInfo(
                 52,
                 TestCustomPhase.WORLD,
-                (a, c) => a.WorldUpdate(c.UpdateContext))) as ILifecyclePhase);
+                (a, c) => a.WorldUpdate(c.UpdateContext))));
             lifecyclePipelineManager.AddPhase(new MonoTimerPipe<IGamePhysics>().SetParams(new MonoTimerPipe<IGamePhysics>.PipeCreatInfo(
                 54, TestCustomPhase.PHYSICS, 0.02f,
                 (a, c, t) =>
                     a.PhysicsUpdate(c.UpdateContext, t))) as ILifecyclePhase);
             lifecyclePipelineManager.AddPhase(new MonoUpdatePipe<IGameBOOOOOM>().SetParams(new MonoUpdatePipe<IGameBOOOOOM>.PipeCreatInfo(
                 5, TestCustomPhase.BOOOOOM,
-                (a, c) => a.Boooom())) as ILifecyclePhase);
+                (a, c) => a.Boooom())));
         }
         private void Update()
         {
-            lifecyclePipelineManager.Update(new ILifecycleManager.UpdateContext()
+            lifecyclePipelineManager.Update(new ILifecycleManager.UpdateContext
             {
                 DeltaTime = Time.deltaTime,
                 FrameCount = Time.frameCount,
                 GameTime = Time.time,
                 RealtimeSinceStartup = Time.realtimeSinceStartup,
-                UnscaledDeltaTime = Time.unscaledDeltaTime
+                UnscaledDeltaTime = Time.unscaledDeltaTime,
             });
         }
     }

@@ -1,9 +1,7 @@
-﻿using System;
-using DG.Tweening;
+﻿using DG.Tweening;
 using GamePlay;
 using Space.EventFramework;
 using Space.GlobalInterface.Lifecycle;
-using Space.LifeControllerFramework.PipelineLifeController.PipelineComponent;
 using UnityEngine;
 namespace Lifecycels
 {
@@ -11,20 +9,24 @@ namespace Lifecycels
     public class GlobalLifecycleManager : MonoBehaviour
     {
         public static GlobalLifecycleManager Instance;
-        [SerializeField] private CanvasGroup black ;
-        public float GlobalLifecycleTime => FixedDeltaTime;
-        [Range(0.02f,3f)]
-        [SerializeField] private float FixedDeltaTime = 0.5f;
-        private ILifecycleManager pipelineManager = GlobalLifecycle.Instance;
         private static LifeManager lifeManager;
-        MonoEventSubComponent eventSubComponent;
+        [SerializeField] private CanvasGroup black ;
+        [Range(0.02f, 3f)]
+        [SerializeField] private float FixedDeltaTime = 0.5f;
+        private MonoEventSubComponent eventSubComponent;
+        private bool gameStart;
+        private readonly ILifecycleManager pipelineManager = GlobalLifecycle.Instance;
 
         private float timer ;
-        private bool gameStart;
+        public float GlobalLifecycleTime {
+            get {
+                return FixedDeltaTime;
+            }
+        }
         private void Awake()
         {
             Instance = this;
-            if(lifeManager == null)
+            if (lifeManager == null)
                 lifeManager = new LifeManager(pipelineManager);
             eventSubComponent = GetComponent<MonoEventSubComponent>();
         }
@@ -33,15 +35,9 @@ namespace Lifecycels
             eventSubComponent.Subscribe<SceneLoader.LoadNewLevel>(OnLoadNewLevel);
             black.DOFade(0, 2f).OnComplete(() => { gameStart = true; });
         }
-        private void OnLoadNewLevel(in SceneLoader.LoadNewLevel data)
-        {
-            pipelineManager.Clear();
-            WorldInfo.Clear();
-            GlobalEventBus.Instance.Clear();
-        }
         public void Update()
         {
-            if(!gameStart)return;
+            if (!gameStart) return;
             timer -= Time.deltaTime;
             while (timer <= 0)
             {
@@ -55,6 +51,11 @@ namespace Lifecycels
                     UnscaledDeltaTime = Time.unscaledDeltaTime,
                 });
             }
+        }
+        private void OnLoadNewLevel(in SceneLoader.LoadNewLevel data)
+        {
+            pipelineManager.Clear();
+            WorldInfo.Clear();
         }
     }
 }

@@ -1,14 +1,12 @@
-using UnityEngine;
-using Space.GlobalInterface.EventInterface;
 using Space.EventFramework;
-
+using UnityEngine;
 public class GameEventListener : MonoBehaviour
 {
     private MonoEventSubComponent _evtComp;
 
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(gameObject);
 
         // 确保有 MonoEventSubComponent
         _evtComp = GetComponent<MonoEventSubComponent>();
@@ -50,7 +48,7 @@ public class GameEventListener : MonoBehaviour
     private void OnResetGame(in GamePanel.ResetGameEvent e)
     {
         Debug.Log("收到 ResetGameEvent，执行重置逻辑");
-        
+
     }
 
     private void OnPauseGame(in GamePanel.PauseGameEvent e)

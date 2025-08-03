@@ -1,5 +1,4 @@
-﻿using System;
-using Lifecycels;
+﻿using Lifecycels;
 using Space.EventFramework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,59 +8,32 @@ namespace GamePlay
     [RequireComponent(typeof(MonoEventSubComponent))]
     public class InputHandler : MonoBehaviour, IInputRefresh
     {
-        public static InputHandler Instance;
+        public static InputHandler Instance => GameObject.Find("Manager").GetComponent<InputHandler>();
+        private int clickcount = 0;
         public InputInfo Info;
         private void Awake()
         {
             GlobalLifecycle.Instance.Subscribe(GameUpdateLifePipeline.Refresh.ToString(), this);
-            Instance = this;
-            Info = new InputInfo()
+            Info = new InputInfo
             {
-                ClipPlayInfo = new ClipePlayInfo()
+                ClipPlayInfo = new ClipePlayInfo(),
             };
             Info.Refresh();
         }
         private void Start()
         {
-            var res=    GetComponent<MonoEventSubComponent>();
+            MonoEventSubComponent res =    GetComponent<MonoEventSubComponent>();
             res.Subscribe<ClipePlayInfo>(OnClipePlayInfo);
             res.Subscribe<GamePanel.ChoiceClip>(OnChoiceClip);
             res.Subscribe<GamePanel.RouteXunEvent>(CyclePlay);
             res.Subscribe<GamePanel.RouteBoEvent>(DefaultPlay);
             res.Subscribe<GamePanel.RouteDaoEvent>(BackwordPlay);
+            res.Subscribe<SceneLoader.LoadNewLevel>(Des);
         }
-
-        private void BackwordPlay(in GamePanel.RouteDaoEvent data)
+        private void Des(in SceneLoader.LoadNewLevel data)
         {
-            Info.ClipPlayInfo.playType = ClipePlayType.Backword;
-            Info.ClipPlayInfo.isCycles = false;
-            Info.ClipPlayInfo.creatMark = false;           
-            Info.ClipPlayInfo.delay = true;
+            Destroy(gameObject);
         }
-        private void DefaultPlay(in GamePanel.RouteBoEvent data)
-        {
-            Info.ClipPlayInfo.playType = ClipePlayType.Play;
-            Info.ClipPlayInfo.isCycles = false;
-            Info.ClipPlayInfo.creatMark = false;           
-            Info.ClipPlayInfo.delay = true;
-        }
-        private void CyclePlay(in GamePanel.RouteXunEvent data)
-        {
-            Info.ClipPlayInfo.playType = ClipePlayType.Play;
-            Info.ClipPlayInfo.isCycles = true;
-            Info.ClipPlayInfo.creatMark = false;
-            Info.ClipPlayInfo.delay = true;
-        }
-        private void OnChoiceClip(in GamePanel.ChoiceClip data)
-        {
-            Info.choiceNum = data.num;
-            Info.ClipPlayInfo.num= data.num;
-        }
-        private void OnClipePlayInfo(in ClipePlayInfo data)
-        {
-            Info.ClipPlayInfo = data;
-        }
-        int clickcount = 0;
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -72,50 +44,69 @@ namespace GamePlay
             {
                 Info.TakeCube = true;
             }
-            Vector2Int mousePos = WorldCellTool.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition))-Vector2Int.one;
-            if ( Info.ClipPlayInfo is { creatMark: false, num: >= 0 } && Info.ClipPlayInfo.playType!=ClipePlayType.Null)
+            Vector2Int mousePos = WorldCellTool.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)) - Vector2Int.one;
+            if ( Info.ClipPlayInfo is { creatMark: false, num: >= 0 } && Info.ClipPlayInfo.playType != ClipePlayType.Null)
             {
-                ClipManager.Instance.CreatPreviewPoints(Info.choiceNum,mousePos);
+                ClipManager.Instance.CreatPreviewPoints(Info.choiceNum, mousePos);
             }
             else
             {
                 ClipManager.Instance.HidePreviewPoints();
             }
-            if (Input.GetMouseButtonDown(0) &&Info.ClipPlayInfo.playType!=ClipePlayType.Null)
+            if (Input.GetMouseButtonDown(0) && Info.ClipPlayInfo.playType != ClipePlayType.Null)
             {
-                if (Info.ClipPlayInfo.delay)
-                {
-                    Info.ClipPlayInfo.delay = false;
-                }
-                else
-                {
                     Info.ClipPlayInfo.keyDownMask = true;
-                    Info.ClipPlayInfo.clickPos=mousePos;
+                    Info.ClipPlayInfo.clickPos = mousePos;
                     Info.ClipPlayInfo.num = Info.choiceNum;
-                }
             }
-            if(Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.R))
                 SceneLoader.Instance.LoadScene(SceneManager.GetActiveScene().name);
         }
         public void Refresh()
         {
             Info.Refresh();
         }
+
+        private void BackwordPlay(in GamePanel.RouteDaoEvent data)
+        {
+            Info.ClipPlayInfo.playType = ClipePlayType.Backword;
+            Info.ClipPlayInfo.isCycles = false;
+            Info.ClipPlayInfo.creatMark = false;
+        }
+        private void DefaultPlay(in GamePanel.RouteBoEvent data)
+        {
+            Info.ClipPlayInfo.playType = ClipePlayType.Play;
+            Info.ClipPlayInfo.isCycles = false;
+            Info.ClipPlayInfo.creatMark = false;
+        }
+        private void CyclePlay(in GamePanel.RouteXunEvent data)
+        {
+            Info.ClipPlayInfo.playType = ClipePlayType.Play;
+            Info.ClipPlayInfo.isCycles = true;
+            Info.ClipPlayInfo.creatMark = false;
+        }
+        private void OnChoiceClip(in GamePanel.ChoiceClip data)
+        {
+            Info.choiceNum = data.num;
+            Info.ClipPlayInfo.num = data.num;
+        }
+        private void OnClipePlayInfo(in ClipePlayInfo data)
+        {
+            Info.ClipPlayInfo = data;
+        }
         public class InputInfo
         {
-            public bool TakeCube;
-            public int choiceNum=-1;
+            public int choiceNum = -1;
+
+            public ClipePlayInfo ClipPlayInfo;
             public bool RecordClip;
-            
-            public ClipePlayInfo ClipPlayInfo; 
-            
+            public bool TakeCube;
+
             public void Refresh()
             {
                 RecordClip = false;
                 TakeCube = false;
                 ClipPlayInfo.keyDownMask = false;
-
-                
             }
         }
     }

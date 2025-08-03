@@ -2,9 +2,9 @@
 namespace Script.GlobalInterface.BuffInterface
 {
     /// <summary>
-    /// buff组件的接口，基础的一些函数
-    /// 获得位于这个组件内的buff
-    /// 负责存储buff和管理生命周期
+    ///     buff组件的接口，基础的一些函数
+    ///     获得位于这个组件内的buff
+    ///     负责存储buff和管理生命周期
     /// </summary>
     public interface IBuffComponent
     {

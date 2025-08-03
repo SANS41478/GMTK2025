@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Event;
 using GamePlay.Entity;
 using Lifecycels;
 using Space.EventFramework;
@@ -11,12 +10,33 @@ namespace GamePlay
 {
     public class ShadowCalculate :  IClipMove , IClipMoveCharge , IClipPush , IBlackPlayer
     {
-        public ClipePlayType Reflect { get;private set; }
-        public IEventComponent EventComponent;
+        private EntityInfo _entityInfo;
+        private ILifecycleManager _lifecycleManager;
+        private PlayerCharactor.PlayerMoveEnum _playerMoveEnum;
         private Action<IList<IMoveEventData>> aniEvent;
+        /// <summary>
+        ///     暂时的buffer
+        ///     因为影子可能会踩玩家
+        /// </summary>
+        private readonly  List<IMoveEventData> buffer = new List<IMoveEventData>();
+        private IList<IList<IMoveEventData>> clipContener;
+        /// <summary>
+        ///     片段的起始位置(为了求偏移量)
+        /// </summary>
+        private Vector2Int clipStartPosition;
+        private int count  ;
 
         private bool cycels;
-        
+        private Vector2Int direction;
+        public IEventComponent EventComponent;
+        private bool hasDes ;
+        private Action onDestroy;
+        /// <summary>
+        ///     播放的起始位置
+        /// </summary>
+        private Vector2Int startPosition;
+        public ClipePlayType Reflect { get; private set; }
+
         public bool active {
             get {
                 return true;
@@ -27,46 +47,15 @@ namespace GamePlay
             if (_entityInfo.Position.Equals(pos)) return true;
             return false;
         }
-        private void MoveCharge()
-        {
-            EntityInfo entityInfo = WorldInfo.GetPlayer();
-            foreach (var b in buffer)
-            {
-                // 如果被阻挡，且阻挡的物品不是箱子或者玩家
-                if ( WorldInfo.IsBlocked(b.endPosition) && 
-                     !WorldInfo.IsPush(b.endPosition)  && !WorldInfo.IsShadow(b.endPosition))
-                {
-                    KillShadow();
-                }
-            }
-        }
-        private bool hasDes=false;
-        private void KillShadow()
-        {
-            _lifecycleManager.Unsubscribe(GameUpdateLifePipeline.ClipMove.ToString(), this);
-            _lifecycleManager.Unsubscribe(GameUpdateLifePipeline.ClipMoveCharge.ToString(), this);
-            _lifecycleManager.Unsubscribe(GameUpdateLifePipeline.ClipPush.ToString(), this);
-            onDestroy.Invoke();
-            hasDes = true;
-        }
-        /// <summary>
-        ///     暂时的buffer
-        ///     因为影子可能会踩玩家
-        /// </summary>
-        private  List<IMoveEventData> buffer = new List<IMoveEventData>();
-        private PlayerCharactor.PlayerMoveEnum _playerMoveEnum;
-        private IList<IList<IMoveEventData>> clipContener;
-        private int count  ;
-        private Vector2Int direction;
         void IClipMove.Update(ILifecycleManager.UpdateContext ctx)
         {
-            if(hasDes)return;
-            _entityInfo.prePosition=_entityInfo.Position;
+            if (hasDes) return;
+            _entityInfo.prePosition = _entityInfo.Position;
             aniEvent.Invoke(buffer);
         }
         void IClipMoveCharge.Update(ILifecycleManager.UpdateContext ctx)
         {
-            if(hasDes)return;
+            if (hasDes) return;
             buffer.Clear();
             if (Reflect == ClipePlayType.Play)
             {
@@ -81,12 +70,12 @@ namespace GamePlay
                     }
                 }
             }
-            else if (Reflect== ClipePlayType.Backword)
+            else if (Reflect == ClipePlayType.Backword)
             {
-                if (count<0)
-                {     
-                    if(cycels)
-                        count+=clipContener.Count;
+                if (count < 0)
+                {
+                    if (cycels)
+                        count += clipContener.Count;
                     else
                     {
                         KillShadow();
@@ -96,20 +85,20 @@ namespace GamePlay
             }
             foreach (IMoveEventData data in clipContener[count])
             {
-                if (Reflect== ClipePlayType.Backword)
+                if (Reflect == ClipePlayType.Backword)
                 {
-                    var rejectData = data.Clone();
+                    IMoveEventData rejectData = data.Clone();
                     rejectData.direction = -rejectData.direction;
-                    var temp = rejectData.startPosition ;
+                    Vector2Int temp = rejectData.startPosition ;
                     rejectData.startPosition = rejectData.endPosition + startPosition;
-                    rejectData.endPosition  =temp+ startPosition;
+                    rejectData.endPosition  = temp + startPosition;
                     buffer.Add(rejectData);
                 }
-                else  if (Reflect== ClipePlayType.Play)
+                else  if (Reflect == ClipePlayType.Play)
                 {
-                    var rejectData = data.Clone();
+                    IMoveEventData rejectData = data.Clone();
                     rejectData.startPosition += startPosition;
-                    rejectData.endPosition+= startPosition;
+                    rejectData.endPosition += startPosition;
                     buffer.Add(rejectData);
                 }
             }
@@ -118,25 +107,25 @@ namespace GamePlay
                 buffer.Reverse();
             }
             MoveCharge();
-            if (Reflect== ClipePlayType.Play)
+            if (Reflect == ClipePlayType.Play)
             {
                 count++;
             }
-            else if (Reflect== ClipePlayType.Backword)
+            else if (Reflect == ClipePlayType.Backword)
             {
                 count--;
             }
         }
-        
+
         void IClipPush.Update(ILifecycleManager.UpdateContext ctx)
         {
-            if(hasDes)return;
-            var resBoxes= WorldInfo.GetInfo<IPushAble>(WorldEntityType.PushAble);
-            foreach (var res in buffer)
+            if (hasDes) return;
+            IEnumerable<IPushAble> resBoxes = WorldInfo.GetInfo<IPushAble>(WorldEntityType.PushAble);
+            foreach (IMoveEventData res in buffer)
             {
-                foreach (var box in resBoxes)
+                foreach (IPushAble box in resBoxes)
                 {
-                    if(box.BlockInPos(res.endPosition))
+                    if (box.BlockInPos(res.endPosition))
                     {
                         if (!box.Push(res.direction))
                         {
@@ -144,28 +133,38 @@ namespace GamePlay
                         }
                         else
                         {
-                            if(res.self is Box)
+                            if (res.self is Box)
                                 AudioManager.Instance.PlaySFX("sfx-pushbox");
                         }
                     }
-                    
+
                 }
             }
         }
-        /// <summary>
-        /// 播放的起始位置
-        /// </summary>
-        private Vector2Int startPosition;
-        /// <summary>
-        /// 片段的起始位置(为了求偏移量)
-        /// </summary>
-        private Vector2Int clipStartPosition;
-        private EntityInfo _entityInfo;
-        private ILifecycleManager _lifecycleManager;
-        private Action onDestroy;
+        private void MoveCharge()
+        {
+            EntityInfo entityInfo = WorldInfo.GetPlayer();
+            foreach (IMoveEventData b in buffer)
+            {
+                // 如果被阻挡，且阻挡的物品不是箱子或者玩家
+                if ( WorldInfo.IsBlocked(b.endPosition) &&
+                     !WorldInfo.IsPush(b.endPosition)  && !WorldInfo.IsShadow(b.endPosition))
+                {
+                    KillShadow();
+                }
+            }
+        }
+        private void KillShadow()
+        {
+            _lifecycleManager.Unsubscribe(GameUpdateLifePipeline.ClipMove.ToString(), this);
+            _lifecycleManager.Unsubscribe(GameUpdateLifePipeline.ClipMoveCharge.ToString(), this);
+            _lifecycleManager.Unsubscribe(GameUpdateLifePipeline.ClipPush.ToString(), this);
+            onDestroy.Invoke();
+            hasDes = true;
+        }
         public ShadowCalculate Init(
             IList<IList<IMoveEventData>> content, EntityInfo info, ILifecycleManager lifecycleManager,
-            Action Ondestroy, Action<IList<IMoveEventData>> eventData, ClipePlayInfo infoClipPlayInfo,Vector2Int offset
+            Action Ondestroy, Action<IList<IMoveEventData>> eventData, ClipePlayInfo infoClipPlayInfo, Vector2Int offset
         )
         {
             if (EventComponent == null)
@@ -181,7 +180,7 @@ namespace GamePlay
             clipContener = content;
             _entityInfo = info;
             startPosition = offset;
-            onDestroy=Ondestroy;
+            onDestroy = Ondestroy;
             aniEvent = eventData;
             Reflect = infoClipPlayInfo.playType;
             cycels = infoClipPlayInfo.isCycles;
@@ -191,12 +190,12 @@ namespace GamePlay
                     count = 0;
                     break;
                 case ClipePlayType.Backword:
-                    count = content.Count-1;
+                    count = content.Count - 1;
                     break;
             }
             return this;
         }
-   
+
         // private void OnChange(in ClipSpeedChangeInfo data)
         // {
         //     switch (data.preModel)

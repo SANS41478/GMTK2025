@@ -1,20 +1,22 @@
+using Space.EventFramework;
 using Space.GlobalInterface.EventInterface;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
-
-[RequireComponent(typeof(Space.EventFramework.MonoEventSubComponent))]
+[RequireComponent(typeof(MonoEventSubComponent))]
 public class StartPanel : BasePanel
 {
     [Header("按钮绑定（请在 Inspector 拖入）")]
     [SerializeField] private Button startButton;
     [SerializeField] private Button quitButton;
-    private Space.EventFramework.MonoEventSubComponent eventComponent;
+    private MonoEventSubComponent eventComponent;
     /// <summary>
-    /// BasePanel 会在 Start() 中调用 Init()
+    ///     BasePanel 会在 Start() 中调用 Init()
     /// </summary>
     public override void Init()
     {
-        eventComponent = GetComponent<Space.EventFramework.MonoEventSubComponent>();
+        eventComponent = GetComponent<MonoEventSubComponent>();
         // 确保绑定了按钮
         if (startButton == null || quitButton == null)
         {
@@ -26,10 +28,9 @@ public class StartPanel : BasePanel
         startButton.onClick.AddListener(OnStartClicked);
         quitButton.onClick.AddListener(OnQuitClicked);
     }
-    public struct StartGameEvent : IEventData {}
     private void OnStartClicked()
     {
-        if (eventComponent != null) 
+        if (eventComponent != null)
         {
             // 发布开始游戏事件
             eventComponent.Publish(new StartGameEvent());
@@ -40,21 +41,21 @@ public class StartPanel : BasePanel
         }
         AudioManager.Instance.PlaySFX("sfx-mechbutton");
         // 隐藏自己
-        UIManager.Instance.HidePanel<StartPanel>(true);
+        UIManager.Instance.HidePanel<StartPanel>();
         SceneLoader.Instance.LoadScene("TestL1");
         //// 打开游戏主面板（假设已经实现了 GamePanel）
         UIManager.Instance.ShowPanel<GamePanel>();
     }
-    
+
     private void OnQuitClicked()
     {
         AudioManager.Instance.PlaySFX("sfx-mechbutton");
         // 隐藏自己
-        UIManager.Instance.HidePanel<StartPanel>(true);
+        UIManager.Instance.HidePanel<StartPanel>();
 
         // 退出应用
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
+        EditorApplication.isPlaying = false;
 #else
         Application.Quit();
 #endif
@@ -68,9 +69,13 @@ public class StartPanel : BasePanel
     }
 
     // 可选：面板隐藏后的回调
-    public override void HideMe(UnityEngine.Events.UnityAction callBack)
+    public override void HideMe(UnityAction callBack)
     {
         base.HideMe(callBack);
         // 这里也可以播放关闭音效
+    }
+
+    public struct StartGameEvent : IEventData
+    {
     }
 }

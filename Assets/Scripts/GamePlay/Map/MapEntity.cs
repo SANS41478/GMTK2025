@@ -7,8 +7,8 @@ using UnityEngine.Tilemaps;
 using Utility;
 public class MapEntity : MonoBehaviour , IBlackPlayer
 {
-    private EntityInfo entityInfo;
     [SerializeField] private Tilemap tilemap;
+    private EntityInfo entityInfo;
     private void Awake()
     {
         entityInfo = new EntityInfo
@@ -32,9 +32,8 @@ public class MapEntity : MonoBehaviour , IBlackPlayer
     }
 }
 
-public interface IBox :  IPushAble , ITakeAble,IRecordObj
+public interface IBox :  IPushAble , ITakeAble, IRecordObj
 {
-
 }
 
 public interface IRecordObj
@@ -47,24 +46,24 @@ public interface IRecordAble
     public GameObject ShadowPrefab { get; }
     public  IList<IList<IMoveEventData>> GerDatas(Vector2Int startPos);
 }
-public interface ITakeAble : IBlackPlayer ,IPutCube
+public interface ITakeAble : IBlackPlayer , IPutCube
 {
     /// <summary>
-    /// 跟随前设置一些物理组件
+    ///     跟随前设置一些物理组件
     /// </summary>
     public void BeforeFollow();
     /// <summary>
-    /// 跟随
+    ///     跟随
     /// </summary>
     public void Follow(EntityInfo entityInfo);
     /// <summary>
-    /// 跟随后重置物理属性
+    ///     跟随后重置物理属性
     /// </summary>
     public void FollowFinish();
     public void Take(int takeCount);
     public void Put();
 }
-public interface IPushAble: IBlackPlayer
+public interface IPushAble : IBlackPlayer
 {
     public bool Push(Vector2Int direc);
 }

@@ -1,9 +1,9 @@
-using UnityEngine;
-using UnityEngine.UI;
 using System.Collections.Generic;
 using Space.EventFramework;
 using Space.GlobalInterface.EventInterface;
-
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.UI;
 public class SettingsPanel : BasePanel
 {
     [Header("UI References")]
@@ -20,13 +20,13 @@ public class SettingsPanel : BasePanel
     public float defaultSFXVolume = 0.5f;
 
     [Header("Audio Preview Clips")]
-    [Tooltip("ÍÏÈëµ¥Ò»ÒôÀÖÔ¤ÀÀ¼ô¼­")]
+    [Tooltip("ï¿½ï¿½ï¿½ëµ¥Ò»ï¿½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     public AudioClip musicPreviewClip;
-    [Tooltip("ÍÏÈë¶à¸öÒôÐ§Ô¤ÀÀ¼ô¼­£¬¿ÉËæ»ú²¥·Å")]
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     public List<AudioClip> sfxPreviewClips = new List<AudioClip>();
+    private MonoEventSubComponent eventComponent;
 
     private AudioSource previewPlayer;
-    private MonoEventSubComponent eventComponent;
 
     public override void Init()
     {
@@ -70,7 +70,7 @@ public class SettingsPanel : BasePanel
         // Play random preview SFX from list
         if (sfxPreviewClips != null && sfxPreviewClips.Count > 0)
         {
-            var clip = sfxPreviewClips[Random.Range(0, sfxPreviewClips.Count)];
+            AudioClip clip = sfxPreviewClips[Random.Range(0, sfxPreviewClips.Count)];
             previewPlayer.clip = clip;
             previewPlayer.volume = value;
             previewPlayer.Play();
@@ -92,15 +92,36 @@ public class SettingsPanel : BasePanel
     private void OnQuitClicked()
     {
         AudioManager.Instance.PlaySFX(sfxPreviewClips.Count > 0 ? sfxPreviewClips[0].name : "sfx-mechbutton");
-        UIManager.Instance.HidePanel<StartPanel>(true);
+        UIManager.Instance.HidePanel<StartPanel>();
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
+        EditorApplication.isPlaying = false;
 #else
         Application.Quit();
 #endif
     }
 }
 
-public struct SetMusicVolumeEvent : IEventData { public float Volume; public SetMusicVolumeEvent(float volume) => Volume = volume; }
-public struct SetSFXVolumeEvent : IEventData { public float Volume; public SetSFXVolumeEvent(float volume) => Volume = volume; }
-public struct SetMuteEvent : IEventData { public bool IsMuted; public SetMuteEvent(bool isMuted) => IsMuted = isMuted; }
+public struct SetMusicVolumeEvent : IEventData
+{
+    public float Volume;
+    public SetMusicVolumeEvent(float volume)
+    {
+        Volume = volume;
+    }
+}
+public struct SetSFXVolumeEvent : IEventData
+{
+    public float Volume;
+    public SetSFXVolumeEvent(float volume)
+    {
+        Volume = volume;
+    }
+}
+public struct SetMuteEvent : IEventData
+{
+    public bool IsMuted;
+    public SetMuteEvent(bool isMuted)
+    {
+        IsMuted = isMuted;
+    }
+}

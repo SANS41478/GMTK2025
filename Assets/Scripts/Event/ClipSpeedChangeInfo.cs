@@ -1,5 +1,4 @@
-﻿using Space.GlobalInterface.EventInterface;
-namespace Event
+﻿namespace Event
 {
     // public struct ClipSpeedChangeInfo : IEventData
     // {

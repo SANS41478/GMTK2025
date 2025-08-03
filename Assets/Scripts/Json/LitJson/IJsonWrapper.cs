@@ -1,4 +1,5 @@
 #region Header
+
 /**
  * IJsonWrapper.cs
  *   Interface that represents a type capable of handling all kinds of JSON
@@ -8,13 +9,12 @@
  * The authors disclaim copyright to this source code. For more details, see
  * the COPYING file included with this distribution.
  **/
+
 #endregion
 
 
 using System.Collections;
 using System.Collections.Specialized;
-
-
 namespace LitJson
 {
     public enum JsonType
@@ -27,7 +27,7 @@ namespace LitJson
         Int,
         Long,
         Double,
-        Boolean
+        Boolean,
     }
 
     public interface IJsonWrapper : IList, IOrderedDictionary

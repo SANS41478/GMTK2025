@@ -2,17 +2,17 @@
 namespace Space.PipelineFramework.Simple.Example.DamagePipeLine
 {
     /// <summary>
-    /// 随便写一点了比较潦草
+    ///     随便写一点了比较潦草
     /// </summary>
     public class Player
     {
-        public int Level=1;
+        public int Level = 1;
         /// <summary>
-        /// 直接简单实现了
+        ///     直接简单实现了
         /// </summary>
         public int GetSkillDamage()
         {
-            return (Level + Random.Range(1,10)) * 3;
+            return (Level + Random.Range(1, 10)) * 3;
         }
         public void costDamage(int damage)
         {

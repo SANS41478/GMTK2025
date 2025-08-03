@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using DG.Tweening;
 using DG.Tweening.Plugins.Core.PathCore;
 using GamePlay.Entity;
@@ -9,18 +8,40 @@ using UnityEngine;
 using Utility;
 namespace GamePlay
 {
-    public class PlayerShadow : MonoBehaviour , IShadow  ,IAnimationMake ,IBlackPlayer
+    public class PlayerShadow : MonoBehaviour , IShadow  , IAnimationMake , IBlackPlayer
     {
-        private EntityInfo worldEntityInfo=new EntityInfo();
-        private ShadowCalculate worldShadowCalculate=new ShadowCalculate();
         [SerializeField] private Animator animator;
-        
-        
+        private readonly List<Vector3> movePath = new List<Vector3>();
+        private EntityInfo worldEntityInfo = new EntityInfo();
+        private readonly ShadowCalculate worldShadowCalculate = new ShadowCalculate();
+
+
         private void Start()
         {
             GlobalLifecycle.Instance.Subscribe(GameUpdateLifePipeline.AnimationClip.ToString(), this);
         }
-        public void Init( IList<IList<IMoveEventData>> clip, Vector2Int creatPos, ClipePlayInfo infoClipPlayInfo,Vector2Int offset)
+        public void OnDestroy()
+        {
+        }
+        //TODO ： 动画队列
+        void IAnimationMake.Update(ILifecycleManager.UpdateContext ctx)
+        {
+            if (movePath.Count <= 0) return;
+            gameObject.transform.DOPath(new Path(PathType.Linear,
+                movePath.ToArray()
+                , 1), ctx.DeltaTime / 2f);
+        }
+
+        public bool active {
+            get {
+                return true;
+            }
+        }
+        public bool BlockInPos(Vector2Int pos)
+        {
+            return worldEntityInfo.Position.Equals(pos);
+        }
+        public void Init( IList<IList<IMoveEventData>> clip, Vector2Int creatPos, ClipePlayInfo infoClipPlayInfo, Vector2Int offset)
         {
             worldEntityInfo = new EntityInfo
             {
@@ -32,17 +53,16 @@ namespace GamePlay
                     { WorldEntityType.Shadow, WorldEntityType.Block  },
             };
             WorldInfo.AddInfo(worldEntityInfo);
-            worldShadowCalculate.Init(clip, worldEntityInfo,GlobalLifecycle.Instance, () => {
+            worldShadowCalculate.Init(clip, worldEntityInfo, GlobalLifecycle.Instance, () => {
                 WorldInfo.RemoveInfo(worldEntityInfo);
                 GlobalLifecycle.Instance.Unsubscribe(GameUpdateLifePipeline.AnimationClip.ToString(), this);
                 Destroy(gameObject);
-            },MoveAnimation,infoClipPlayInfo,offset);
+            }, MoveAnimation, infoClipPlayInfo, offset);
         }
-        private List<Vector3> movePath = new List<Vector3>();
         private void MoveAnimation(IList<IMoveEventData> obj)
         {
             movePath.Clear();
-            if(obj.Count==0)return;
+            if (obj.Count == 0) return;
             movePath.Add(WorldCellTool.CellToWorld(obj[0].startPosition));
             foreach (IMoveEventData moveEventData in obj)
             {
@@ -64,28 +84,11 @@ namespace GamePlay
                 }
             }
             worldEntityInfo.Position = WorldCellTool.WorldToCell(movePath[^1]);
-         
-        }
-        //TODO ： 动画队列
-         void IAnimationMake.Update(ILifecycleManager.UpdateContext ctx)
-         {
-             if(movePath.Count<=0)return;
-             gameObject.transform.DOPath(new Path(PathType.Linear,
-                 movePath.ToArray()
-                 , 1), ctx.DeltaTime / 2f);
-         }
-         public void OnDestroy()
-         {
-         }
 
-         public bool active => true;
-         public bool BlockInPos(Vector2Int pos)
-         {
-             return worldEntityInfo.Position.Equals(pos);
-         }
+        }
     }
     public interface IShadow
     {
-        public void Init( IList<IList<IMoveEventData>> clip, Vector2Int creatPos, ClipePlayInfo infoClipPlayInfo,Vector2Int offset);
+        public void Init( IList<IList<IMoveEventData>> clip, Vector2Int creatPos, ClipePlayInfo infoClipPlayInfo, Vector2Int offset);
     }
 }

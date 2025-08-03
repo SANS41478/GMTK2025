@@ -5,18 +5,18 @@ namespace Space.PipelineFramework.Simple.Example.Test
 
     public class TestContest : IPipelineContext
     {
-        public string massage;
         public  int index;
+        public string massage;
     }
-    public class TestPipelineStage : APipelineStage<TestPipelineStage,TestContest>
+    public class TestPipelineStage : APipelineStage<TestPipelineStage, TestContest>
     {
+        private int index ;
         public int Priority {
             get;
         }
-        private int index=0;
         public override void Execute(TestContest context)
         {
-            index=context.index;
+            index = context.index;
             string res = context.massage;
             Debug.Log($"{index}: {res}");
             index++;

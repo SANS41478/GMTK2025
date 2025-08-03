@@ -1,20 +1,19 @@
 ﻿using System.Collections.Generic;
 using Space.GlobalInterface.Lifecycle;
-using Space.LifeControllerFramework.PipelineLifeController;
 using Space.LifeControllerFramework.PipelineLifeController.PipelineComponent;
 namespace Lifecycels
 {
     /// <summary>
-    /// 生命周期管线
+    ///     生命周期管线
     /// </summary>
     public class LifeManager
     {
+        private readonly List<ILifecyclePhase>  phases = new List<ILifecyclePhase>();
         public ILifecycleManager pipelineManager;
-        List<ILifecyclePhase>  phases = new List<ILifecyclePhase>();
         public LifeManager(ILifecycleManager lifecyclePipelineManager)
         {
             pipelineManager = lifecyclePipelineManager;
-            phases.AddRange(new ILifecyclePhase[]
+            phases.AddRange(new []
             {
                 pipelineManager.AddPhase(new MonoUpdatePipe<IClipMove>().SetParams(new MonoUpdatePipe<IClipMove>.PipeCreatInfo(
                     (int)GameUpdateLifePipeline.ClipMove, GameUpdateLifePipeline.ClipMove.ToString(),
@@ -49,7 +48,7 @@ namespace Lifecycels
                 pipelineManager.AddPhase(new MonoUpdatePipe<IAnimationMake>().SetParams(new MonoUpdatePipe<IAnimationMake>.PipeCreatInfo(
                     (int)GameUpdateLifePipeline.AnimationClip, GameUpdateLifePipeline.AnimationClip.ToString(),
                     (a, c) => a.Update(c.UpdateContext)))),
-                pipelineManager.AddPhase(new Lifecycels.ApplySubscriberPipe().SetParams((int)GameUpdateLifePipeline.RefreshSubscriber) as ILifecyclePhase)
+                pipelineManager.AddPhase(new ApplySubscriberPipe().SetParams((int)GameUpdateLifePipeline.RefreshSubscriber) as ILifecyclePhase),
             });
         }
         public void Update(ILifecycleManager.UpdateContext context)

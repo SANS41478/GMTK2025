@@ -1,18 +1,17 @@
-using UnityEngine;
 using System.Collections;
-
+using UnityEngine;
 /// <summary>
-/// Handles background music playback with optional fade in/out.
+///     Handles background music playback with optional fade in/out.
 /// </summary>
 public class MusicPlayer : MonoBehaviour
 {
-    private AudioSource bgmSource;
     [Header("Fade Settings")]
     public float fadeDuration = 1f;
+    private AudioSource bgmSource;
 
     private void Awake()
     {
-        var go = new GameObject("BGM_Source");
+        GameObject go = new GameObject("BGM_Source");
         go.transform.parent = transform;
         bgmSource = go.AddComponent<AudioSource>();
         bgmSource.loop = true;
@@ -26,11 +25,20 @@ public class MusicPlayer : MonoBehaviour
         bgmSource.Play();
     }
 
-    public void Stop() => bgmSource.Stop();
+    public void Stop()
+    {
+        bgmSource.Stop();
+    }
 
-    public void SetVolume(float vol) => bgmSource.volume = Mathf.Clamp01(vol);
+    public void SetVolume(float vol)
+    {
+        bgmSource.volume = Mathf.Clamp01(vol);
+    }
 
-    public void SetMute(bool mute) => bgmSource.mute = mute;
+    public void SetMute(bool mute)
+    {
+        bgmSource.mute = mute;
+    }
 
     public void FadeIn(AudioClip clip)
     {

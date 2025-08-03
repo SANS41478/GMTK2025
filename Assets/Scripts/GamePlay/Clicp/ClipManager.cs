@@ -1,53 +1,44 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Event;
 using GamePlay;
-using GamePlay.Entity;
 using Lifecycels;
 using Space.EventFramework;
 using Space.GlobalInterface.Lifecycle;
 using UnityEngine;
 using Utility;
-[RequireComponent(typeof(MonoEventSubComponent),typeof(PreClipShow))]
+[RequireComponent(typeof(MonoEventSubComponent), typeof(PreClipShow))]
 public class ClipManager : MonoBehaviour , IClipAction , IPlayClip
 {
-    private class MoveDataContener
-    {
-        public IList<IList<IMoveEventData>> moves;
-        public Vector2Int startPosition;
-        public Vector2Int endPosition;
-    }
-    /// <summary>
-    ///     录像容器
-    /// </summary>
-    private class ClipContener
-    {
-        public Dictionary<string, MoveDataContener> dataDict = new Dictionary<string, MoveDataContener>();
-        public List<IRecordAble> IRecordAblesList = new List<IRecordAble>();
-    }
-    
-    public static ClipManager Instance;
-    private PreClipShow preClipShow;
-    [SerializeField] private int maxRecordCount = 5;
-    private readonly List<ClipContener> clipList = new List<ClipContener>();
-    private MonoEventSubComponent currentSubComponent;
-    private int recordCount  ;
-    private  bool recordMode  ;
-    private ClipModel _model=ClipModel.Play;
-    public ClipModel ClipModelt=>_model;
-    
-    private int maxClipCount=3 ;
-    
-    public List<IRecordAble> recordDirtyList=new List<IRecordAble>();
-    
+
     public enum ClipModel
     {
-        Play,Pause,Backword
+        Play,
+        Pause,
+        Backword,
     }
+
+    public static ClipManager Instance=>GameObject.Find("Manager").GetComponent<ClipManager>();
+    [SerializeField] private int maxRecordCount = 5;
+    private readonly List<ClipContener> clipList = new List<ClipContener>();
+    private ClipModel _tempModel;
+    private MonoEventSubComponent currentSubComponent;
+    private readonly List<(int, GameObject)> hasCreateObj = new List<(int, GameObject)>();
+
+    private readonly int maxClipCount = 3 ;
+    private PreClipShow preClipShow;
+    private int recordCount  ;
+
+    public List<IRecordAble> recordDirtyList = new List<IRecordAble>();
+    private readonly List<RecordComponent> recordList = new List<RecordComponent>();
+    private  bool recordMode  ;
+
+    private Vector2Int startPosition;
+    public ClipModel ClipModelt {
+        get ;
+    } = ClipModel.Play;
     private void Awake()
     {
-        Instance = this;
         preClipShow = GetComponent<PreClipShow>();
     }
     private void Start()
@@ -55,10 +46,13 @@ public class ClipManager : MonoBehaviour , IClipAction , IPlayClip
         currentSubComponent = GetComponent<MonoEventSubComponent>();
         GlobalLifecycle.Instance.Subscribe(GameUpdateLifePipeline.ClipAction.ToString(), this);
         GlobalLifecycle.Instance.Subscribe(GameUpdateLifePipeline.PlayClip.ToString(), this);
+        GetComponent<MonoEventSubComponent>().Subscribe<SceneLoader.LoadNewLevel>(Des);
     }
-    
-    private Vector2Int startPosition;
-    void Update()
+    private void Des(in SceneLoader.LoadNewLevel data)
+    {
+        Destroy(gameObject);
+    }
+    private void Update()
     {
         // if (! (InputHandler.Instance.Info.choiceNum > clipList.Count ||         InputHandler.Instance.Info.choiceNum < 0))
         // {
@@ -67,25 +61,25 @@ public class ClipManager : MonoBehaviour , IClipAction , IPlayClip
     }
     void IClipAction.Update(ILifecycleManager.UpdateContext ctx)
     {
-        if(maxClipCount<=clipList.Count) return;
+        if (maxClipCount <= clipList.Count) return;
         if (InputHandler.Instance.Info.RecordClip && !recordMode)
         {
             recordMode = true;
             recordCount = 0;
             recordList.Clear();
-            startPosition=WorldInfo.GetPlayer().Position;
+            startPosition = WorldInfo.GetPlayer().Position;
             Debug.Log("开始记录");
             InputHandler.Instance.Info.RecordClip = false;
             InputHandler.Instance.Info.ClipPlayInfo.playType = ClipePlayType.Null;
             AudioManager.Instance.PlaySFX("sfx-record");
         }
-        if(!recordMode)return;
+        if (!recordMode) return;
 
         if (recordCount >= maxRecordCount)
         {
             recordMode = false;
         }
-        if(!recordMode) MakeResult();
+        if (!recordMode) MakeResult();
         if (recordMode && InputHandler.Instance.Info.RecordClip)
         {
             MakeResult();
@@ -94,55 +88,6 @@ public class ClipManager : MonoBehaviour , IClipAction , IPlayClip
             { recordModel = recordMode });
         recordCount ++;
     }
-    List<RecordComponent> recordList = new List<RecordComponent>();
-    public void AddDirty(RecordComponent record)
-    {
-        if(!recordList.Contains(record))
-            recordList.Add(record);
-    }
-    private void MakeResult()
-    {
-        Debug.Log("结束记录");
-        ClipContener record = new ClipContener();
-        List<IList<IList<IMoveEventData>>> moves = new List<IList<IList<IMoveEventData>>>();
-        foreach (var dirty in recordList)
-        {
-            record.IRecordAblesList.Add(dirty);
-            var res= dirty.GerDatas(startPosition);
-            moves.Add(res);
-            MoveDataContener moveData = new MoveDataContener();
-            moveData.moves = res;
-            bool findStart=false;
-            foreach (var temp in res)
-            {
-                if(temp==null || temp.Count==0)continue;
-                if (!findStart)
-                {
-                    findStart = true;
-                    moveData.startPosition = temp[0].startPosition;
-                }
-                moveData.endPosition = temp[^1].endPosition;
-            }
-            record.dataDict.Add(dirty.ID,moveData);
-        }
-        clipList.Add(record);
-        preClipShow.Add(moves);
-        recordMode = false;
-        recordList.Clear(); 
-    }
-    public void CreatPreviewPoints(int num,Vector2Int pos)
-    {
-        if (clipList.Count <= num)
-        {
-            preClipShow.Hide();
-            return;
-        }
-        if(num < 0)return;
-        preClipShow.Hide();
-        preClipShow.ShowPreClip(num,pos);
-    }
-    private ClipModel _tempModel;
-    private List<(int,GameObject)> hasCreateObj = new List<(int, GameObject)>();
     void IPlayClip.Update(ILifecycleManager.UpdateContext ctx)
     {
         // if (_model!=ClipModel.Pause && InputHandler.Instance.Info.StopClip)
@@ -157,51 +102,112 @@ public class ClipManager : MonoBehaviour , IClipAction , IPlayClip
         // {
         //     _model=ClipModel.Pause;
         // }
-        if (! InputHandler.Instance.Info.ClipPlayInfo.keyDownMask)
-        {
+        if (!InputHandler.Instance.Info.ClipPlayInfo.keyDownMask)
             return;
-        }
         int num = InputHandler.Instance.Info.ClipPlayInfo.num;
-        if (num <= -1 || num>=clipList.Count) return;
-        if( InputHandler.Instance.Info.ClipPlayInfo.playType  ==null && InputHandler.Instance.Info.ClipPlayInfo.creatMark)return;
+        if (num <= -1 || num >= clipList.Count) return;
+        if ( InputHandler.Instance.Info.ClipPlayInfo.playType  == null && InputHandler.Instance.Info.ClipPlayInfo.creatMark) return;
         Vector2Int clickPos =  InputHandler.Instance.Info.ClipPlayInfo.clickPos;
         //TODO: 提示
-        if (preClipShow.IsClipBeBlock(num, clickPos) || hasCreateObj.Any(te => te.Item1==num) )
+        if (preClipShow.IsClipBeBlock(num, clickPos) || hasCreateObj.Any(te => te.Item1 == num) )
         {
             AudioManager.Instance.PlaySFX("sfx-warning");
             if (hasCreateObj.Any(te => te.Item1 == num))
+            {
                 InputHandler.Instance.Info.ClipPlayInfo.num = 0;
+                InputHandler.Instance.Info.ClipPlayInfo.playType = ClipePlayType.Null;
+                InputHandler.Instance.Info.ClipPlayInfo.creatMark = true;
+            }
             return;
-        } 
+        }
         AudioManager.Instance.PlaySFX("sfx-filmlan");
 
-            ClipContener shadowInfo = clipList[num];
-            foreach (var info in shadowInfo.IRecordAblesList)
+        ClipContener shadowInfo = clipList[num];
+        foreach (IRecordAble info in shadowInfo.IRecordAblesList)
+        {
+            Vector2Int dateCreatPos = Vector2Int.zero;
+            switch (InputHandler.Instance.Info.ClipPlayInfo.playType)
             {
-                Vector2Int dateCreatPos=Vector2Int.zero;
-                switch (InputHandler.Instance.Info.ClipPlayInfo.playType)
-                {
-                    case ClipePlayType.Play:
-                        dateCreatPos = shadowInfo.dataDict[info.ID].startPosition;
-                        break;
-                    case ClipePlayType.Backword:
-                        dateCreatPos=shadowInfo.dataDict[info.ID].endPosition;
-                        break;
-                }
-               GameObject  obj= Instantiate(info.ShadowPrefab, 
-                    WorldCellTool.CellToWorld(clickPos+dateCreatPos),
-                    Quaternion.identity);
-               hasCreateObj.Add((num,obj));
-               obj.GetComponent<IShadow>().Init(shadowInfo.dataDict[info.ID].moves,clickPos+dateCreatPos
-                   ,InputHandler.Instance.Info.ClipPlayInfo,clickPos);
+                case ClipePlayType.Play:
+                    dateCreatPos = shadowInfo.dataDict[info.ID].startPosition;
+                    break;
+                case ClipePlayType.Backword:
+                    dateCreatPos = shadowInfo.dataDict[info.ID].endPosition;
+                    break;
             }
-            InputHandler.Instance.Info.ClipPlayInfo.playType=ClipePlayType.Null;
-            InputHandler.Instance.Info.ClipPlayInfo.creatMark = true;
+            GameObject  obj = Instantiate(info.ShadowPrefab,
+                WorldCellTool.CellToWorld(clickPos + dateCreatPos),
+                Quaternion.identity);
+            hasCreateObj.Add((num, obj));
+            obj.GetComponent<IShadow>().Init(shadowInfo.dataDict[info.ID].moves, clickPos + dateCreatPos
+                , InputHandler.Instance.Info.ClipPlayInfo, clickPos);
+        }
+        InputHandler.Instance.Info.ClipPlayInfo.playType = ClipePlayType.Null;
+        InputHandler.Instance.Info.ClipPlayInfo.creatMark = true;
+    }
+    public void AddDirty(RecordComponent record)
+    {
+        if (!recordList.Contains(record))
+            recordList.Add(record);
+    }
+    private void MakeResult()
+    {
+        Debug.Log("结束记录");
+        ClipContener record = new ClipContener();
+        List<IList<IList<IMoveEventData>>> moves = new List<IList<IList<IMoveEventData>>>();
+        foreach (RecordComponent dirty in recordList)
+        {
+            record.IRecordAblesList.Add(dirty);
+            IList<IList<IMoveEventData>> res = dirty.GerDatas(startPosition);
+            moves.Add(res);
+            MoveDataContener moveData = new MoveDataContener();
+            moveData.moves = res;
+            bool findStart = false;
+            foreach (IList<IMoveEventData> temp in res)
+            {
+                if (temp == null || temp.Count == 0) continue;
+                if (!findStart)
+                {
+                    findStart = true;
+                    moveData.startPosition = temp[0].startPosition;
+                }
+                moveData.endPosition = temp[^1].endPosition;
+            }
+            record.dataDict.Add(dirty.ID, moveData);
+        }
+        clipList.Add(record);
+        preClipShow.Add(moves);
+        recordMode = false;
+        recordList.Clear();
+    }
+    public void CreatPreviewPoints(int num, Vector2Int pos)
+    {
+        if (clipList.Count <= num)
+        {
+            preClipShow.Hide();
+            return;
+        }
+        if (num < 0) return;
+        preClipShow.Hide();
+        preClipShow.ShowPreClip(num, pos);
     }
 
     public void HidePreviewPoints()
     {
-       preClipShow.Hide();
+        preClipShow.Hide();
+    }
+    private class MoveDataContener
+    {
+        public Vector2Int endPosition;
+        public IList<IList<IMoveEventData>> moves;
+        public Vector2Int startPosition;
+    }
+    /// <summary>
+    ///     录像容器
+    /// </summary>
+    private class ClipContener
+    {
+        readonly public Dictionary<string, MoveDataContener> dataDict = new Dictionary<string, MoveDataContener>();
+        readonly public List<IRecordAble> IRecordAblesList = new List<IRecordAble>();
     }
 }
-

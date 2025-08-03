@@ -8,7 +8,7 @@ namespace Lifecycels
     /// </summary>
     public enum GameUpdateLifePipeline
     {
-        
+
         /// <summary>
         ///     拿走方块
         /// </summary>
@@ -35,7 +35,7 @@ namespace Lifecycels
         /// </summary>
         PlayerMove = 35,
 
-        
+
         /// <summary>
         ///     排挤
         /// </summary>
@@ -51,9 +51,9 @@ namespace Lifecycels
 
         Refresh = 65,
 
-        RefreshSubscriber=66,
+        RefreshSubscriber = 66,
         /// <summary>
-        /// 确认动画
+        ///     确认动画
         /// </summary>
         AnimationClip = 70,
     }
@@ -111,16 +111,16 @@ namespace Lifecycels
     {
         public void Update(ILifecycleManager.UpdateContext ctx);
     }
-    
-    public class ApplySubscriberPipe : ALifePipelineComponent<ApplySubscriberPipe> ,ILifecyclePhase
+
+    public class ApplySubscriberPipe : ALifePipelineComponent<ApplySubscriberPipe> , ILifecyclePhase
     {
         /// <param name="parameters">
-        /// 初始化参数
-        /// (int)优先级 
+        ///     初始化参数
+        ///     (int)优先级
         /// </param>
         public override IPipelineStage<LifecyclePipelineManager.LifecyclePipelineContext> SetParams(params object[] parameters)
         {
-            DefaultPriority =(int) parameters[0];
+            DefaultPriority = (int) parameters[0];
             PhaseName = "ApplySubscriberPipe";
             return this;
         }

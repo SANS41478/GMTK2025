@@ -1,18 +1,14 @@
-﻿using System;
-using DG.Tweening;
-using Script;
-using Space.EventFramework.BaseEvent;
-using Space.GlobalInterface.EventInterface;
+﻿using Space.GlobalInterface.EventInterface;
 using UnityEngine;
 namespace Space.EventFramework
 {
     public class MonoEventSubComponent : MonoBehaviour
     {
-        IEventComponent _eventSubscribeComponent;
-        
+        private IEventComponent _eventSubscribeComponent;
+
         private void Awake()
         {
-            _eventSubscribeComponent =FrameworkFactory.GetInstance<IEventComponent>();
+            _eventSubscribeComponent = FrameworkFactory.GetInstance<IEventComponent>();
             _eventSubscribeComponent.BindBus(GlobalEventBus.Instance);
         }
         private void OnDestroy()

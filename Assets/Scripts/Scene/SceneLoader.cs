@@ -1,19 +1,14 @@
-using UnityEngine;
-using UnityEngine.SceneManagement;
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using Space.EventFramework;
 using Space.GlobalInterface.EventInterface;
-
+using UnityEngine;
+using UnityEngine.SceneManagement;
 [RequireComponent(typeof(MonoEventSubComponent))]
 public class SceneLoader : MonoBehaviour
 {
-    public static SceneLoader Instance { get; private set; }
-    public struct  LoadNewLevel : IEventData
-    {
-        
-    }
     private MonoEventSubComponent _monoEventSubComponent;
+    public static SceneLoader Instance { get; private set; }
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -27,27 +22,27 @@ public class SceneLoader : MonoBehaviour
     }
 
     /// <summary>
-    /// 加载场景（默认单场景模式，自动卸载当前场景）
+    ///     加载场景（默认单场景模式，自动卸载当前场景）
     /// </summary>
-    public void LoadScene(string sceneName, System.Action onComplete = null)
+    public void LoadScene(string sceneName, Action onComplete = null)
     {
         _monoEventSubComponent.Publish(new LoadNewLevel());
         StartCoroutine(LoadSceneAsync(sceneName, LoadSceneMode.Single, onComplete));
     }
 
     /// <summary>
-    /// 加载场景（Additive 模式）
+    ///     加载场景（Additive 模式）
     /// </summary>
-    public void LoadSceneAdditive(string sceneName, System.Action onComplete = null)
+    public void LoadSceneAdditive(string sceneName, Action onComplete = null)
     {
         _monoEventSubComponent.Publish(new LoadNewLevel());
         StartCoroutine(LoadSceneAsync(sceneName, LoadSceneMode.Additive, onComplete));
     }
 
     /// <summary>
-    /// 卸载 Additive 加载的场景
+    ///     卸载 Additive 加载的场景
     /// </summary>
-    public void UnloadScene(string sceneName, System.Action onComplete = null)
+    public void UnloadScene(string sceneName, Action onComplete = null)
     {
         _monoEventSubComponent.Publish(new LoadNewLevel());
         if (SceneManager.GetSceneByName(sceneName).isLoaded)
@@ -61,7 +56,7 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
-    private IEnumerator LoadSceneAsync(string sceneName, LoadSceneMode mode, System.Action onComplete)
+    private IEnumerator LoadSceneAsync(string sceneName, LoadSceneMode mode, Action onComplete)
     {
         _monoEventSubComponent.Publish(new LoadNewLevel());
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName, mode);
@@ -72,7 +67,7 @@ public class SceneLoader : MonoBehaviour
         onComplete?.Invoke();
     }
 
-    private IEnumerator UnloadSceneAsync(string sceneName, System.Action onComplete)
+    private IEnumerator UnloadSceneAsync(string sceneName, Action onComplete)
     {
         _monoEventSubComponent.Publish(new LoadNewLevel());
         AsyncOperation operation = SceneManager.UnloadSceneAsync(sceneName);
@@ -81,5 +76,9 @@ public class SceneLoader : MonoBehaviour
             yield return null;
         }
         onComplete?.Invoke();
+    }
+    public struct  LoadNewLevel : IEventData
+    {
+
     }
 }

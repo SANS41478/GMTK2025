@@ -1,4 +1,5 @@
 #region Header
+
 /**
  * ParserToken.cs
  *   Internal representation of the tokens used by the lexer and the parser.
@@ -6,6 +7,7 @@
  * The authors disclaim copyright to this source code. For more details, see
  * the COPYING file included with this distribution.
  **/
+
 #endregion
 
 
@@ -14,7 +16,7 @@ namespace LitJson
     internal enum ParserToken
     {
         // Lexer tokens (see section A.1.1. of the manual)
-        None = System.Char.MaxValue + 1,
+        None = char.MaxValue + 1,
         Number,
         True,
         False,
@@ -39,6 +41,6 @@ namespace LitJson
         End,
 
         // The empty rule
-        Epsilon
+        Epsilon,
     }
 }

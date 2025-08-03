@@ -1,16 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class UIManager
 {
-    private static UIManager instance = new UIManager();
-    public static UIManager Instance => instance;
+    //应该一开始 就得到我们的 Canvas对象 
+    private readonly Transform canvasTrans;
 
     //存储面板的容器
-    private Dictionary<string, BasePanel> panelDic = new Dictionary<string, BasePanel>();
-    //应该一开始 就得到我们的 Canvas对象 
-    private Transform canvasTrans;
+    private readonly Dictionary<string, BasePanel> panelDic = new Dictionary<string, BasePanel>();
 
     private UIManager()
     {
@@ -18,8 +14,11 @@ public class UIManager
         canvasTrans = GameObject.Find("Canvas").transform;
         //让 Canvas对象 过场景 不移除 
         //我们都是通过 动态创建 和 动态删除 来显示 隐藏面板的 所以不删除它 影响不大
-        GameObject.DontDestroyOnLoad(canvasTrans.gameObject);
+        Object.DontDestroyOnLoad(canvasTrans.gameObject);
     }
+    public static UIManager Instance {
+        get ;
+    } = new UIManager();
 
     //显示面板
     public T ShowPanel<T>() where T : BasePanel
@@ -33,7 +32,7 @@ public class UIManager
 
         //显示面板 就是 动态的创建面板预设体 设置父对象
         //根据得到的 类名 就是我们的预设体面板明 直接 动态创建它 即可
-        GameObject panelObj = GameObject.Instantiate(Resources.Load<GameObject>("Prefabs/Panel/" + panelName));
+        GameObject panelObj = Object.Instantiate(Resources.Load<GameObject>("Prefabs/Panel/" + panelName));
         panelObj.transform.SetParent(canvasTrans, false);
 
         //接着 就是得到对应的面板脚本 存储起来
@@ -57,10 +56,9 @@ public class UIManager
         {
             if (isFade)
             {
-                panelDic[panelName].HideMe(() =>
-                {
+                panelDic[panelName].HideMe(() => {
                     //面板 淡出成功后 希望删除面板
-                    GameObject.Destroy(panelDic[panelName].gameObject);
+                    Object.Destroy(panelDic[panelName].gameObject);
                     //删除面板后 从 字典中移除
                     panelDic.Remove(panelName);
                 });
@@ -68,7 +66,7 @@ public class UIManager
             else
             {
                 //删除面板
-                GameObject.Destroy(panelDic[panelName].gameObject);
+                Object.Destroy(panelDic[panelName].gameObject);
                 //删除面板后 从 字典中移除
                 panelDic.Remove(panelName);
             }

@@ -1,11 +1,8 @@
-﻿using LitJson;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
+using LitJson;
 using UnityEngine;
-
 /// <summary>
-/// 序列化和反序列化Json时  使用的是哪种方案
+///     序列化和反序列化Json时  使用的是哪种方案
 /// </summary>
 public enum JsonType
 {
@@ -14,14 +11,15 @@ public enum JsonType
 }
 
 /// <summary>
-/// Json数据管理类 主要用于进行 Json的序列化存储到硬盘 和 反序列化从硬盘中读取到内存中
+///     Json数据管理类 主要用于进行 Json的序列化存储到硬盘 和 反序列化从硬盘中读取到内存中
 /// </summary>
 public class JsonMgr
 {
-    private static JsonMgr instance = new JsonMgr();
-    public static JsonMgr Instance => instance;
 
     private JsonMgr() { }
+    public static JsonMgr Instance {
+        get ;
+    } = new JsonMgr();
 
     //存储Json数据 序列化
     public void SaveData(object data, string fileName, JsonType type = JsonType.LitJson)
@@ -51,7 +49,7 @@ public class JsonMgr
         string path = Application.streamingAssetsPath + "/" + fileName + ".json";
         //先判断 是否存在这个文件
         //如果不存在默认文件 就从 读写文件夹中去寻找
-        if(!File.Exists(path))
+        if (!File.Exists(path))
             path = Application.persistentDataPath + "/" + fileName + ".json";
         //如果读写文件夹中都还没有 那就返回一个默认对象
         if (!File.Exists(path))
@@ -60,7 +58,7 @@ public class JsonMgr
         //进行反序列化
         string jsonStr = File.ReadAllText(path);
         //数据对象
-        T data = default(T);
+        T data = default;
         switch (type)
         {
             case JsonType.JsonUtlity:

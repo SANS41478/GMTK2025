@@ -41,7 +41,7 @@ MonoBehaviour:
     blendMode: 0
   m_UseDepthStencilBuffer: 1
   m_UseCameraSortingLayersTexture: 0
-  m_CameraSortingLayersTextureBound: 0
+  m_CameraSortingLayersTextureBound: -1
   m_CameraSortingLayerDownsamplingMethod: 0
   m_MaxLightRenderTextureCount: 16
   m_MaxShadowRenderTextureCount: 1
@@ -81,5 +81,5 @@ MonoBehaviour:
   settings:
     passEvent: 350
     maskMaterial: {fileID: 2100000, guid: 1803787c87642704e89942918398bb17, type: 2}
-    maskScale: {x: 9.6, y: 5}
+    maskScale: {x: 18.04, y: 11.7}
     maskOffset: {x: 0, y: 0}

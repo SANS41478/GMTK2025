@@ -1,14 +1,13 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Utility;
 namespace GamePlay
 {
     public class SamplePointObj : MonoBehaviour
     {
         private SpriteRenderer spriteRenderer;
-        public void Set(Color color,Vector2Int position)
+        public void Set(Color color, Vector2Int position)
         {
-            if(!spriteRenderer)
+            if (!spriteRenderer)
                 spriteRenderer = GetComponent<SpriteRenderer>();
             color.a = 0.2f;
             spriteRenderer.color = color;

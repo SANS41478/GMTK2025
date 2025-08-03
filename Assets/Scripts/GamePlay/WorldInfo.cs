@@ -18,7 +18,7 @@ namespace GamePlay
         ///     墙壁
         /// </summary>
         public const string Wall = "Wall";
-        
+
         public const string PushAble = "PushAble";
     }
     public static class WorldInfo
@@ -59,7 +59,7 @@ namespace GamePlay
             if (dictWorldInfo.TryGetValue(WorldEntityType.Player, out List<EntityInfo> info))
             {
                 if (info.Count == 1)
-                return info[0];
+                    return info[0];
             }
             return null;
         }
@@ -73,7 +73,7 @@ namespace GamePlay
             if (infos != null)
                 lock (dictWorldInfo)
                 {
-                    if (infos.Count>0)
+                    if (infos.Count > 0)
                     {
                         foreach (EntityInfo oEntityInfo in infos)
                         {
@@ -111,7 +111,7 @@ namespace GamePlay
             IEnumerable<IBox> blocker = GetInfo<IBox>(WorldEntityType.BOX);
             if (blocker == null) return false;
 
-            foreach (var box in blocker)
+            foreach (IBox box in blocker)
             {
                 if (box.BlockInPos(pos)) return true;
             }
@@ -122,7 +122,7 @@ namespace GamePlay
             IEnumerable<IPushAble> blocker = GetInfo<IPushAble>(WorldEntityType.PushAble);
             if (blocker == null) return false;
 
-            foreach (var box in blocker)
+            foreach (IPushAble box in blocker)
             {
                 if (box.BlockInPos(pos)) return true;
             }
@@ -133,7 +133,7 @@ namespace GamePlay
         {
             IEnumerable<EntityInfo> blocker = GetInfo(WorldEntityType.Shadow);
             if (blocker == null) return false;
-            foreach (var box in blocker)
+            foreach (EntityInfo box in blocker)
             {
                 if (box.prePosition.Equals(pos)) return true;
             }
@@ -143,7 +143,7 @@ namespace GamePlay
         {
             IEnumerable<EntityInfo> blocker = GetInfo(WorldEntityType.Shadow);
             if (blocker == null) return false;
-            foreach (var box in blocker)
+            foreach (EntityInfo box in blocker)
             {
                 if (box.Position.Equals(pos)) return true;
             }
