@@ -16,6 +16,10 @@ public class GamePanel : BasePanel
     public struct RouteXunEvent : IEventData { public string Route; public RouteXunEvent(string route) => Route = route; }
     public struct RouteQuitEvent : IEventData { public string Route; public RouteQuitEvent(string route) => Route = route; }
 
+    public struct ChoiceClip : IEventData
+    {
+        public int num;
+    }
     public override void Init()
     {
         _eventSubscribeComponent = GetComponent<Space.EventFramework.MonoEventSubComponent>();
@@ -56,9 +60,29 @@ public class GamePanel : BasePanel
         SetOperationsInteractable(false, bo, dao, xun, quit);
 
         // 录制选择
-        if (lu1 != null) lu1.onClick.AddListener(() => SetupRoute("lu1", bo, dao, xun, quit));
-        if (lu2 != null) lu2.onClick.AddListener(() => SetupRoute("lu2", bo, dao, xun, quit));
-        if (lu3 != null) lu3.onClick.AddListener(() => SetupRoute("lu3", bo, dao, xun, quit));
+        if (lu1 != null)
+        {
+            lu1.onClick.AddListener(() => {
+                SetupRoute("lu1", bo, dao, xun, quit);
+                _eventSubscribeComponent.Publish(new ChoiceClip(){num = 0});
+
+            });
+        }
+        if (lu2 != null)
+        {
+            lu2.onClick.AddListener(() => {
+                SetupRoute("lu2", bo, dao, xun, quit);
+                _eventSubscribeComponent.Publish(new ChoiceClip(){num = 1});
+            });
+        }
+        if (lu3 != null)
+        {
+            lu3.onClick.AddListener(() => {
+                SetupRoute("lu3", bo, dao, xun, quit);
+                _eventSubscribeComponent.Publish(new ChoiceClip(){num = 2});
+            });
+          
+        }
 
         // 操作按钮
         if (bo != null)

@@ -9,6 +9,7 @@ namespace GamePlay.LevelObj.Door
     public class OpenDoorObj : MonoBehaviour 
     {
         MonoEventSubComponent _monoEventSubComponent;
+        [SerializeField] Animator _animator;
         bool _isOpen;
         [SerializeField] private int doorID;
         private void Update()
@@ -20,6 +21,7 @@ namespace GamePlay.LevelObj.Door
                 {
                     id = doorID,open = true
                 });
+                 _animator.Play("Down");
             }
             //😋gamejam管什么性能
             if (!_isOpen || WorldInfo.IsBlocked(WorldCellTool.WorldToCell(transform.position))) return;
@@ -28,6 +30,7 @@ namespace GamePlay.LevelObj.Door
             {
                 id = doorID, open = false
             });
+            _animator.Play("Up");
         }
         private void Awake()
         {

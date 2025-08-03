@@ -25,6 +25,10 @@ namespace GamePlay
     {
 
         private readonly static Dictionary<string, List<EntityInfo>> dictWorldInfo = new Dictionary<string, List<EntityInfo>>();
+        public static void Clear()
+        {
+            dictWorldInfo.Clear();
+        }
         public static void AddInfo(EntityInfo info)
         {
             foreach (string entityInfo in info.Tags)
@@ -85,6 +89,7 @@ namespace GamePlay
         public static IEnumerable<T> GetInfo<T>(string tag)
         {
             IEnumerable<EntityInfo> infos = GetInfo(tag);
+            if (infos == null) return null;
             IEnumerable<T> blocker = infos.Where(a => a.Self is T  ).Select(a => (T)a.Self  );
             return blocker;
         }
@@ -131,6 +136,16 @@ namespace GamePlay
             foreach (var box in blocker)
             {
                 if (box.prePosition.Equals(pos)) return true;
+            }
+            return false;
+        }
+        public static bool IsShadow(Vector2Int pos)
+        {
+            IEnumerable<EntityInfo> blocker = GetInfo(WorldEntityType.Shadow);
+            if (blocker == null) return false;
+            foreach (var box in blocker)
+            {
+                if (box.Position.Equals(pos)) return true;
             }
             return false;
         }

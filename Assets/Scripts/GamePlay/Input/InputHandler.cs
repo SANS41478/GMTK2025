@@ -2,6 +2,8 @@
 using Lifecycels;
 using Space.EventFramework;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Utility;
 namespace GamePlay
 {
     [RequireComponent(typeof(MonoEventSubComponent))]
@@ -18,7 +20,31 @@ namespace GamePlay
         }
         private void Start()
         {
-            GetComponent<MonoEventSubComponent>().Subscribe<ClipePlayInfo>(OnClipePlayInfo);
+            var res=    GetComponent<MonoEventSubComponent>();
+            res.Subscribe<ClipePlayInfo>(OnClipePlayInfo);
+            res.Subscribe<GamePanel.ChoiceClip>(OnChoiceClip);
+            res.Subscribe<GamePanel.RouteXunEvent>(CyclePlay);
+            res.Subscribe<GamePanel.RouteBoEvent>(DefaultPlay);
+            res.Subscribe<GamePanel.RouteDaoEvent>(BackwordPlay);
+        }
+        private void BackwordPlay(in GamePanel.RouteDaoEvent data)
+        {
+            Info.ClipPlayInfo.playType = ClipePlayType.Backword;
+            Info.ClipPlayInfo.isCycles = false;
+        }
+        private void DefaultPlay(in GamePanel.RouteBoEvent data)
+        {
+            Info.ClipPlayInfo.playType = ClipePlayType.Play;
+            Info.ClipPlayInfo.isCycles = false;
+        }
+        private void CyclePlay(in GamePanel.RouteXunEvent data)
+        {
+            Info.ClipPlayInfo.playType = ClipePlayType.Play;
+            Info.ClipPlayInfo.isCycles = true;
+        }
+        private void OnChoiceClip(in GamePanel.ChoiceClip data)
+        {
+            Info.choiceNum = data.num;
         }
         private void OnClipePlayInfo(in ClipePlayInfo data)
         {
@@ -26,7 +52,7 @@ namespace GamePlay
         }
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.C))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 Info.RecordClip = true;
             }
@@ -34,17 +60,15 @@ namespace GamePlay
             {
                 Info.TakeCube = true;
             }
-            //TODO: Test
-            if (Input.GetKeyDown(KeyCode.L))
-            {
-                Info.ClipPlayInfo.num = 0;
-                Info.ClipPlayInfo.playType = ClipePlayType.Play;
-            }
-            if (Input.GetKeyDown(KeyCode.J))
-            {
-                Info.ClipPlayInfo.num = 0;
-                Info.ClipPlayInfo.playType = ClipePlayType.Backword;
-            }
+            Vector2Int mousePos = WorldCellTool.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition))-Vector2Int.one;
+                Info.ClipPlayInfo.clickPos=mousePos;
+                if (Input.GetKeyDown(0))
+                {
+                    Info.ClipPlayInfo.num = Info.choiceNum;
+                }
+            if(Input.GetKeyDown(KeyCode.R))
+                SceneLoader.Instance.LoadScene(SceneManager.GetActiveScene().name);
+            ClipManager.Instance.CreatPreviewPoints(Info.choiceNum,mousePos);
         }
         public void Refresh()
         {
@@ -52,22 +76,15 @@ namespace GamePlay
         }
         public class InputInfo
         {
-            public bool PlaySpeedUp;
             public bool TakeCube;
-            
+            public int choiceNum=-1;
             public bool RecordClip;
-            
-            public bool StartClip;
-            public bool StopClip;
             
             public ClipePlayInfo ClipPlayInfo; 
             
             public void Refresh()
             {
-                PlaySpeedUp = false;
                 RecordClip = false;
-                StartClip = false;
-                StopClip = false;
                 ClipPlayInfo = new ClipePlayInfo()
                 {
                     num = -1,

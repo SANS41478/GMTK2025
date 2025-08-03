@@ -15,7 +15,7 @@
         /// <param name="PhaseName"></param>
         /// <param name="lifeState"></param>
         public void Unsubscribe(string PhaseName, ILifecycleSubscriber lifeState);
-        public void AddPhase(ILifecyclePhase lifePhase);
+        public ILifecyclePhase AddPhase(ILifecyclePhase lifePhase);
         public void RemovePhase(ILifecyclePhase lifePhase);
         /// <summary>
         ///     外部调用接口

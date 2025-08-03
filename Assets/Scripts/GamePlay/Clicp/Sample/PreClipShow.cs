@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using GamePlay.Entity;
 using Lifecycels;
 using Space.EventFramework;
@@ -9,12 +10,25 @@ using UnityEngine;
 using Utility;
 namespace GamePlay
 {
-    //TODO:
+    [RequireComponent(typeof(MonoEventSubComponent))]
     public class PreClipShow : MonoBehaviour  
     {
         private List<List<ShadowSample>> shadowSamples = new List<List<ShadowSample>>();
         [SerializeField] private GameObject shadowSamplePrefab;
         [SerializeField] private GameObject pointPrefabParent;
+        private MonoEventSubComponent monoEventSubComponent;
+        private void Awake()
+        {
+            monoEventSubComponent = GetComponent<MonoEventSubComponent>();
+        }
+        private void Start()
+        {
+            monoEventSubComponent.Subscribe<SceneLoader.LoadNewLevel>(OnNewLevelLoaded);
+        }
+        private void OnNewLevelLoaded(in SceneLoader.LoadNewLevel data)
+        {
+            shadowSamples.Clear();
+        }
         public void ShowPreClip(int num ,Vector2Int position)
         {
             if (shadowSamples.Count <=num)return;
@@ -23,6 +37,11 @@ namespace GamePlay
                 pp.SamplePoints(position);
                 pp.gameObject.SetActive(true);
             }
+        }
+        public bool IsClipBeBlock(int num,Vector2Int position)
+        {
+            if (shadowSamples.Count <=num)return true;
+            return shadowSamples[num].Any(pp => pp.IsPointsBeBlock(position));
         }
         public void Add(IEnumerable<IList<IList<IMoveEventData>>> enumerator)
         {

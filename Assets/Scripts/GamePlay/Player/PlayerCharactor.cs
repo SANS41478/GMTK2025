@@ -10,6 +10,7 @@ using Space.EventFramework;
 using Space.GlobalInterface.EventInterface;
 using Space.GlobalInterface.Lifecycle;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Utility;
 [RequireComponent(typeof(MonoEventSubComponent), typeof(GravityComponent))]
 public class PlayerCharactor : MonoBehaviour ,
@@ -65,10 +66,21 @@ public class PlayerCharactor : MonoBehaviour ,
                 if(takeAble is IRecordObj re)re.AddDirty();
             }
         );
+        _monoEventSubComponent.Subscribe<KillPlayer>(OnKillPlayer);
+        gravityDelay=GlobalLifecycleManager.Instance.GlobalLifecycleTime/5f;
+        
     }
+    private void OnKillPlayer(in KillPlayer data)
+    {
+        SceneLoader.Instance.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    private float gravityDelay;
+    private float timer = 0;
     private void Update()
     {
-        if (_gravityComponent.UpdateGravity(_entityInfo))
+        if(timer>0)
+            timer-=Time.deltaTime;
+        if (timer<0 &&_gravityComponent.UpdateGravity(_entityInfo))
         {
             _monoEventSubComponent.Publish(new PlayerMoveEventData
             {
@@ -79,9 +91,6 @@ public class PlayerCharactor : MonoBehaviour ,
             });
         }
         transform.DOMove(WorldCellTool.CellToWorld(_entityInfo.Position), GlobalLifecycleManager.Instance.GlobalLifecycleTime/2f);
-        //TODO: 动画队列播放
-        ClipManager.Instance.CreatPreviewPoints(0, _entityInfo.Position);
-
     }
     private void OnDestroy()
     {
@@ -117,6 +126,7 @@ public class PlayerCharactor : MonoBehaviour ,
         }
         takeAble?.Follow(_entityInfo);
         takeAble?.FollowFinish();
+        timer = gravityDelay;
     }
     void IPlayerMoveCharge.Update(ILifecycleManager.UpdateContext ctx)
     {
@@ -144,12 +154,24 @@ public class PlayerCharactor : MonoBehaviour ,
         //朝着方向走
         mark =  WorldInfo.IsBlocked(_entityInfo.Position + direction) || 
                 WorldInfo.IsShadowPrePos(_entityInfo.Position + direction);
+        if (takeAble != null)
+        {
+            mark = mark ||    WorldInfo.IsBlocked(_entityInfo.Position  +Vector2Int.up+ direction) || 
+                   WorldInfo.IsShadowPrePos(_entityInfo.Position+Vector2Int.up + direction);
+        }
         if (!mark) return PlayerMoveEnum.move;
         //朝着方向跳
         mark =  WorldInfo.IsBlocked(_entityInfo.Position + direction + Vector2Int.up) 
                 || WorldInfo.IsBlocked(_entityInfo.Position  + Vector2Int.up)
                 || WorldInfo.IsShadowPrePos(_entityInfo.Position + Vector2Int.up)
                 || WorldInfo.IsShadowPrePos(_entityInfo.Position + direction + Vector2Int.up);
+        if (takeAble != null)
+        {
+            mark = mark  ||   WorldInfo.IsBlocked(_entityInfo.Position + Vector2Int.up + direction + Vector2Int.up) 
+                     || WorldInfo.IsBlocked(_entityInfo.Position + Vector2Int.up  + Vector2Int.up)
+                     || WorldInfo.IsShadowPrePos(_entityInfo.Position + Vector2Int.up + Vector2Int.up)
+                     || WorldInfo.IsShadowPrePos(_entityInfo.Position + Vector2Int.up + direction + Vector2Int.up);
+        }
         if (!mark) return PlayerMoveEnum.jump;
         return PlayerMoveEnum.CantMove;
     }

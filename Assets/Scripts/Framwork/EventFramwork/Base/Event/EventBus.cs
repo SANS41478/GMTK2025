@@ -41,7 +41,7 @@ namespace Space.EventFramework
         /// </summary>
         /// <param name="handler">执行的事件</param>
         /// <typeparam name="T"></typeparam>
-        public void Subscribe<T>(GameEventDelegate<T> handler)  where T : IEventData
+        public void Subscribe<T>(GameEventDelegate<T> handler,bool dontDes=false)  where T : IEventData
         {
             var eventType = typeof(T);
             if (!_subscribers.ContainsKey(eventType))
@@ -69,6 +69,10 @@ namespace Space.EventFramework
             if (!_subscribers.ContainsKey(eventType))
                 return;
             (_subscribers[eventType] as EventBusSubscriber<T>)?.Publish(eventData);
+        }
+        public void Clear()
+        {
+            _subscribers.Clear();
         }
     }
     
