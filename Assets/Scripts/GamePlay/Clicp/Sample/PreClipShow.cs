@@ -10,12 +10,16 @@ using UnityEngine;
 using Utility;
 namespace GamePlay
 {
-    //TODO:
+    [RequireComponent(typeof(MonoEventSubComponent))]
     public class PreClipShow : MonoBehaviour  
     {
         private List<List<ShadowSample>> shadowSamples = new List<List<ShadowSample>>();
         [SerializeField] private GameObject shadowSamplePrefab;
         [SerializeField] private GameObject pointPrefabParent;
+        private MonoEventSubComponent monoEventSubComponent;
+        private void Awake()
+        {
+        }
         public void ShowPreClip(int num ,Vector2Int position)
         {
             if (shadowSamples.Count <=num)return;

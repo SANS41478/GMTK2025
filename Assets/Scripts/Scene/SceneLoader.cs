@@ -2,11 +2,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
+using Space.EventFramework;
+using Space.GlobalInterface.EventInterface;
 
+[RequireComponent(typeof(MonoEventSubComponent))]
 public class SceneLoader : MonoBehaviour
 {
     public static SceneLoader Instance { get; private set; }
-
+    public struct  LoadNewLevel : IEventData
+    {
+        
+    }
+    private MonoEventSubComponent _monoEventSubComponent;
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -16,6 +23,7 @@ public class SceneLoader : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+        _monoEventSubComponent = GetComponent<MonoEventSubComponent>();
     }
 
     /// <summary>
@@ -23,6 +31,7 @@ public class SceneLoader : MonoBehaviour
     /// </summary>
     public void LoadScene(string sceneName, System.Action onComplete = null)
     {
+        _monoEventSubComponent.Publish(new LoadNewLevel());
         StartCoroutine(LoadSceneAsync(sceneName, LoadSceneMode.Single, onComplete));
     }
 
@@ -31,6 +40,7 @@ public class SceneLoader : MonoBehaviour
     /// </summary>
     public void LoadSceneAdditive(string sceneName, System.Action onComplete = null)
     {
+        _monoEventSubComponent.Publish(new LoadNewLevel());
         StartCoroutine(LoadSceneAsync(sceneName, LoadSceneMode.Additive, onComplete));
     }
 
@@ -39,6 +49,7 @@ public class SceneLoader : MonoBehaviour
     /// </summary>
     public void UnloadScene(string sceneName, System.Action onComplete = null)
     {
+        _monoEventSubComponent.Publish(new LoadNewLevel());
         if (SceneManager.GetSceneByName(sceneName).isLoaded)
         {
             StartCoroutine(UnloadSceneAsync(sceneName, onComplete));
@@ -52,6 +63,7 @@ public class SceneLoader : MonoBehaviour
 
     private IEnumerator LoadSceneAsync(string sceneName, LoadSceneMode mode, System.Action onComplete)
     {
+        _monoEventSubComponent.Publish(new LoadNewLevel());
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName, mode);
         while (!operation.isDone)
         {
@@ -62,6 +74,7 @@ public class SceneLoader : MonoBehaviour
 
     private IEnumerator UnloadSceneAsync(string sceneName, System.Action onComplete)
     {
+        _monoEventSubComponent.Publish(new LoadNewLevel());
         AsyncOperation operation = SceneManager.UnloadSceneAsync(sceneName);
         while (!operation.isDone)
         {

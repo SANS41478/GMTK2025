@@ -89,6 +89,7 @@
     <Compile Include="Assets\Scenes\EventTest\EventExcample.cs" />
     <Compile Include="Assets\Scripts\Event\ClipSpeedChangeInfo.cs" />
     <Compile Include="Assets\Scripts\Audio\SFXPoolPlayer.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Test\CavancTest.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Input\InputHandler.cs" />
     <Compile Include="Assets\Scripts\UI\BasePanel.cs" />
     <Compile Include="Assets\Scripts\Json\LitJson\JsonReader.cs" />

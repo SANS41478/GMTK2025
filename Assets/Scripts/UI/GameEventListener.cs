@@ -48,7 +48,7 @@ public class GameEventListener : MonoBehaviour
     private void OnResetGame(in GamePanel.ResetGameEvent e)
     {
         Debug.Log("收到 ResetGameEvent，执行重置逻辑");
-        // TODO: 重置游戏
+        
     }
 
     private void OnPauseGame(in GamePanel.PauseGameEvent e)
