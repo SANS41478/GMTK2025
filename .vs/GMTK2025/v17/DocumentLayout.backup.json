@@ -3,24 +3,44 @@
   "WorkspaceRootPath": "F:\\linshi\\GMTK2025\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|F:\\linshi\\GMTK2025\\assets\\scripts\\ui\\gameeventlistener.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|f:\\linshi\\gmtk2025\\assets\\scripts\\ui\\gameeventlistener.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\gameeventlistener.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|F:\\linshi\\GMTK2025\\assets\\scripts\\ui\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|F:\\linshi\\GMTK2025\\assets\\scripts\\ui\\uirootlauncher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\uirootlauncher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|f:\\linshi\\gmtk2025\\assets\\scripts\\gameplay\\player\\playercharactor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gameplay\\player\\playercharactor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|F:\\linshi\\GMTK2025\\assets\\scripts\\gameplay\\clicp\\clipmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gameplay\\clicp\\clipmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|f:\\linshi\\gmtk2025\\assets\\scripts\\scene\\sceneloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|f:\\linshi\\gmtk2025\\assets\\scripts\\gameplay\\levelobj\\door\\opendoorobj.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gameplay\\levelobj\\door\\opendoorobj.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|f:\\linshi\\gmtk2025\\assets\\scripts\\gameplay\\worldinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gameplay\\worldinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|f:\\linshi\\gmtk2025\\assets\\scripts\\gameplay\\map\\mapentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gameplay\\map\\mapentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|F:\\linshi\\GMTK2025\\assets\\scripts\\scene\\sceneloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\scene\\sceneloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|F:\\linshi\\GMTK2025\\assets\\scripts\\ui\\panel\\startpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\panel\\startpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|F:\\linshi\\GMTK2025\\assets\\scripts\\ui\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|F:\\linshi\\GMTK2025\\assets\\scripts\\gameplay\\player\\playercharactor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gameplay\\player\\playercharactor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|F:\\linshi\\GMTK2025\\assets\\scripts\\framwork\\eventframwork\\base\\event\\mono\\monoeventsubcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -31,20 +51,12 @@
       "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\panel\\gamepanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|F:\\linshi\\GMTK2025\\assets\\scripts\\gameplay\\clicp\\clipmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gameplay\\clicp\\clipmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|F:\\linshi\\GMTK2025\\assets\\scripts\\event\\clipspeedchangeinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\event\\clipspeedchangeinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|F:\\linshi\\GMTK2025\\assets\\scripts\\event\\clipeplayinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\event\\clipeplayinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|F:\\linshi\\GMTK2025\\assets\\scripts\\ui\\panel\\startpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\panel\\startpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{16CA3127-D36D-817E-C432-84D5EFB38F99}|Assembly-CSharp.csproj|F:\\linshi\\GMTK2025\\assets\\scripts\\ui\\panel\\settingspanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -102,7 +114,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -118,33 +130,159 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PlayerCharactor.cs",
-              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\GamePlay\\Player\\PlayerCharactor.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\GamePlay\\Player\\PlayerCharactor.cs",
-              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\GamePlay\\Player\\PlayerCharactor.cs",
-              "RelativeToolTip": "Assets\\Scripts\\GamePlay\\Player\\PlayerCharactor.cs",
-              "ViewState": "AgIAAFoAAAAAAAAAAAAvwKgAAAApAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "MapEntity.cs",
+              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\GamePlay\\Map\\MapEntity.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\GamePlay\\Map\\MapEntity.cs",
+              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\GamePlay\\Map\\MapEntity.cs",
+              "RelativeToolTip": "Assets\\Scripts\\GamePlay\\Map\\MapEntity.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAYwBkAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-03T05:57:53.199Z",
+              "WhenOpened": "2025-08-03T11:28:18.996Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "WorldInfo.cs",
+              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\GamePlay\\WorldInfo.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\GamePlay\\WorldInfo.cs",
+              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\GamePlay\\WorldInfo.cs",
+              "RelativeToolTip": "Assets\\Scripts\\GamePlay\\WorldInfo.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAD4vzkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T11:26:06.943Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "OpenDoorObj.cs",
+              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\GamePlay\\LevelObj\\Door\\OpenDoorObj.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\GamePlay\\LevelObj\\Door\\OpenDoorObj.cs",
+              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\GamePlay\\LevelObj\\Door\\OpenDoorObj.cs",
+              "RelativeToolTip": "Assets\\Scripts\\GamePlay\\LevelObj\\Door\\OpenDoorObj.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T11:24:47.437Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ClipManager.cs",
+              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\GamePlay\\Clicp\\ClipManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\GamePlay\\Clicp\\ClipManager.cs",
+              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\GamePlay\\Clicp\\ClipManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\GamePlay\\Clicp\\ClipManager.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAuwB8AAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-02T10:57:04.049Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GameEventListener.cs",
+              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\GameEventListener.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\GameEventListener.cs",
+              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\GameEventListener.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\GameEventListener.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAQwCMAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-02T06:37:35.723Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UIRootLauncher.cs",
+              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\UIRootLauncher.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\UIRootLauncher.cs",
+              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\UIRootLauncher.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\UIRootLauncher.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABTAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-02T06:03:47.081Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UIManager.cs",
+              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\UIManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\UIManager.cs",
+              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\UIManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\UIManager.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAzwBQAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-01T12:02:53.296Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "MonoEventSubComponent.cs",
+              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\Framwork\\EventFramwork\\Base\\Event\\Mono\\MonoEventSubComponent.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Framwork\\EventFramwork\\Base\\Event\\Mono\\MonoEventSubComponent.cs",
+              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\Framwork\\EventFramwork\\Base\\Event\\Mono\\MonoEventSubComponent.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Framwork\\EventFramwork\\Base\\Event\\Mono\\MonoEventSubComponent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-02T11:29:59.332Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "LightUI.cs",
+              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Script\\Framwork\\EventFramwork\\Excample\\UniTest\\RedGreen\\LightUI.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Framwork\\EventFramwork\\Excample\\UniTest\\RedGreen\\LightUI.cs",
+              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Script\\Framwork\\EventFramwork\\Excample\\UniTest\\RedGreen\\LightUI.cs",
+              "RelativeToolTip": "Assets\\Script\\Framwork\\EventFramwork\\Excample\\UniTest\\RedGreen\\LightUI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-02T03:02:04.583Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "StartPanel.cs",
+              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\Panel\\StartPanel.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\Panel\\StartPanel.cs",
+              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\Panel\\StartPanel.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\Panel\\StartPanel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-01T13:21:18.553Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "SceneLoader.cs",
               "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\Scene\\SceneLoader.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Scene\\SceneLoader.cs",
               "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\Scene\\SceneLoader.cs",
               "RelativeToolTip": "Assets\\Scripts\\Scene\\SceneLoader.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-03T03:54:28.85Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 13,
+              "Title": "ClipePlayInfo.cs",
+              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\Event\\ClipePlayInfo.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Event\\ClipePlayInfo.cs",
+              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\Event\\ClipePlayInfo.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Event\\ClipePlayInfo.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-02T11:10:19.267Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "ClipSpeedChangeInfo.cs",
               "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\Event\\ClipSpeedChangeInfo.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Event\\ClipSpeedChangeInfo.cs",
@@ -157,93 +295,18 @@
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "ClipePlayInfo.cs",
-              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\Event\\ClipePlayInfo.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Event\\ClipePlayInfo.cs",
-              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\Event\\ClipePlayInfo.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Event\\ClipePlayInfo.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
+              "Title": "PlayerCharactor.cs",
+              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\GamePlay\\Player\\PlayerCharactor.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\GamePlay\\Player\\PlayerCharactor.cs",
+              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\GamePlay\\Player\\PlayerCharactor.cs",
+              "RelativeToolTip": "Assets\\Scripts\\GamePlay\\Player\\PlayerCharactor.cs",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAvwKgAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T11:10:19.267Z"
+              "WhenOpened": "2025-08-03T05:57:53.199Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ClipManager.cs",
-              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\GamePlay\\Clicp\\ClipManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\GamePlay\\Clicp\\ClipManager.cs",
-              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\GamePlay\\Clicp\\ClipManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\GamePlay\\Clicp\\ClipManager.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAuwBwAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T10:57:04.049Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GameEventListener.cs",
-              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\GameEventListener.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\GameEventListener.cs",
-              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\GameEventListener.cs",
-              "RelativeToolTip": "Assets\\Scripts\\UI\\GameEventListener.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAQwCgAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T06:37:35.723Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UIRootLauncher.cs",
-              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\UIRootLauncher.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\UIRootLauncher.cs",
-              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\UIRootLauncher.cs",
-              "RelativeToolTip": "Assets\\Scripts\\UI\\UIRootLauncher.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T06:03:47.081Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UIManager.cs",
-              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\UIManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\UIManager.cs",
-              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\UIManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\UI\\UIManager.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAzwBQAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-01T12:02:53.296Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "MonoEventSubComponent.cs",
-              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\Framwork\\EventFramwork\\Base\\Event\\Mono\\MonoEventSubComponent.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Framwork\\EventFramwork\\Base\\Event\\Mono\\MonoEventSubComponent.cs",
-              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\Framwork\\EventFramwork\\Base\\Event\\Mono\\MonoEventSubComponent.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Framwork\\EventFramwork\\Base\\Event\\Mono\\MonoEventSubComponent.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T11:29:59.332Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "LightUI.cs",
-              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Script\\Framwork\\EventFramwork\\Excample\\UniTest\\RedGreen\\LightUI.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Framwork\\EventFramwork\\Excample\\UniTest\\RedGreen\\LightUI.cs",
-              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Script\\Framwork\\EventFramwork\\Excample\\UniTest\\RedGreen\\LightUI.cs",
-              "RelativeToolTip": "Assets\\Script\\Framwork\\EventFramwork\\Excample\\UniTest\\RedGreen\\LightUI.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T03:02:04.583Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "SettingsPanel.cs",
               "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\Panel\\SettingsPanel.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\Panel\\SettingsPanel.cs",
@@ -255,7 +318,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 22,
               "Title": "Light.cs",
               "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Script\\Framwork\\EventFramwork\\Excample\\UniTest\\RedGreen\\Light.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Framwork\\EventFramwork\\Excample\\UniTest\\RedGreen\\Light.cs",
@@ -267,7 +330,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 11,
               "Title": "GamePanel.cs",
               "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\Panel\\GamePanel.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\Panel\\GamePanel.cs",
@@ -279,7 +342,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 20,
               "Title": "EventBus.cs",
               "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Script\\Framwork\\EventFramwork\\Base\\Event\\EventBus.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Framwork\\EventFramwork\\Base\\Event\\EventBus.cs",
@@ -291,7 +354,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 23,
               "Title": "SimpleUniEventTest.cs",
               "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Script\\Framwork\\EventFramwork\\Excample\\UniTest\\TickTock\\SimpleUniEventTest.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Framwork\\EventFramwork\\Excample\\UniTest\\TickTock\\SimpleUniEventTest.cs",
@@ -303,19 +366,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "StartPanel.cs",
-              "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\Panel\\StartPanel.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\Panel\\StartPanel.cs",
-              "ToolTip": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\Panel\\StartPanel.cs",
-              "RelativeToolTip": "Assets\\Scripts\\UI\\Panel\\StartPanel.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAgwDEAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-01T13:21:18.553Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 24,
               "Title": "MonoEventSubComponent.cs",
               "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Script\\Framwork\\EventFramwork\\Base\\Event\\Mono\\MonoEventSubComponent.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Framwork\\EventFramwork\\Base\\Event\\Mono\\MonoEventSubComponent.cs",
@@ -327,7 +378,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "BasePanel.cs",
               "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\UI\\BasePanel.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\BasePanel.cs",
@@ -339,7 +390,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 25,
               "Title": "TestObjC.cs",
               "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Script\\Framwork\\ILifecycleManagerFramework\\PipelineLifeController\\Test\\CustomLife\\TestObjC.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Framwork\\ILifecycleManagerFramework\\PipelineLifeController\\Test\\CustomLife\\TestObjC.cs",
@@ -351,7 +402,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 19,
               "Title": "AudioManagerTest.cs",
               "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\Test\\AudioManagerTest.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Test\\AudioManagerTest.cs",
@@ -363,7 +414,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 18,
               "Title": "SFXPoolPlayer.cs",
               "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\Audio\\SFXPoolPlayer.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Audio\\SFXPoolPlayer.cs",
@@ -375,7 +426,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "MusicPlayer.cs",
               "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\Audio\\MusicPlayer.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Audio\\MusicPlayer.cs",
@@ -387,7 +438,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "AudioManager.cs",
               "DocumentMoniker": "F:\\linshi\\GMTK2025\\Assets\\Scripts\\Audio\\AudioManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Audio\\AudioManager.cs",
