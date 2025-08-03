@@ -39,9 +39,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BB
+    uniqueID: 425953877
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: tt
     uniqueID: 1707481317
+    locked: 0
+  - name: CC
+    uniqueID: 642724477
     locked: 0
