@@ -40,6 +40,7 @@ public class GamePanel : BasePanel
         if (shezhi != null)
             shezhi.onClick.AddListener(() =>
             {
+                AudioManager.Instance.PlaySFX("sfx-mechbutton");
                 UIManager.Instance.ShowPanel<SettingsPanel>();
                 _eventSubscribeComponent.Publish(new ShowSettingEvent());
             });
@@ -47,12 +48,14 @@ public class GamePanel : BasePanel
         if (reset != null)
             reset.onClick.AddListener(() =>
             {
+                AudioManager.Instance.PlaySFX("sfx-mechbutton");
                 _eventSubscribeComponent.Publish(new ResetGameEvent());
             });
 
         if (ting != null)
             ting.onClick.AddListener(() =>
             {
+                AudioManager.Instance.PlaySFX("sfx-mechbutton");
                 _eventSubscribeComponent.Publish(new PauseGameEvent());
             });
 
@@ -63,6 +66,7 @@ public class GamePanel : BasePanel
         if (lu1 != null)
         {
             lu1.onClick.AddListener(() => {
+                AudioManager.Instance.PlaySFX("sfx-mechbutton");
                 SetupRoute("lu1", bo, dao, xun, quit);
                 _eventSubscribeComponent.Publish(new ChoiceClip(){num = 0});
             });
@@ -70,6 +74,7 @@ public class GamePanel : BasePanel
         if (lu2 != null)
         {
             lu2.onClick.AddListener(() => {
+                AudioManager.Instance.PlaySFX("sfx-mechbutton");
                 SetupRoute("lu2", bo, dao, xun, quit);
                 _eventSubscribeComponent.Publish(new ChoiceClip(){num = 1});
             });
@@ -77,6 +82,7 @@ public class GamePanel : BasePanel
         if (lu3 != null)
         {
             lu3.onClick.AddListener(() => {
+                AudioManager.Instance.PlaySFX("sfx-mechbutton");
                 SetupRoute("lu3", bo, dao, xun, quit);
                 _eventSubscribeComponent.Publish(new ChoiceClip(){num = 2});
             });
@@ -85,13 +91,13 @@ public class GamePanel : BasePanel
 
         // ²Ù×÷°´Å¥
         if (bo != null)
-            bo.onClick.AddListener(() => PublishIfRoute(r => new RouteBoEvent(r)));
+            bo.onClick.AddListener(() => { PublishIfRoute(r => new RouteBoEvent(r)); AudioManager.Instance.PlaySFX("sfx-mechbutton"); });
         if (dao != null)
-            dao.onClick.AddListener(() => PublishIfRoute(r => new RouteDaoEvent(r)));
+            dao.onClick.AddListener(() => { PublishIfRoute(r => new RouteDaoEvent(r)); AudioManager.Instance.PlaySFX("sfx-mechbutton"); });
         if (xun != null)
-            xun.onClick.AddListener(() => PublishIfRoute(r => new RouteXunEvent(r)));
+            xun.onClick.AddListener(() => { PublishIfRoute(r => new RouteXunEvent(r)); AudioManager.Instance.PlaySFX("sfx-mechbutton"); });
         if (quit != null)
-            quit.onClick.AddListener(() => PublishIfRoute(r => new RouteQuitEvent(r)));
+            quit.onClick.AddListener(() => { PublishIfRoute(r => new RouteQuitEvent(r)); AudioManager.Instance.PlaySFX("sfx-mechbutton"); });
     }
 
     private Button FindButton(string name)

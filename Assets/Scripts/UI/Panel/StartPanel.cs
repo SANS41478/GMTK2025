@@ -38,6 +38,7 @@ public class StartPanel : BasePanel
         {
             Debug.LogError("StartPanel.OnStartClicked: IEventComponent is null");
         }
+        AudioManager.Instance.PlaySFX("sfx-mechbutton");
         // 隐藏自己
         UIManager.Instance.HidePanel<StartPanel>(true);
         SceneLoader.Instance.LoadScene("TestL1");
@@ -47,6 +48,7 @@ public class StartPanel : BasePanel
     
     private void OnQuitClicked()
     {
+        AudioManager.Instance.PlaySFX("sfx-mechbutton");
         // 隐藏自己
         UIManager.Instance.HidePanel<StartPanel>(true);
 

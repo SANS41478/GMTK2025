@@ -133,8 +133,8 @@
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.7\Editor\Manipulators\Sequence\TrackZoom.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.7\Editor\Animation\BindingSelector.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.7\Editor\Window\TimelineNavigator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.timeline@1.7.7\Editor\Utilities\DisplayNameHelper.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.7\Editor\treeview\Drawers\AnimationTrackDrawer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.timeline@1.7.7\Editor\Utilities\DisplayNameHelper.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.7\Editor\Utilities\ObjectReferenceField.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.7\Editor\Actions\TrackActions.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.7\Editor\Window\TimelineWindow_TrackGui.cs" />
@@ -179,8 +179,8 @@
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.7\Editor\Utilities\TrackModifier.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.7\Editor\Utilities\StyleNormalColorOverride.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.7\Editor\Window\ViewModel\TimelineAssetViewModel.cs" />
-    <Compile Include="Library\PackageCache\com.unity.timeline@1.7.7\Editor\MenuPriority.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.7\Editor\Playables\ControlPlayableInspector.cs" />
+    <Compile Include="Library\PackageCache\com.unity.timeline@1.7.7\Editor\MenuPriority.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.7\Editor\Window\ViewModel\TimelineAssetViewModel_versions.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.7\Editor\Window\TimelineWindow_PlaybackControls.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.7\Editor\treeview\Drawers\InfiniteTrackDrawer.cs" />
@@ -213,10 +213,10 @@
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.7\Editor\CustomEditors\MarkerEditor.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.7\Editor\Items\ItemsUtils.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.7\Editor\inspectors\TimelinePreferences.cs" />
-    <Compile Include="Library\PackageCache\com.unity.timeline@1.7.7\Editor\Actions\IAction.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.7\Editor\treeview\ItemGui\TimelineMarkerGUI.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.7\Editor\Actions\TimelineAction.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.7\Editor\Window\TimelineWindow_TimeArea.cs" />
+    <Compile Include="Library\PackageCache\com.unity.timeline@1.7.7\Editor\Actions\IAction.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.7\Editor\treeview\TrackGui\TimelineTrackGUI.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.7\Editor\Animation\CurvesProxy.cs" />
     <Compile Include="Library\PackageCache\com.unity.timeline@1.7.7\Editor\treeview\Drawers\Layers\MarkersLayer.cs" />
@@ -602,6 +602,9 @@
     <Reference Include="Unity.VisualScripting.YamlDotNet">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Collections.LowLevel.ILSupport">
+      <HintPath>Library\PackageCache\com.unity.collections@1.2.4\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+    </Reference>
     <Reference Include="DOTweenEditor">
       <HintPath>Assets\Plugins\Demigiant\DOTween\Editor\DOTweenEditor.dll</HintPath>
     </Reference>
@@ -617,8 +620,8 @@
     <Reference Include="Unity.VisualScripting.TextureAssets">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.8\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Collections.LowLevel.ILSupport">
-      <HintPath>Library\PackageCache\com.unity.collections@1.2.4\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+    <Reference Include="TexturePackerImporter">
+      <HintPath>Assets\codeandweb.com\Editor\TexturePackerImporter.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
