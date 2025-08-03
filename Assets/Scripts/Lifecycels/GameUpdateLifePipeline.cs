@@ -1,4 +1,6 @@
 ﻿using Space.GlobalInterface.Lifecycle;
+using Space.GlobalInterface.PipelineInterface;
+using Space.LifeControllerFramework.PipelineLifeController;
 namespace Lifecycels
 {
     /// <summary>
@@ -49,6 +51,7 @@ namespace Lifecycels
 
         Refresh = 65,
 
+        RefreshSubscriber=66,
         /// <summary>
         /// 确认动画
         /// </summary>
@@ -107,5 +110,23 @@ namespace Lifecycels
     public interface IAnimationMake : ILifecycleSubscriber
     {
         public void Update(ILifecycleManager.UpdateContext ctx);
+    }
+    
+    public class ApplySubscriberPipe : ALifePipelineComponent<ApplySubscriberPipe> ,ILifecyclePhase
+    {
+        /// <param name="parameters">
+        /// 初始化参数
+        /// (int)优先级 
+        /// </param>
+        public override IPipelineStage<LifecyclePipelineManager.LifecyclePipelineContext> SetParams(params object[] parameters)
+        {
+            DefaultPriority =(int) parameters[0];
+            PhaseName = "ApplySubscriberPipe";
+            return this;
+        }
+        public override void Execute(LifecyclePipelineManager.LifecyclePipelineContext context)
+        {
+            context.ApplySubscribers();
+        }
     }
 }

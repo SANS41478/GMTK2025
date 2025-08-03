@@ -11,9 +11,12 @@ namespace GamePlay
 {
     public class ShadowCalculate :  IClipMove , IClipMoveCharge , IClipPush , IBlackPlayer
     {
-        public ClipManager.ClipModel Reflect=>ClipManager.Instance.ClipModelt;
+        public ClipePlayType Reflect { get;private set; }
         public IEventComponent EventComponent;
         private Action<IList<IMoveEventData>> aniEvent;
+
+        private bool cycels;
+        
         public bool active {
             get {
                 return true;
@@ -26,22 +29,25 @@ namespace GamePlay
         }
         private void MoveCharge()
         {
-            // EntityInfo entityInfo = WorldInfo.GetPlayer();
-            // foreach (var b in buffer)
-            // {
-            //     // 如果被阻挡，且阻挡的物品不是箱子或者玩家
-            //     if ( !b.endPosition.Equals(_entityInfo.Position) && WorldInfo.IsBlocked(b.endPosition) && !WorldInfo.IsPush(b.endPosition) )
-            //     {
-            //         KillShadow();
-            //     }
-            // }
+            EntityInfo entityInfo = WorldInfo.GetPlayer();
+            foreach (var b in buffer)
+            {
+                // 如果被阻挡，且阻挡的物品不是箱子或者玩家
+                if ( WorldInfo.IsBlocked(b.endPosition) && 
+                     !WorldInfo.IsPush(b.endPosition) )
+                {
+                    KillShadow();
+                }
+            }
         }
+        private bool hasDes=false;
         private void KillShadow()
         {
             _lifecycleManager.Unsubscribe(GameUpdateLifePipeline.ClipMove.ToString(), this);
             _lifecycleManager.Unsubscribe(GameUpdateLifePipeline.ClipMoveCharge.ToString(), this);
             _lifecycleManager.Unsubscribe(GameUpdateLifePipeline.ClipPush.ToString(), this);
             onDestroy.Invoke();
+            hasDes = true;
         }
         /// <summary>
         ///     暂时的buffer
@@ -54,56 +60,77 @@ namespace GamePlay
         private Vector2Int direction;
         void IClipMove.Update(ILifecycleManager.UpdateContext ctx)
         {
-            if (Reflect== ClipManager.ClipModel.Pause) return;
+            if(hasDes)return;
             _entityInfo.prePosition=_entityInfo.Position;
             aniEvent.Invoke(buffer);
         }
         void IClipMoveCharge.Update(ILifecycleManager.UpdateContext ctx)
         {
+            if(hasDes)return;
             buffer.Clear();
-            if (Reflect== ClipManager.ClipModel.Pause) return;
+            if (Reflect == ClipePlayType.Play)
+            {
+                if (count >= clipContener.Count)
+                {
+                    if (cycels)
+                        count %= clipContener.Count;
+                    else
+                    {
+                        KillShadow();
+                        return;
+                    }
+                }
+            }
+            else if (Reflect== ClipePlayType.Backword)
+            {
+                if (count<0)
+                {     
+                    if(cycels)
+                        count+=clipContener.Count;
+                    else
+                    {
+                        KillShadow();
+                        return;
+                    }
+                }
+            }
             foreach (IMoveEventData data in clipContener[count])
             {
-                if (Reflect== ClipManager.ClipModel.Backword)
+                if (Reflect== ClipePlayType.Backword)
                 {
                     var rejectData = data.Clone();
-                    rejectData.direction = -direction;
+                    rejectData.direction = -rejectData.direction;
                     var temp = rejectData.startPosition ;
-                    rejectData.startPosition = rejectData.endPosition - clipStartPosition + startPosition;
-                    rejectData.endPosition  =temp- clipStartPosition + startPosition;
-
+                    rejectData.startPosition = rejectData.endPosition + startPosition;
+                    rejectData.endPosition  =temp+ startPosition;
                     buffer.Add(rejectData);
                 }
-                else  if (Reflect== ClipManager.ClipModel.Play)
+                else  if (Reflect== ClipePlayType.Play)
                 {
                     var rejectData = data.Clone();
-                    rejectData.startPosition = rejectData.startPosition - clipStartPosition + startPosition;
-                    rejectData.endPosition=rejectData.endPosition - clipStartPosition + startPosition;
+                    rejectData.startPosition += startPosition;
+                    rejectData.endPosition+= startPosition;
                     buffer.Add(rejectData);
                 }
             }
-            if (Reflect == ClipManager.ClipModel.Backword)
+            if (Reflect == ClipePlayType.Backword)
             {
                 buffer.Reverse();
             }
             MoveCharge();
-            if (Reflect== ClipManager.ClipModel.Play)
+            if (Reflect== ClipePlayType.Play)
             {
                 count++;
             }
-            else if (Reflect== ClipManager.ClipModel.Backword)
+            else if (Reflect== ClipePlayType.Backword)
             {
                 count--;
-                if (count<0)
-                {
-                    count+=clipContener.Count;
-                }
             }
         }
         
         void IClipPush.Update(ILifecycleManager.UpdateContext ctx)
         {
-            if (Reflect== ClipManager.ClipModel.Pause) return;
+            if(hasDes)return;
             var resBoxes= WorldInfo.GetInfo<IPushAble>(WorldEntityType.PushAble);
             foreach (var res in buffer)
             {
@@ -126,14 +153,16 @@ namespace GamePlay
         private EntityInfo _entityInfo;
         private ILifecycleManager _lifecycleManager;
         private Action onDestroy;
-        public ShadowCalculate Init(IList<IList<IMoveEventData>> content,EntityInfo info,ILifecycleManager lifecycleManager,
-                                    Action Ondestroy,Action<IList<IMoveEventData>> eventData)
+        public ShadowCalculate Init(
+            IList<IList<IMoveEventData>> content, EntityInfo info, ILifecycleManager lifecycleManager,
+            Action Ondestroy, Action<IList<IMoveEventData>> eventData, ClipePlayInfo infoClipPlayInfo,Vector2Int offset
+        )
         {
             if (EventComponent == null)
             {
                 EventComponent = new EventSubscribeComponent();
                 EventComponent.BindBus(GlobalEventBus.Instance);
-                EventComponent.Subscribe<ClipSpeedChangeInfo>(OnChange);
+                // EventComponent.Subscribe<ClipSpeedChangeInfo>(OnChange);
             }
             _lifecycleManager = lifecycleManager;
             _lifecycleManager.Subscribe(GameUpdateLifePipeline.ClipMove.ToString(), this);
@@ -141,37 +170,46 @@ namespace GamePlay
             _lifecycleManager.Subscribe(GameUpdateLifePipeline.ClipPush.ToString(), this);
             clipContener = content;
             _entityInfo = info;
-            startPosition = info.Position;
-            clipStartPosition = content[0][0].startPosition;
+            startPosition = offset;
             onDestroy=Ondestroy;
-            count = 0;
             aniEvent = eventData;
-            return this;
-        }
-        private void OnChange(in ClipSpeedChangeInfo data)
-        {
-            switch (data.preModel)
+            Reflect = infoClipPlayInfo.playType;
+            cycels = infoClipPlayInfo.isCycles;
+            switch (Reflect)
             {
-
-                case ClipManager.ClipModel.Play:
-                    if (data.curentModel == ClipManager.ClipModel.Backword)
-                    {
-                        count--;
-                                        if (count<0)
-                                        {
-                                            count+=clipContener.Count;
-                                        }
-                    }
+                case ClipePlayType.Play:
+                    count = 0;
                     break;
-
-                case ClipManager.ClipModel.Backword:
-                    if (data.curentModel == ClipManager.ClipModel.Play)
-                    {
-                        count++;
-                            count%=clipContener.Count;
-                    }
+                case ClipePlayType.Backword:
+                    count = content.Count-1;
                     break;
             }
+            return this;
         }
+   
+        // private void OnChange(in ClipSpeedChangeInfo data)
+        // {
+        //     switch (data.preModel)
+        //     {
+        //         case ClipePlayType.Play:
+        //             if (data.curentModel == ClipePlayType.Backword)
+        //             {
+        //                 count--;
+        //                 if (count<0)
+        //                 {
+        //                     count+=clipContener.Count;
+        //                 }
+        //             }
+        //             break;
+        //
+        //         case ClipePlayType.Backword:
+        //             if (data.curentModel == ClipePlayType.Play)
+        //             {
+        //                 count++;
+        //                 count%=clipContener.Count;
+        //             }
+        //             break;
+        //     }
+        // // }
     }
 }

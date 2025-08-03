@@ -2,7 +2,7 @@
 using Space.GlobalInterface.PipelineInterface;
 namespace Space.LifeControllerFramework.PipelineLifeController.PipelineComponent
 {
-    public class ApplySubscriberPipe : ALifePipelineComponent<ApplySubscriberPipe>
+    public class ApplySubscriberPipe : ALifePipelineComponent<ApplySubscriberPipe> 
     {
         /// <param name="parameters">
         /// 初始化参数

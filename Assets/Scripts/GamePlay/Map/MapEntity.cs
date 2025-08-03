@@ -33,9 +33,14 @@ public class MapEntity : MonoBehaviour , IBlackPlayer
     }
 }
 
-public interface IBox :  IPushAble , ITakeAble
+public interface IBox :  IPushAble , ITakeAble,IRecordObj
 {
 
+}
+
+public interface IRecordObj
+{
+    public void AddDirty();
 }
 public interface IRecordAble
 {

@@ -34,17 +34,16 @@ namespace GamePlay
             {
                 Info.TakeCube = true;
             }
+            //TODO: Test
             if (Input.GetKeyDown(KeyCode.L))
             {
-                Info.ClipModel = ClipManager.ClipModel.Play;
-            }
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                Info.ClipModel = ClipManager.ClipModel.Pause;
+                Info.ClipPlayInfo.num = 0;
+                Info.ClipPlayInfo.playType = ClipePlayType.Play;
             }
             if (Input.GetKeyDown(KeyCode.J))
             {
-                Info.ClipModel = ClipManager.ClipModel.Backword;
+                Info.ClipPlayInfo.num = 0;
+                Info.ClipPlayInfo.playType = ClipePlayType.Backword;
             }
         }
         public void Refresh()
@@ -55,13 +54,12 @@ namespace GamePlay
         {
             public bool PlaySpeedUp;
             public bool TakeCube;
-
-            public ClipManager.ClipModel ClipModel=ClipManager.ClipModel.Play;
             
             public bool RecordClip;
+            
             public bool StartClip;
             public bool StopClip;
-             
+            
             public ClipePlayInfo ClipPlayInfo; 
             
             public void Refresh()

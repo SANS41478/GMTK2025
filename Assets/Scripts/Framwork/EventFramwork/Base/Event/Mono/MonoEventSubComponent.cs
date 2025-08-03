@@ -1,4 +1,6 @@
-﻿using Script;
+﻿using System;
+using DG.Tweening;
+using Script;
 using Space.EventFramework.BaseEvent;
 using Space.GlobalInterface.EventInterface;
 using UnityEngine;
@@ -17,6 +19,9 @@ namespace Space.EventFramework
         {
             // 自动绑定生命周期事件
             _eventSubscribeComponent.Subscribe<GameObjectDestroyedEvent>(OnOwnerDestroyed);
+        }
+        private void Update()
+        {
         }
         private void OnDestroy()
         {

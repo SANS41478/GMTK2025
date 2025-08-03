@@ -5,6 +5,8 @@ namespace Lifecycels
 {
     public class GlobalLifecycleManager : MonoBehaviour
     {
+        public static GlobalLifecycleManager Instance;
+        public float GlobalLifecycleTime => FixedDeltaTime;
         [Range(0.02f,3f)]
         [SerializeField] private float FixedDeltaTime = 0.5f;
         private ILifecycleManager pipelineManager = GlobalLifecycle.Instance;
@@ -12,6 +14,7 @@ namespace Lifecycels
         private float timer ;
         private void Awake()
         {
+            Instance = this;
             lifeManager = new LifeManager(pipelineManager);
         }
         public void Update()

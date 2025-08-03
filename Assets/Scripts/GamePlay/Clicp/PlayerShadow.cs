@@ -17,17 +17,8 @@ namespace GamePlay
         private void Start()
         {
             GlobalLifecycle.Instance.Subscribe(GameUpdateLifePipeline.AnimationClip.ToString(), this);
-
         }
-        private void Update()
-        {
-        }
-        private void KillShadow()
-        {
-            Destroy(gameObject,Time.deltaTime);
-            //TODO: 影子爆炸
-        }
-        public void Init(IList<IList<IMoveEventData>> clip, Vector2Int creatPos)
+        public void Init( IList<IList<IMoveEventData>> clip, Vector2Int creatPos, ClipePlayInfo infoClipPlayInfo,Vector2Int offset)
         {
             worldEntityInfo = new EntityInfo
             {
@@ -41,24 +32,37 @@ namespace GamePlay
             WorldInfo.AddInfo(worldEntityInfo);
             worldShadowCalculate.Init(clip, worldEntityInfo,GlobalLifecycle.Instance, () => {
                 WorldInfo.RemoveInfo(worldEntityInfo);
+                GlobalLifecycle.Instance.Unsubscribe(GameUpdateLifePipeline.AnimationClip.ToString(), this);
                 Destroy(gameObject);
-            },MoveAnimation);
+            },MoveAnimation,infoClipPlayInfo,offset);
         }
+        private List<Vector3> movePath = new List<Vector3>();
         private void MoveAnimation(IList<IMoveEventData> obj)
         {
-            worldEntityInfo.prePosition = obj[0].startPosition;
-            worldEntityInfo.Position = obj[obj.Count-1].endPosition;
+            movePath.Clear();
+            if(obj.Count==0)return;
+            movePath.Add(WorldCellTool.CellToWorld(obj[0].startPosition));
+            foreach (IMoveEventData moveEventData in obj)
+            {
+                movePath.Add(WorldCellTool.CellToWorld(moveEventData.endPosition));
+            }
+            worldEntityInfo.Position = WorldCellTool.WorldToCell(movePath[^1]);
         }
         //TODO ： 动画队列
          void IAnimationMake.Update(ILifecycleManager.UpdateContext ctx)
          {
+             if(movePath.Count<=0)return;
              gameObject.transform.DOPath(new Path(PathType.Linear,
-                 new Vector3[] { WorldCellTool.CellToWorld(worldEntityInfo.prePosition), WorldCellTool.CellToWorld(worldEntityInfo.Position) }
+                 movePath.ToArray()
                  , 1), ctx.DeltaTime / 2f);
          }
+         public void OnDestroy()
+         {
+         }
+
     }
     public interface IShadow
     {
-        public void Init(IList<IList<IMoveEventData>> clip, Vector2Int creatPos);
+        public void Init( IList<IList<IMoveEventData>> clip, Vector2Int creatPos, ClipePlayInfo infoClipPlayInfo,Vector2Int offset);
     }
 }
