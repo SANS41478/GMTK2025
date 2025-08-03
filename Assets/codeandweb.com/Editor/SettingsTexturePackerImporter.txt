@@ -3,12 +3,24 @@ tpsheetFileNames:
 - Assets/codeandweb.com/Example/SpriteSheet/sprites.tpsheet
 - Assets/Resources/Animation/Sources/drop_item.tpsheet
 - Assets/Resources/Animation/Sources/fall.tpsheet
+- Assets/Resources/Animation/Sources/idle.tpsheet
+- Assets/Resources/Animation/Sources/jump.tpsheet
+- Assets/Resources/Animation/Sources/move.tpsheet
+- Assets/Resources/Animation/Sources/pick_up_item.tpsheet
 textureFileNames:
 - Assets/codeandweb.com/Example/SpriteSheet/sprites.png
 - Assets/Resources/Animation/Sources/drop_item.png
 - Assets/Resources/Animation/Sources/fall.png
+- Assets/Resources/Animation/Sources/idle.png
+- Assets/Resources/Animation/Sources/jump.png
+- Assets/Resources/Animation/Sources/move.png
+- Assets/Resources/Animation/Sources/pick_up_item.png
 normalmapFileNames:
 - Assets/codeandweb.com/Example/SpriteSheet/sprites_n.png
+- 
+- 
+- 
+- 
 - 
 - 
 enableDebugOutput: 0
