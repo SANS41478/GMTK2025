@@ -1,15 +1,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Collections.Generic;
 
 public class SceneLoader : MonoBehaviour
 {
-    // 单例
     public static SceneLoader Instance { get; private set; }
 
     private void Awake()
     {
-        // 保证只有一个实例
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -20,29 +19,54 @@ public class SceneLoader : MonoBehaviour
     }
 
     /// <summary>
-    /// 切换场景，对外暴露的公共方法
+    /// 加载场景（默认单场景模式，自动卸载当前场景）
     /// </summary>
-    /// <param name="sceneName">目标场景名称</param>
-    /// <param name="onComplete">切换完成后的回调</param>
     public void LoadScene(string sceneName, System.Action onComplete = null)
     {
-        StartCoroutine(LoadSceneAsync(sceneName, onComplete));
+        StartCoroutine(LoadSceneAsync(sceneName, LoadSceneMode.Single, onComplete));
     }
 
     /// <summary>
-    /// 异步加载场景协程
+    /// 加载场景（Additive 模式）
     /// </summary>
-    private IEnumerator LoadSceneAsync(string sceneName, System.Action onComplete)
+    public void LoadSceneAdditive(string sceneName, System.Action onComplete = null)
     {
-        // 可加入加载动画或遮罩
-        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
+        StartCoroutine(LoadSceneAsync(sceneName, LoadSceneMode.Additive, onComplete));
+    }
+
+    /// <summary>
+    /// 卸载 Additive 加载的场景
+    /// </summary>
+    public void UnloadScene(string sceneName, System.Action onComplete = null)
+    {
+        if (SceneManager.GetSceneByName(sceneName).isLoaded)
+        {
+            StartCoroutine(UnloadSceneAsync(sceneName, onComplete));
+        }
+        else
+        {
+            Debug.LogWarning($"尝试卸载场景 {sceneName} 但该场景未加载。");
+            onComplete?.Invoke();
+        }
+    }
+
+    private IEnumerator LoadSceneAsync(string sceneName, LoadSceneMode mode, System.Action onComplete)
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName, mode);
         while (!operation.isDone)
         {
-            // 可加入进度条反馈：operation.progress
             yield return null;
         }
+        onComplete?.Invoke();
+    }
 
-        // 加载完成回调
+    private IEnumerator UnloadSceneAsync(string sceneName, System.Action onComplete)
+    {
+        AsyncOperation operation = SceneManager.UnloadSceneAsync(sceneName);
+        while (!operation.isDone)
+        {
+            yield return null;
+        }
         onComplete?.Invoke();
     }
 }
