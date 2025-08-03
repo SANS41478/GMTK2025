@@ -9,8 +9,12 @@ namespace Space.GlobalInterface.EventInterface
     /// </summary>
     public interface IEventBus
     {
-        public  void Subscribe<T>(GameEventDelegate<T> handler)  where T : IEventData;
+        public  void Subscribe<T>(GameEventDelegate<T> handler,bool dontClear=false)  where T : IEventData;
         public  void Unsubscribe<T>(GameEventDelegate<T> handler) where T : IEventData;
         public  void Publish<T>(in T eventData)  where T : IEventData;
+        /// <summary>
+        /// 清空
+        /// </summary>
+        public void Clear();
     }
 }

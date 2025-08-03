@@ -66,6 +66,7 @@ public class PlayerCharactor : MonoBehaviour ,
             }
         );
         gravityDelay=GlobalLifecycleManager.Instance.GlobalLifecycleTime/5f;
+        
     }
     private float gravityDelay;
     private float timer = 0;

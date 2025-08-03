@@ -19,6 +19,15 @@ namespace GamePlay
         private MonoEventSubComponent monoEventSubComponent;
         private void Awake()
         {
+            monoEventSubComponent = GetComponent<MonoEventSubComponent>();
+        }
+        private void Start()
+        {
+            monoEventSubComponent.Subscribe<SceneLoader.LoadNewLevel>(OnNewLevelLoaded);
+        }
+        private void OnNewLevelLoaded(in SceneLoader.LoadNewLevel data)
+        {
+            shadowSamples.Clear();
         }
         public void ShowPreClip(int num ,Vector2Int position)
         {

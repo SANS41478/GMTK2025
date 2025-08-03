@@ -3,6 +3,7 @@
   <component name="Encoding" addBOMForNewFiles="with BOM under Windows, with no BOM otherwise">
     <file url="file://$PROJECT_DIR$/Assets/Scripts/Scene/SceneLoader.cs" charset="GB2312" />
     <file url="file://$PROJECT_DIR$/Assets/Scripts/UI/GameEventListener.cs" charset="GB2312" />
+    <file url="file://$PROJECT_DIR$/Assets/Scripts/UI/Panel/GamePanel.cs" charset="GB2312" />
     <file url="file://$PROJECT_DIR$/Assets/Scripts/UI/Panel/StartPanel.cs" charset="GB2312" />
     <file url="file://$PROJECT_DIR$/Assets/Scripts/UI/UIRootLauncher.cs" charset="GB2312" />
   </component>

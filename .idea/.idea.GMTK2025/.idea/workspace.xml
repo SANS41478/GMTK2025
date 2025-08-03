@@ -7,14 +7,29 @@
     <list default="true" id="efffa3a2-229a-4c23-85f9-6589dec5ab6e" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GMTK2025/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2025/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GMTK2025/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2025/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefab/Box.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefab/Box.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefab/Button.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefab/Button.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefab/Door Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefab/Door Variant.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefab/Ending.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefab/Ending.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefab/Manager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefab/Manager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level/TestL1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level/TestL1.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level/TestL2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level/TestL2.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Framwork/EventFramwork/Base/Event/EventBus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Framwork/EventFramwork/Base/Event/EventBus.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Framwork/EventFramwork/Base/Event/Mono/MonoEventSubComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Framwork/EventFramwork/Base/Event/Mono/MonoEventSubComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Framwork/GlobalInterface/Event/IEventBus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Framwork/GlobalInterface/Event/IEventBus.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Framwork/GlobalInterface/ILifecycleManager/ILifecycleManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Framwork/GlobalInterface/ILifecycleManager/ILifecycleManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Framwork/ILifecycleManagerFramework/PipelineLifeController/Base/LifecyclePipelineManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Framwork/ILifecycleManagerFramework/PipelineLifeController/Base/LifecyclePipelineManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Clicp/Sample/PreClipShow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Clicp/Sample/PreClipShow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scene/SceneLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scene/SceneLoader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/GameEventListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/GameEventListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Clicp/Sample/ShadowSample.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Clicp/Sample/ShadowSample.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Ending/ToNextLevel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Ending/ToNextLevel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GamePlay/GravityComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/GravityComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Input/InputHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Input/InputHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GamePlay/LevelObj/Door/OpenDoorObj.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/LevelObj/Door/OpenDoorObj.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Player/PlayerCharactor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Player/PlayerCharactor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GamePlay/WorldInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/WorldInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Lifecycels/GlobalLifecycleManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Lifecycels/GlobalLifecycleManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Lifecycels/LifeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Lifecycels/LifeManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Panel/GamePanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Panel/GamePanel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +157,7 @@
       <workItem from="1754127438021" duration="2768000" />
       <workItem from="1754131353748" duration="23812000" />
       <workItem from="1754187855403" duration="510000" />
-      <workItem from="1754190515673" duration="8338000" />
+      <workItem from="1754190515673" duration="15600000" />
     </task>
     <servers />
   </component>

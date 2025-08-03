@@ -2,6 +2,7 @@
 using Lifecycels;
 using Space.EventFramework;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Utility;
 namespace GamePlay
 {
@@ -19,7 +20,9 @@ namespace GamePlay
         }
         private void Start()
         {
-            GetComponent<MonoEventSubComponent>().Subscribe<ClipePlayInfo>(OnClipePlayInfo);
+            var res=    GetComponent<MonoEventSubComponent>();
+            res.Subscribe<ClipePlayInfo>(OnClipePlayInfo);
+            res.Subscribe<>();
         }
         private void OnClipePlayInfo(in ClipePlayInfo data)
         {
@@ -27,7 +30,7 @@ namespace GamePlay
         }
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.C))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 Info.RecordClip = true;
             }
@@ -49,7 +52,8 @@ namespace GamePlay
                 Info.ClipPlayInfo.playType = ClipePlayType.Backword;
                 Info.ClipPlayInfo.clickPos=mousePos;
             }
-            ClipManager.Instance.CreatPreviewPoints(0, mousePos);
+            if(Input.GetKeyDown(KeyCode.R))
+                SceneLoader.Instance.LoadScene(SceneManager.GetActiveScene().name);
         }
         public void Refresh()
         {

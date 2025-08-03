@@ -1,10 +1,13 @@
 ﻿using System;
 using DG.Tweening;
+using GamePlay;
+using Space.EventFramework;
 using Space.GlobalInterface.Lifecycle;
 using Space.LifeControllerFramework.PipelineLifeController.PipelineComponent;
 using UnityEngine;
 namespace Lifecycels
 {
+    [RequireComponent(typeof(MonoEventSubComponent))]
     public class GlobalLifecycleManager : MonoBehaviour
     {
         public static GlobalLifecycleManager Instance;
@@ -13,17 +16,28 @@ namespace Lifecycels
         [Range(0.02f,3f)]
         [SerializeField] private float FixedDeltaTime = 0.5f;
         private ILifecycleManager pipelineManager = GlobalLifecycle.Instance;
-        private LifeManager lifeManager;
+        private static LifeManager lifeManager;
+        MonoEventSubComponent eventSubComponent;
+
         private float timer ;
         private bool gameStart;
         private void Awake()
         {
             Instance = this;
-            lifeManager = new LifeManager(pipelineManager);
+            if(lifeManager == null)
+                lifeManager = new LifeManager(pipelineManager);
+            eventSubComponent = GetComponent<MonoEventSubComponent>();
         }
         private void Start()
         {
+            eventSubComponent.Subscribe<SceneLoader.LoadNewLevel>(OnLoadNewLevel);
             black.DOFade(0, 2f).OnComplete(() => { gameStart = true; });
+        }
+        private void OnLoadNewLevel(in SceneLoader.LoadNewLevel data)
+        {
+            pipelineManager.Clear();
+            WorldInfo.Clear();
+            GlobalEventBus.Instance.Clear();
         }
         public void Update()
         {
