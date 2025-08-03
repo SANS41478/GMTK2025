@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\Framwork\EventFramwork\Excample\UniTest\RedGreen\LightUI.cs" />
     <Compile Include="Assets\Scripts\Framwork\GlobalInterface\ILifecycleManager\ILifecycleSubscriber.cs" />
     <Compile Include="Assets\Scripts\Framwork\PipelineFramework\Simple\Base\Factory\DictionaryPipelineStageFactory.cs" />
+    <Compile Include="Assets\Resources\Post processing\GlobalMaskFeature.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Clicp\ClipManager.cs" />
     <Compile Include="Assets\Scripts\Framwork\PipelineFramework\Simple\Example\DamagePipeLine\DamagePipeLine.cs" />
     <Compile Include="Assets\Scripts\Framwork\EventFramwork\GlobalEventBus.cs" />
@@ -174,6 +175,7 @@
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\Resources\Post processing\GlobalMask.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\codeandweb.com\Readme.txt" />
