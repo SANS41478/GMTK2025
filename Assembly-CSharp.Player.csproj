@@ -61,116 +61,118 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\UI\Panel\StartPanel.cs" />
     <Compile Include="Assets\Scripts\Json\LitJson\IJsonWrapper.cs" />
-    <Compile Include="Assets\Scripts\GamePlay\Entity\EntityInfo.cs" />
     <Compile Include="Assets\Scripts\Json\LitJson\JsonWriter.cs" />
-    <Compile Include="Assets\Scripts\Framwork\EventFramwork\Excample\UniTest\RedGreen\LightUI.cs" />
     <Compile Include="Assets\Scripts\Framwork\EventFramwork\Base\Event\EventBus.cs" />
-    <Compile Include="Assets\Scripts\Framwork\GlobalInterface\Event\IEventData.cs" />
     <Compile Include="Assets\Scripts\GamePlay\LevelObj\Door\OpenDoorObj.cs" />
+    <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Test\CustomLife\TestLifePipeline.cs" />
+    <Compile Include="Assets\Scripts\Event\ClipePlayInfo.cs" />
+    <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Test\ECS\TestObj.cs" />
+    <Compile Include="Assets\Scripts\Json\LitJson\Lexer.cs" />
+    <Compile Include="Assets\Scripts\Framwork\EventFramwork\Excample\UniTest\RedGreen\Car.cs" />
+    <Compile Include="Assets\Scripts\Framwork\EventFramwork\Excample\UniTest\TickTock\SimpleUniEventTest.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\LevelObj\Door\Door.cs" />
+    <Compile Include="Assets\Scripts\Event\TakeEventData.cs" />
+    <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Test\CustomLife\GameController.cs" />
+    <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\GlobalLifecycle.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Clicp\Sample\SamplePointObj.cs" />
+    <Compile Include="Assets\Scripts\Json\JsonMgr.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Clicp\Sample\ShadowSample.cs" />
+    <Compile Include="Assets\Scripts\Framwork\PipelineFramework\Simple\Example\DamagePipeLine\Player.cs" />
+    <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Test\ECS\TestObjC.cs" />
+    <Compile Include="Assets\Scripts\Test\Entity\EntityMassageInfo.cs" />
+    <Compile Include="Assets\Scripts\Framwork\GlobalInterface\Perpline\IPipelineContext.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Clicp\RecordComponent.cs" />
+    <Compile Include="Assets\Scripts\Framwork\FramworkFactory.cs" />
+    <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Base\LifecyclePipelineManager.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\GravityComponent.cs" />
+    <Compile Include="Assets\Scripts\Json\LitJson\JsonData.cs" />
+    <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Test\ECS\TestLifePipeline.cs" />
+    <Compile Include="Assets\Scripts\Lifecycels\GlobalLifecycleManager.cs" />
+    <Compile Include="Assets\Scripts\Framwork\PipelineFramework\Simple\Base\APipelineStage.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Clicp\ClipContener.cs" />
+    <Compile Include="Assets\Scripts\Framwork\EventFramwork\Base\Event\EventSubscribeComponent.cs" />
+    <Compile Include="Assets\Scripts\Framwork\GlobalInterface\ILifecycleManager\ILifecycleManager.cs" />
+    <Compile Include="Assets\Scripts\Framwork\GlobalInterface\Perpline\IPipelineStageFactory.cs" />
+    <Compile Include="Assets\Scripts\Framwork\PipelineFramework\Simple\Example\DamagePipeLine\Stage\BaseDamageCalculate.cs" />
+    <Compile Include="Assets\Scripts\Framwork\GlobalInterface\Buff\IBuffComponent.cs" />
+    <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Test\ECS\GameController.cs" />
+    <Compile Include="Assets\Scripts\Test\Entity\TestEntity.cs" />
+    <Compile Include="Assets\Scripts\Json\LitJson\Netstandard15Polyfill.cs" />
+    <Compile Include="Assets\Scripts\Scene\SceneLoader.cs" />
+    <Compile Include="Assets\Scripts\Framwork\GlobalInterface\Event\IEventBus.cs" />
+    <Compile Include="Assets\Scenes\EventTest\EventExcample.cs" />
+    <Compile Include="Assets\Scripts\Event\ClipSpeedChangeInfo.cs" />
+    <Compile Include="Assets\Scripts\Audio\SFXPoolPlayer.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Test\CavancTest.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Input\InputHandler.cs" />
+    <Compile Include="Assets\Scripts\UI\BasePanel.cs" />
+    <Compile Include="Assets\Scripts\Json\LitJson\JsonReader.cs" />
+    <Compile Include="Assets\Scripts\Framwork\GlobalInterface\Buff\IBuff.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Clicp\PlayerShadow.cs" />
+    <Compile Include="Assets\Scripts\Json\LitJson\ParserToken.cs" />
+    <Compile Include="Assets\Scripts\Test\AudioManagerTest.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Ending\ToNextLevel.cs" />
+    <Compile Include="Assets\Scripts\Lifecycels\GameUpdateLifePipeline.cs" />
+    <Compile Include="Assets\Scripts\Framwork\EventFramwork\Base\Event\Mono\GameObjectDestroyedEvent.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Entity\EntityInfo.cs" />
+    <Compile Include="Assets\Scripts\Framwork\EventFramwork\Excample\UniTest\RedGreen\LightUI.cs" />
+    <Compile Include="Assets\Scripts\Framwork\GlobalInterface\Event\IEventData.cs" />
     <Compile Include="Assets\Scripts\Json\LitJson\JsonMapper.cs" />
     <Compile Include="Assets\Scripts\Audio\AudioBootstrapper.cs" />
-    <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Test\CustomLife\TestLifePipeline.cs" />
     <Compile Include="Assets\Scripts\Framwork\GlobalInterface\ILifecycleManager\ILifecycleSubscriber.cs" />
-    <Compile Include="Assets\Scripts\Event\ClipePlayInfo.cs" />
     <Compile Include="Assets\Scripts\Framwork\GlobalInterface\ILifecycleManager\ILifecyclePhase.cs" />
     <Compile Include="Assets\Scripts\Framwork\PipelineFramework\Simple\Base\Factory\DictionaryPipelineStageFactory.cs" />
     <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Test\CustomLife\TestObj.cs" />
     <Compile Include="Assets\Scripts\Lifecycels\LifeManager.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Clicp\ClipManager.cs" />
     <Compile Include="Assets\Scripts\Framwork\GlobalInterface\Buff\IBuffContext.cs" />
-    <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Test\ECS\TestObj.cs" />
-    <Compile Include="Assets\Scripts\Json\LitJson\Lexer.cs" />
     <Compile Include="Assets\Scripts\Framwork\PipelineFramework\GlobalPipelineStageFactory.cs" />
-    <Compile Include="Assets\Scripts\Framwork\EventFramwork\GlobalEventBus.cs" />
     <Compile Include="Assets\Scripts\Framwork\PipelineFramework\Simple\Example\DamagePipeLine\DamagePipeLine.cs" />
-    <Compile Include="Assets\Scripts\Framwork\EventFramwork\Excample\UniTest\RedGreen\Car.cs" />
-    <Compile Include="Assets\Scripts\Framwork\EventFramwork\Excample\UniTest\TickTock\SimpleUniEventTest.cs" />
-    <Compile Include="Assets\Scripts\GamePlay\LevelObj\Door\Door.cs" />
-    <Compile Include="Assets\Scripts\Event\TakeEventData.cs" />
-    <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Test\CustomLife\GameController.cs" />
+    <Compile Include="Assets\Scripts\Framwork\EventFramwork\GlobalEventBus.cs" />
     <Compile Include="Assets\Scripts\Audio\MusicPlayer.cs" />
     <Compile Include="Assets\Scripts\Framwork\PipelineFramework\Simple\Base\PipelineContext.cs" />
-    <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\GlobalLifecycle.cs" />
-    <Compile Include="Assets\Scripts\GamePlay\Clicp\Sample\SamplePointObj.cs" />
     <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Base\PipelineComponent\MonoUpdatePipe.cs" />
-    <Compile Include="Assets\Scripts\Json\JsonMgr.cs" />
-    <Compile Include="Assets\Scripts\GamePlay\Clicp\Sample\ShadowSample.cs" />
     <Compile Include="Assets\Scripts\Event\ClipRecordEvent.cs" />
-    <Compile Include="Assets\Scripts\Framwork\PipelineFramework\Simple\Example\DamagePipeLine\Player.cs" />
-    <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Test\ECS\TestObjC.cs" />
-    <Compile Include="Assets\Scripts\Test\Entity\EntityMassageInfo.cs" />
     <Compile Include="Assets\Scripts\Json\LitJson\JsonException.cs" />
     <Compile Include="Assets\Scripts\GamePlay\WorldInfo.cs" />
     <Compile Include="Assets\Scripts\Framwork\EventFramwork\Base\Event\Mono\MonoEventSubComponent.cs" />
     <Compile Include="Assets\Scripts\Audio\AudioClipLoader.cs" />
-    <Compile Include="Assets\Scripts\Framwork\GlobalInterface\Perpline\IPipelineContext.cs" />
-    <Compile Include="Assets\Scripts\GamePlay\Clicp\RecordComponent.cs" />
     <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Base\ALifePipelineComponent.cs" />
-    <Compile Include="Assets\Scripts\Framwork\FramworkFactory.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Player\PlayerCharactor.cs" />
     <Compile Include="Assets\Scripts\UI\GameEventListener.cs" />
-    <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Base\LifecyclePipelineManager.cs" />
-    <Compile Include="Assets\Scripts\GamePlay\GravityComponent.cs" />
+    <Compile Include="Assets\daedcell.cs" />
     <Compile Include="Assets\Scripts\UI\UIRootLauncher.cs" />
-    <Compile Include="Assets\Scripts\Json\LitJson\JsonData.cs" />
     <Compile Include="Assets\Scripts\UI\Panel\GamePanel.cs" />
-    <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Test\ECS\TestLifePipeline.cs" />
     <Compile Include="Assets\Scripts\Framwork\PipelineFramework\Simple\Example\TestPipeline\MonoPipelineTest.cs" />
     <Compile Include="Assets\Scripts\GamePlay\LevelObj\BooomPlantform.cs" />
     <Compile Include="Assets\Scripts\Framwork\PipelineFramework\Simple\Example\DamagePipeLine\Stage\ApplyDamageTypeStep.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Map\MapEntity.cs" />
     <Compile Include="Assets\Scripts\Framwork\Utility\ReflectionUtility.cs" />
-    <Compile Include="Assets\Scripts\Lifecycels\GlobalLifecycleManager.cs" />
-    <Compile Include="Assets\Scripts\Framwork\PipelineFramework\Simple\Base\APipelineStage.cs" />
-    <Compile Include="Assets\Scripts\GamePlay\Clicp\ClipContener.cs" />
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
-    <Compile Include="Assets\Scripts\Framwork\EventFramwork\Base\Event\EventSubscribeComponent.cs" />
-    <Compile Include="Assets\Scripts\Framwork\GlobalInterface\ILifecycleManager\ILifecycleManager.cs" />
-    <Compile Include="Assets\Scripts\Framwork\GlobalInterface\Perpline\IPipelineStageFactory.cs" />
-    <Compile Include="Assets\Scripts\Framwork\PipelineFramework\Simple\Example\DamagePipeLine\Stage\BaseDamageCalculate.cs" />
     <Compile Include="Assets\Scripts\Audio\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Base\PipelineComponent\MonoOncePipe.cs" />
     <Compile Include="Assets\Scripts\Framwork\PipelineFramework\Simple\Example\TestPipeline\TestPipelineStage.cs" />
     <Compile Include="Assets\Scripts\Json\LitJson\JsonMockWrapper.cs" />
-    <Compile Include="Assets\Scripts\Framwork\GlobalInterface\Buff\IBuffComponent.cs" />
     <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Base\PipelineComponent\ApplySubscriberPipe.cs" />
+    <Compile Include="Assets\Scripts\Utility\WorldCellTool.cs" />
     <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Base\PipelineComponent\ControllerUpdatePipe.cs" />
     <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Test\CustomLife\TestObjC.cs" />
-    <Compile Include="Assets\Scripts\Utility\WorldCellTool.cs" />
-    <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Test\ECS\GameController.cs" />
     <Compile Include="Assets\Scripts\Framwork\EventFramwork\Excample\UniTest\RedGreen\Light.cs" />
-    <Compile Include="Assets\Scripts\Test\Entity\TestEntity.cs" />
-    <Compile Include="Assets\Scripts\Json\LitJson\Netstandard15Polyfill.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Box\Box.cs" />
-    <Compile Include="Assets\Scripts\Scene\SceneLoader.cs" />
-    <Compile Include="Assets\Scripts\Framwork\GlobalInterface\Event\IEventBus.cs" />
     <Compile Include="Assets\Scripts\Framwork\PipelineFramework\Simple\Example\TestPipeline\TestPrameterPipeline.cs" />
     <Compile Include="Assets\Scripts\Framwork\GlobalInterface\Event\IEventComponent.cs" />
-    <Compile Include="Assets\Scenes\EventTest\EventExcample.cs" />
-    <Compile Include="Assets\Scripts\Event\ClipSpeedChangeInfo.cs" />
-    <Compile Include="Assets\Scripts\Audio\SFXPoolPlayer.cs" />
     <Compile Include="Assets\Scripts\Event\GameEvent.cs" />
-    <Compile Include="Assets\Scripts\GamePlay\Input\InputHandler.cs" />
-    <Compile Include="Assets\Scripts\UI\BasePanel.cs" />
     <Compile Include="Assets\Scripts\UI\Panel\SettingsPanel.cs" />
     <Compile Include="Assets\Scripts\Framwork\Collections\SortList.cs" />
-    <Compile Include="Assets\Scripts\Json\LitJson\JsonReader.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Clicp\TestRecordButton.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Clicp\Sample\PreClipShow.cs" />
     <Compile Include="Assets\Scripts\Test\Entity\blockTest.cs" />
-    <Compile Include="Assets\Scripts\Framwork\GlobalInterface\Buff\IBuff.cs" />
     <Compile Include="Assets\Scripts\Framwork\GlobalInterface\Perpline\IPipeline.cs" />
-    <Compile Include="Assets\Scripts\GamePlay\Clicp\PlayerShadow.cs" />
     <Compile Include="Assets\Scripts\Framwork\GlobalInterface\Perpline\IPipelineStage.cs" />
     <Compile Include="Assets\Scripts\Framwork\PipelineFramework\Simple\Base\Pipeline.cs" />
-    <Compile Include="Assets\Scripts\Json\LitJson\ParserToken.cs" />
-    <Compile Include="Assets\Scripts\Test\AudioManagerTest.cs" />
     <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Base\LifecyclePipeline.cs" />
-    <Compile Include="Assets\Scripts\GamePlay\Ending\ToNextLevel.cs" />
     <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Base\PipelineComponent\MonoTimerPipe.cs" />
-    <Compile Include="Assets\Scripts\Lifecycels\GameUpdateLifePipeline.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Clicp\MoveEventData.cs" />
-    <Compile Include="Assets\Scripts\Framwork\EventFramwork\Base\Event\Mono\GameObjectDestroyedEvent.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Clicp\ShadowCalculate.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -403,6 +405,9 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.8\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Collections.LowLevel.ILSupport">
+      <HintPath>Library\PackageCache\com.unity.collections@1.2.4\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:\unity\2022.3.61f1c1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
@@ -776,9 +781,17 @@
       <Project>{3462AA62-C61C-BB06-234E-5CE6ED2AF126}</Project>
       <Name>Assembly-CSharp-firstpass.Player</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Timeline.Player.csproj">
-      <Project>{A2D43D1C-663A-BC5F-6E56-CA615DB1D8E4}</Project>
-      <Name>Unity.Timeline.Player</Name>
+    <ProjectReference Include="Unity.2D.IK.Runtime.Player.csproj">
+      <Project>{2F395863-9604-B4CB-3E5A-5B47ED7E61B1}</Project>
+      <Name>Unity.2D.IK.Runtime.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Burst.Player.csproj">
+      <Project>{7779BB20-BD4C-7C11-6EB8-04A77B1C6D5E}</Project>
+      <Name>Unity.Burst.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.Animation.Runtime.Player.csproj">
+      <Project>{947B0DC1-A97E-224E-BF73-8B0889E43FCF}</Project>
+      <Name>Unity.2D.Animation.Runtime.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Core.Player.csproj">
       <Project>{D99D6AB1-6C48-98C4-E61B-D58876CAA0AD}</Project>
@@ -788,13 +801,45 @@
       <Project>{DC9C0BF5-3B88-90D6-FD92-5645ABF8EE1E}</Project>
       <Name>UnityEngine.UI.Player</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.VisualScripting.State.Player.csproj">
-      <Project>{DE61FEF3-EA41-A050-C501-638C7FBAE590}</Project>
-      <Name>Unity.VisualScripting.State.Player</Name>
+    <ProjectReference Include="Unity.2D.Tilemap.Extras.Player.csproj">
+      <Project>{E18EFBDB-86CE-5BD3-95C0-6E1987C35CE6}</Project>
+      <Name>Unity.2D.Tilemap.Extras.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Flow.Player.csproj">
       <Project>{A01EAB00-47E5-33DF-ABB3-CA24C2BA2F6E}</Project>
       <Name>Unity.VisualScripting.Flow.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.InternalAPIEngineBridge.001.Player.csproj">
+      <Project>{246A1A7F-4766-053C-1E0E-691DA7732B12}</Project>
+      <Name>Unity.InternalAPIEngineBridge.001.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.Common.Runtime.Player.csproj">
+      <Project>{494EEEB4-ABBD-B675-181B-CCDFA9646476}</Project>
+      <Name>Unity.2D.Common.Runtime.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Timeline.Player.csproj">
+      <Project>{A2D43D1C-663A-BC5F-6E56-CA615DB1D8E4}</Project>
+      <Name>Unity.Timeline.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Collections.Player.csproj">
+      <Project>{53DE7D15-41A0-8F21-CA7D-7C543754AAFE}</Project>
+      <Name>Unity.Collections.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.SpriteShape.Runtime.Player.csproj">
+      <Project>{D7C1EB80-7B5B-D3EF-A3DC-DC321CD8AECF}</Project>
+      <Name>Unity.2D.SpriteShape.Runtime.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.PixelPerfect.Player.csproj">
+      <Project>{8E708981-CD8D-5EFE-B8CC-6F540B7E8D95}</Project>
+      <Name>Unity.2D.PixelPerfect.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Mathematics.Player.csproj">
+      <Project>{393C0CD4-1022-13E9-4866-E647588B66F6}</Project>
+      <Name>Unity.Mathematics.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualScripting.State.Player.csproj">
+      <Project>{DE61FEF3-EA41-A050-C501-638C7FBAE590}</Project>
+      <Name>Unity.VisualScripting.State.Player</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
