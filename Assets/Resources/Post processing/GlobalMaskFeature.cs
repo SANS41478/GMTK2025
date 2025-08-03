@@ -23,7 +23,7 @@ public class GlobalMaskFeature : ScriptableRendererFeature
 
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
         {
-            if (maskMaterial == null || !maskMaterial.shader.isSupported)
+            if (maskMaterial == null || !maskMaterial.shader.isSupported || fullscreenMesh == null)
                 return;
 
             var cmd = CommandBufferPool.Get(kProfilerTag);
@@ -67,6 +67,7 @@ public class GlobalMaskFeature : ScriptableRendererFeature
                 else
                     Object.DestroyImmediate(fullscreenMesh);
                 fullscreenMesh = null;
+                return;
             }
         }
 
