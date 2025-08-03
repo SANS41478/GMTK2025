@@ -126,6 +126,7 @@
     <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Base\ALifePipelineComponent.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Player\PlayerCharactor.cs" />
     <Compile Include="Assets\Scripts\UI\GameEventListener.cs" />
+    <Compile Include="Assets\daedcell.cs" />
     <Compile Include="Assets\Scripts\UI\UIRootLauncher.cs" />
     <Compile Include="Assets\Scripts\UI\Panel\GamePanel.cs" />
     <Compile Include="Assets\Scripts\Framwork\PipelineFramework\Simple\Example\TestPipeline\MonoPipelineTest.cs" />

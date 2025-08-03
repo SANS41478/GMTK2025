@@ -62,18 +62,26 @@ public class GamePanel : BasePanel
         // 录制选择
         if (lu1 != null)
         {
-            lu1.onClick.AddListener(() => SetupRoute("lu1", bo, dao, xun, quit));
-            _eventSubscribeComponent.Publish(new ChoiceClip(){num = 0});
+            lu1.onClick.AddListener(() => {
+                SetupRoute("lu1", bo, dao, xun, quit);
+                _eventSubscribeComponent.Publish(new ChoiceClip(){num = 0});
+
+            });
         }
         if (lu2 != null)
         {
-            lu2.onClick.AddListener(() => SetupRoute("lu2", bo, dao, xun, quit));
-            _eventSubscribeComponent.Publish(new ChoiceClip(){num = 1});
+            lu2.onClick.AddListener(() => {
+                SetupRoute("lu2", bo, dao, xun, quit);
+                _eventSubscribeComponent.Publish(new ChoiceClip(){num = 1});
+            });
         }
         if (lu3 != null)
         {
-            lu3.onClick.AddListener(() => SetupRoute("lu3", bo, dao, xun, quit));
-            _eventSubscribeComponent.Publish(new ChoiceClip(){num = 2});
+            lu3.onClick.AddListener(() => {
+                SetupRoute("lu3", bo, dao, xun, quit);
+                _eventSubscribeComponent.Publish(new ChoiceClip(){num = 2});
+            });
+          
         }
 
         // 操作按钮

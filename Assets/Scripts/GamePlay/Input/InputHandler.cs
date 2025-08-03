@@ -22,7 +22,29 @@ namespace GamePlay
         {
             var res=    GetComponent<MonoEventSubComponent>();
             res.Subscribe<ClipePlayInfo>(OnClipePlayInfo);
-            res.Subscribe<>();
+            res.Subscribe<GamePanel.ChoiceClip>(OnChoiceClip);
+            res.Subscribe<GamePanel.RouteXunEvent>(CyclePlay);
+            res.Subscribe<GamePanel.RouteBoEvent>(DefaultPlay);
+            res.Subscribe<GamePanel.RouteDaoEvent>(BackwordPlay);
+        }
+        private void BackwordPlay(in GamePanel.RouteDaoEvent data)
+        {
+            Info.ClipPlayInfo.playType = ClipePlayType.Backword;
+            Info.ClipPlayInfo.isCycles = false;
+        }
+        private void DefaultPlay(in GamePanel.RouteBoEvent data)
+        {
+            Info.ClipPlayInfo.playType = ClipePlayType.Play;
+            Info.ClipPlayInfo.isCycles = false;
+        }
+        private void CyclePlay(in GamePanel.RouteXunEvent data)
+        {
+            Info.ClipPlayInfo.playType = ClipePlayType.Play;
+            Info.ClipPlayInfo.isCycles = true;
+        }
+        private void OnChoiceClip(in GamePanel.ChoiceClip data)
+        {
+            Info.choiceNum = data.num;
         }
         private void OnClipePlayInfo(in ClipePlayInfo data)
         {
@@ -39,21 +61,14 @@ namespace GamePlay
                 Info.TakeCube = true;
             }
             Vector2Int mousePos = WorldCellTool.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition))-Vector2Int.one;
-            //TODO: Test
-            if ((Input.GetMouseButtonDown(0)))
-            {
-                Info.ClipPlayInfo.num = 0;
-                Info.ClipPlayInfo.playType = ClipePlayType.Play;
                 Info.ClipPlayInfo.clickPos=mousePos;
-            }
-            if (Input.GetMouseButtonDown(1))
-            {
-                Info.ClipPlayInfo.num = 0;
-                Info.ClipPlayInfo.playType = ClipePlayType.Backword;
-                Info.ClipPlayInfo.clickPos=mousePos;
-            }
+                if (Input.GetKeyDown(0))
+                {
+                    Info.ClipPlayInfo.num = Info.choiceNum;
+                }
             if(Input.GetKeyDown(KeyCode.R))
                 SceneLoader.Instance.LoadScene(SceneManager.GetActiveScene().name);
+            ClipManager.Instance.CreatPreviewPoints(Info.choiceNum,mousePos);
         }
         public void Refresh()
         {
@@ -61,22 +76,15 @@ namespace GamePlay
         }
         public class InputInfo
         {
-            public bool PlaySpeedUp;
             public bool TakeCube;
-            
+            public int choiceNum=-1;
             public bool RecordClip;
-            
-            public bool StartClip;
-            public bool StopClip;
             
             public ClipePlayInfo ClipPlayInfo; 
             
             public void Refresh()
             {
-                PlaySpeedUp = false;
                 RecordClip = false;
-                StartClip = false;
-                StopClip = false;
                 ClipPlayInfo = new ClipePlayInfo()
                 {
                     num = -1,

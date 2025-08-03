@@ -8,10 +8,9 @@ using Utility;
 public class MapEntity : MonoBehaviour , IBlackPlayer
 {
     private EntityInfo entityInfo;
-    private Tilemap tilemap;
+    [SerializeField] private Tilemap tilemap;
     private void Awake()
     {
-        tilemap = gameObject.GetComponent<Tilemap>();
         entityInfo = new EntityInfo
         {
             gameObject = gameObject,

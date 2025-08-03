@@ -37,6 +37,7 @@ public class ClipManager : MonoBehaviour , IClipAction , IPlayClip
     private ClipModel _model=ClipModel.Play;
     public ClipModel ClipModelt=>_model;
     
+    private int maxClipCount=3 ;
     
     public List<IRecordAble> recordDirtyList=new List<IRecordAble>();
     
@@ -57,6 +58,13 @@ public class ClipManager : MonoBehaviour , IClipAction , IPlayClip
     }
     
     private Vector2Int startPosition;
+    void Update()
+    {
+        if (! (InputHandler.Instance.Info.choiceNum > clipList.Count ||         InputHandler.Instance.Info.choiceNum < 0))
+        {
+            preClipShow.ShowPreClip( InputHandler.Instance.Info.choiceNum, InputHandler.Instance.Info.ClipPlayInfo.clickPos);
+        }
+    }
     void IClipAction.Update(ILifecycleManager.UpdateContext ctx)
     {
         if (InputHandler.Instance.Info.RecordClip && !recordMode)
@@ -114,11 +122,13 @@ public class ClipManager : MonoBehaviour , IClipAction , IPlayClip
     public void CreatPreviewPoints(int num,Vector2Int pos)
     {
         if (clipList.Count <= num)return;
+        if(num < 0)return;
         preClipShow.ShowPreClip(num,pos);
     }
     private ClipModel _tempModel;
     void IPlayClip.Update(ILifecycleManager.UpdateContext ctx)
     {
+        if(maxClipCount<=clipList.Count) return;
         // if (_model!=ClipModel.Pause && InputHandler.Instance.Info.StopClip)
         // {
         //     currentSubComponent.Publish(new ClipSpeedChangeInfo()

@@ -10,6 +10,7 @@ using Space.EventFramework;
 using Space.GlobalInterface.EventInterface;
 using Space.GlobalInterface.Lifecycle;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Utility;
 [RequireComponent(typeof(MonoEventSubComponent), typeof(GravityComponent))]
 public class PlayerCharactor : MonoBehaviour ,
@@ -65,8 +66,13 @@ public class PlayerCharactor : MonoBehaviour ,
                 if(takeAble is IRecordObj re)re.AddDirty();
             }
         );
+        _monoEventSubComponent.Subscribe<KillPlayer>(OnKillPlayer);
         gravityDelay=GlobalLifecycleManager.Instance.GlobalLifecycleTime/5f;
         
+    }
+    private void OnKillPlayer(in KillPlayer data)
+    {
+        SceneLoader.Instance.LoadScene(SceneManager.GetActiveScene().name);
     }
     private float gravityDelay;
     private float timer = 0;
