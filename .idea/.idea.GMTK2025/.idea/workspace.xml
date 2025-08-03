@@ -5,44 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="efffa3a2-229a-4c23-85f9-6589dec5ab6e" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Clicp/Sample.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Clicp/Sample/SamplePointObj.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Clicp/Sample/SamplePointObj.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Clicp/Sample/ShadowSample.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/LevelObj.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/LevelObj/BooomPlantform.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/LevelObj/BooomPlantform.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/LevelObj/Door.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/LevelObj/Door/Door.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/LevelObj/Door/Door.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/LevelObj/Door/OpenDoorObj.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/LevelObj/Door/OpenDoorObj.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GMTK2025/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GMTK2025/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp-firstpass.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-firstpass.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level/TestLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level/TestLevel.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Event/ClipSpeedChangeInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Event/ClipSpeedChangeInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Event/ClipePlayInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Event/ClipePlayInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Framwork/EventFramwork/Base/Event/Mono/MonoEventSubComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Framwork/EventFramwork/Base/Event/Mono/MonoEventSubComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Framwork/ILifecycleManagerFramework/PipelineLifeController/Base/PipelineComponent/ApplySubscriberPipe.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Framwork/ILifecycleManagerFramework/PipelineLifeController/Base/PipelineComponent/ApplySubscriberPipe.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Box/Box.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Box/Box.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Clicp/ClipContener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Clicp/ClipContener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Clicp/ClipManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Clicp/ClipManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Clicp/PlayerShadow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Clicp/PlayerShadow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Clicp/PreClipShow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Clicp/Sample/PreClipShow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Clicp/PreClipShow.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Clicp/Sample/PreClipShow.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Clicp/RecordComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Clicp/RecordComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Clicp/ShadowCalculate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Clicp/ShadowCalculate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Component.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Input/InputHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Input/InputHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Map/MapEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Map/MapEntity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Map/Test.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Map/Test.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Player/PlayerCharactor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Player/PlayerCharactor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Lifecycels/GameUpdateLifePipeline.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Lifecycels/GameUpdateLifePipeline.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Lifecycels/GlobalLifecycleManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Lifecycels/GlobalLifecycleManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Lifecycels/LifeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Lifecycels/LifeManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GMTK2025.sln" beforeDir="false" afterPath="$PROJECT_DIR$/GMTK2025.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csproj.AssemblyReference.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,6 +66,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "XThreadsFramesViewSplitterKey": "0.50109893",
     "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -129,10 +94,10 @@
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
     </configuration>
-    <configuration name="附加到 Unity 编辑器" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="34956">
+    <configuration name="附加到 Unity 编辑器" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="34956" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -164,6 +129,7 @@
       <workItem from="1754120359712" duration="6998000" />
       <workItem from="1754127438021" duration="2768000" />
       <workItem from="1754131353748" duration="23812000" />
+      <workItem from="1754187855403" duration="510000" />
     </task>
     <servers />
   </component>

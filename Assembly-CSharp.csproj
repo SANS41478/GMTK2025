@@ -95,6 +95,7 @@
     <Compile Include="Assets\Scripts\GamePlay\Clicp\PlayerShadow.cs" />
     <Compile Include="Assets\Scripts\Json\LitJson\ParserToken.cs" />
     <Compile Include="Assets\Scripts\Test\AudioManagerTest.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Ending\ToNextLevel.cs" />
     <Compile Include="Assets\Scripts\Lifecycels\GameUpdateLifePipeline.cs" />
     <Compile Include="Assets\Scripts\Framwork\EventFramwork\Base\Event\Mono\GameObjectDestroyedEvent.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Entity\EntityInfo.cs" />
