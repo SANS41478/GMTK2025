@@ -130,7 +130,6 @@ public class PlayerCharactor : MonoBehaviour ,
                     PlayerMoveEnum = _playerMoveEnum,
                     endPosition = _entityInfo.Position ,
                     self = this
-
                 });
                 AudioManager.Instance.PlaySFX("sfx_jump");
                 break;
@@ -143,7 +142,6 @@ public class PlayerCharactor : MonoBehaviour ,
                     PlayerMoveEnum = _playerMoveEnum,
                     endPosition = _entityInfo.Position ,
                     self = this
-
                 });
                 AudioManager.Instance.PlaySFX("sfx_walk");
                 break;
