@@ -157,14 +157,21 @@ public class ClipManager : MonoBehaviour , IClipAction , IPlayClip
         // {
         //     _model=ClipModel.Pause;
         // }
+        if (! InputHandler.Instance.Info.ClipPlayInfo.keyDownMask)
+        {
+            return;
+        }
         int num = InputHandler.Instance.Info.ClipPlayInfo.num;
         if (num <= -1 || num>=clipList.Count) return;
-        if( InputHandler.Instance.Info.ClipPlayInfo.playType == ClipePlayType.Null )return;
+        if( InputHandler.Instance.Info.ClipPlayInfo.playType  ==null && InputHandler.Instance.Info.ClipPlayInfo.creatMark)return;
         Vector2Int clickPos =  InputHandler.Instance.Info.ClipPlayInfo.clickPos;
         //TODO: 提示
         if (preClipShow.IsClipBeBlock(num, clickPos) || hasCreateObj.Any(te => te.Item1==num) )
         {
             AudioManager.Instance.PlaySFX("sfx-warning");
+            if (hasCreateObj.Any(te => te.Item1 == num))
+                InputHandler.Instance.Info.ClipPlayInfo.num = 0;
+            return;
         } 
         AudioManager.Instance.PlaySFX("sfx-filmlan");
 
@@ -189,8 +196,7 @@ public class ClipManager : MonoBehaviour , IClipAction , IPlayClip
                    ,InputHandler.Instance.Info.ClipPlayInfo,clickPos);
             }
             InputHandler.Instance.Info.ClipPlayInfo.playType=ClipePlayType.Null;
-
-        
+            InputHandler.Instance.Info.ClipPlayInfo.creatMark = true;
     }
 
     public void HidePreviewPoints()

@@ -137,5 +137,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbcea8f714114bc3bbf8baa15d1a8e09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shadowPrefab: {fileID: 6739299671511212706, guid: fcc8dc36f1d741443855d37860116dd8, type: 3}
+  shadowPrefab: {fileID: 6792973068908690557, guid: ba8b145217e34ae47a6d6cf15580199a, type: 3}
   autoDirty: 0

@@ -35,16 +35,22 @@ namespace GamePlay
         {
             Info.ClipPlayInfo.playType = ClipePlayType.Backword;
             Info.ClipPlayInfo.isCycles = false;
+            Info.ClipPlayInfo.creatMark = false;           
+            Info.ClipPlayInfo.delay = true;
         }
         private void DefaultPlay(in GamePanel.RouteBoEvent data)
         {
             Info.ClipPlayInfo.playType = ClipePlayType.Play;
             Info.ClipPlayInfo.isCycles = false;
+            Info.ClipPlayInfo.creatMark = false;           
+            Info.ClipPlayInfo.delay = true;
         }
         private void CyclePlay(in GamePanel.RouteXunEvent data)
         {
             Info.ClipPlayInfo.playType = ClipePlayType.Play;
             Info.ClipPlayInfo.isCycles = true;
+            Info.ClipPlayInfo.creatMark = false;
+            Info.ClipPlayInfo.delay = true;
         }
         private void OnChoiceClip(in GamePanel.ChoiceClip data)
         {
@@ -55,6 +61,7 @@ namespace GamePlay
         {
             Info.ClipPlayInfo = data;
         }
+        int clickcount = 0;
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -66,7 +73,7 @@ namespace GamePlay
                 Info.TakeCube = true;
             }
             Vector2Int mousePos = WorldCellTool.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition))-Vector2Int.one;
-            if (Info.ClipPlayInfo.num >= 0 && Info.ClipPlayInfo.playType!=ClipePlayType.Null)
+            if ( Info.ClipPlayInfo is { creatMark: false, num: >= 0 } && Info.ClipPlayInfo.playType!=ClipePlayType.Null)
             {
                 ClipManager.Instance.CreatPreviewPoints(Info.choiceNum,mousePos);
             }
@@ -74,11 +81,19 @@ namespace GamePlay
             {
                 ClipManager.Instance.HidePreviewPoints();
             }
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) &&Info.ClipPlayInfo.playType!=ClipePlayType.Null)
+            {
+                if (Info.ClipPlayInfo.delay)
                 {
+                    Info.ClipPlayInfo.delay = false;
+                }
+                else
+                {
+                    Info.ClipPlayInfo.keyDownMask = true;
                     Info.ClipPlayInfo.clickPos=mousePos;
                     Info.ClipPlayInfo.num = Info.choiceNum;
                 }
+            }
             if(Input.GetKeyDown(KeyCode.R))
                 SceneLoader.Instance.LoadScene(SceneManager.GetActiveScene().name);
         }
@@ -98,6 +113,9 @@ namespace GamePlay
             {
                 RecordClip = false;
                 TakeCube = false;
+                ClipPlayInfo.keyDownMask = false;
+
+                
             }
         }
     }

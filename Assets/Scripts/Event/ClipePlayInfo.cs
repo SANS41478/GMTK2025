@@ -12,6 +12,9 @@ public struct ClipePlayInfo : IEventData
     public bool isCycles;
     public ClipePlayType playType;
     public Vector2Int clickPos;
+    public bool creatMark;
+    public bool keyDownMask;
+    public bool delay;
     //其它参数
 }
 

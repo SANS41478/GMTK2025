@@ -13,7 +13,9 @@ namespace GamePlay
     {
         private EntityInfo worldEntityInfo=new EntityInfo();
         private ShadowCalculate worldShadowCalculate=new ShadowCalculate();
-
+        [SerializeField] private Animator animator;
+        
+        
         private void Start()
         {
             GlobalLifecycle.Instance.Subscribe(GameUpdateLifePipeline.AnimationClip.ToString(), this);
@@ -45,8 +47,24 @@ namespace GamePlay
             foreach (IMoveEventData moveEventData in obj)
             {
                 movePath.Add(WorldCellTool.CellToWorld(moveEventData.endPosition));
+                if (moveEventData is PlayerCharactor.PlayerMoveEventData data)
+                {
+                    switch (data.PlayerMoveEnum)
+                    {
+                        case PlayerCharactor.PlayerMoveEnum.jump:
+                            animator.Play("jump");
+                            break;
+                        case PlayerCharactor.PlayerMoveEnum.move:
+                            animator.Play("move");
+                            break;
+                        case PlayerCharactor.PlayerMoveEnum.down:
+                            animator.Play("fall");
+                            break;
+                    }
+                }
             }
             worldEntityInfo.Position = WorldCellTool.WorldToCell(movePath[^1]);
+         
         }
         //TODO ： 动画队列
          void IAnimationMake.Update(ILifecycleManager.UpdateContext ctx)
