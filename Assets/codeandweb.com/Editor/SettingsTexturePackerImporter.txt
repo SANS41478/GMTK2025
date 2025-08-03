@@ -1,0 +1,14 @@
+version: 2
+tpsheetFileNames:
+- Assets/codeandweb.com/Example/SpriteSheet/sprites.tpsheet
+- Assets/Resources/Animation/Sources/drop_item.tpsheet
+- Assets/Resources/Animation/Sources/fall.tpsheet
+textureFileNames:
+- Assets/codeandweb.com/Example/SpriteSheet/sprites.png
+- Assets/Resources/Animation/Sources/drop_item.png
+- Assets/Resources/Animation/Sources/fall.png
+normalmapFileNames:
+- Assets/codeandweb.com/Example/SpriteSheet/sprites_n.png
+- 
+- 
+enableDebugOutput: 0
