@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\Framwork\EventFramwork\Excample\UniTest\RedGreen\LightUI.cs" />
     <Compile Include="Assets\Scripts\Framwork\EventFramwork\Base\Event\EventBus.cs" />
     <Compile Include="Assets\Scripts\Framwork\GlobalInterface\Event\IEventData.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\LevelObj\Door\OpenDoorObj.cs" />
     <Compile Include="Assets\Scripts\Json\LitJson\JsonMapper.cs" />
     <Compile Include="Assets\Scripts\Audio\AudioBootstrapper.cs" />
     <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Test\CustomLife\TestLifePipeline.cs" />
@@ -82,16 +83,18 @@
     <Compile Include="Assets\Scripts\Framwork\PipelineFramework\GlobalPipelineStageFactory.cs" />
     <Compile Include="Assets\Scripts\Framwork\EventFramwork\GlobalEventBus.cs" />
     <Compile Include="Assets\Scripts\Framwork\PipelineFramework\Simple\Example\DamagePipeLine\DamagePipeLine.cs" />
-    <Compile Include="Assets\Scripts\GamePlay\Clicp\PreClipShow.cs" />
     <Compile Include="Assets\Scripts\Framwork\EventFramwork\Excample\UniTest\RedGreen\Car.cs" />
     <Compile Include="Assets\Scripts\Framwork\EventFramwork\Excample\UniTest\TickTock\SimpleUniEventTest.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\LevelObj\Door\Door.cs" />
     <Compile Include="Assets\Scripts\Event\TakeEventData.cs" />
     <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Test\CustomLife\GameController.cs" />
     <Compile Include="Assets\Scripts\Audio\MusicPlayer.cs" />
     <Compile Include="Assets\Scripts\Framwork\PipelineFramework\Simple\Base\PipelineContext.cs" />
     <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\GlobalLifecycle.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Clicp\Sample\SamplePointObj.cs" />
     <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Base\PipelineComponent\MonoUpdatePipe.cs" />
     <Compile Include="Assets\Scripts\Json\JsonMgr.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Clicp\Sample\ShadowSample.cs" />
     <Compile Include="Assets\Scripts\Event\ClipRecordEvent.cs" />
     <Compile Include="Assets\Scripts\Framwork\PipelineFramework\Simple\Example\DamagePipeLine\Player.cs" />
     <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Test\ECS\TestObjC.cs" />
@@ -113,6 +116,7 @@
     <Compile Include="Assets\Scripts\UI\Panel\GamePanel.cs" />
     <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Test\ECS\TestLifePipeline.cs" />
     <Compile Include="Assets\Scripts\Framwork\PipelineFramework\Simple\Example\TestPipeline\MonoPipelineTest.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\LevelObj\BooomPlantform.cs" />
     <Compile Include="Assets\Scripts\Framwork\PipelineFramework\Simple\Example\DamagePipeLine\Stage\ApplyDamageTypeStep.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Map\MapEntity.cs" />
     <Compile Include="Assets\Scripts\Framwork\Utility\ReflectionUtility.cs" />
@@ -152,6 +156,7 @@
     <Compile Include="Assets\Scripts\Framwork\Collections\SortList.cs" />
     <Compile Include="Assets\Scripts\Json\LitJson\JsonReader.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Clicp\TestRecordButton.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Clicp\Sample\PreClipShow.cs" />
     <Compile Include="Assets\Scripts\Test\Entity\blockTest.cs" />
     <Compile Include="Assets\Scripts\Framwork\GlobalInterface\Buff\IBuff.cs" />
     <Compile Include="Assets\Scripts\Framwork\GlobalInterface\Perpline\IPipeline.cs" />
@@ -161,6 +166,7 @@
     <Compile Include="Assets\Scripts\Json\LitJson\ParserToken.cs" />
     <Compile Include="Assets\Scripts\Test\AudioManagerTest.cs" />
     <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Base\LifecyclePipeline.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Ending\ToNextLevel.cs" />
     <Compile Include="Assets\Scripts\Framwork\ILifecycleManagerFramework\PipelineLifeController\Base\PipelineComponent\MonoTimerPipe.cs" />
     <Compile Include="Assets\Scripts\Lifecycels\GameUpdateLifePipeline.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Clicp\MoveEventData.cs" />

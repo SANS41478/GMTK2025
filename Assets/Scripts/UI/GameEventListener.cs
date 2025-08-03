@@ -8,6 +8,8 @@ public class GameEventListener : MonoBehaviour
 
     private void Awake()
     {
+        DontDestroyOnLoad(this.gameObject);
+
         // È·±£ÓÐ MonoEventSubComponent
         _evtComp = GetComponent<MonoEventSubComponent>();
         if (_evtComp == null)
