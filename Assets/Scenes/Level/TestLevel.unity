@@ -1455,7 +1455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5311b7c1230afa64ba5204e825745d51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemap: {fileID: 0}
+  tilemap: {fileID: 1102037818}
 --- !u!1001 &1159669804
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2324,7 +2324,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1318917706121900476, guid: 59eb80b3e806d5e4d8e9697db55e7017, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.88
+      value: -1.96
       objectReference: {fileID: 0}
     - target: {fileID: 1318917706121900476, guid: 59eb80b3e806d5e4d8e9697db55e7017, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2480,6 +2480,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8403418736472848423, guid: f0730667d8a9d7e4d926e8885b74ccab, type: 3}
+      propertyPath: FixedDeltaTime
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2504,11 +2508,15 @@ PrefabInstance:
     - target: {fileID: 3756300967046384755, guid: 57148ebfae635854eb12ffe0aefbb959, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 1c38947e974978b44865570324c2166d, type: 3}
+      objectReference: {fileID: 213391828, guid: b70ec4eaf50f9094d965415487d9ed7a, type: 3}
     - target: {fileID: 3756300967046384755, guid: 57148ebfae635854eb12ffe0aefbb959, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4728666362028251614, guid: 57148ebfae635854eb12ffe0aefbb959, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 6152853193442804179}
     - target: {fileID: 4766166336415948096, guid: 57148ebfae635854eb12ffe0aefbb959, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7
@@ -2558,6 +2566,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57148ebfae635854eb12ffe0aefbb959, type: 3}
+--- !u!95 &6152853193442804179 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8837827276936422855, guid: 57148ebfae635854eb12ffe0aefbb959, type: 3}
+  m_PrefabInstance: {fileID: 6152853193442804178}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6356510450066574349
 PrefabInstance:
   m_ObjectHideFlags: 0

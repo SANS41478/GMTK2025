@@ -33,6 +33,7 @@ public class PlayerCharactor : MonoBehaviour ,
     private Vector2Int preDirection ;
     public Vector2Int Direction => direction;
     private RecordComponent _recordComponent;
+    [SerializeField] private Animator animator;
 
     private void Awake()
     {
@@ -105,7 +106,7 @@ public class PlayerCharactor : MonoBehaviour ,
         else if (fly)
         {
             fly = false;
-            AudioManager.Instance.PlaySFX("sfx_land");
+            AudioManager.Instance.PlaySFX("sfx-land");
         }
         transform.DOMove(WorldCellTool.CellToWorld(_entityInfo.Position), GlobalLifecycleManager.Instance.GlobalLifecycleTime/2f);
     }
@@ -118,6 +119,7 @@ public class PlayerCharactor : MonoBehaviour ,
     {
         if(playerStop) return;
         // Debug.Log($"PlayerMoveEnum : {_playerMoveEnum.ToString()}");
+        transform.localScale=new Vector3(direction.x,1,1);
         _entityInfo.prePosition = _entityInfo.Position;
         switch (_playerMoveEnum)
         {
@@ -131,7 +133,8 @@ public class PlayerCharactor : MonoBehaviour ,
                     endPosition = _entityInfo.Position ,
                     self = this
                 });
-                AudioManager.Instance.PlaySFX("sfx_jump");
+                animator.Play("jump");
+                AudioManager.Instance.PlaySFX("sfx-jump");
                 break;
             case PlayerMoveEnum.move:
                 _entityInfo.Position += direction;
@@ -143,7 +146,8 @@ public class PlayerCharactor : MonoBehaviour ,
                     endPosition = _entityInfo.Position ,
                     self = this
                 });
-                AudioManager.Instance.PlaySFX("sfx_walk");
+                animator.Play("move");
+                AudioManager.Instance.PlaySFX("sfx-walk");
                 break;
             case PlayerMoveEnum.CantMove : 
                 _monoEventSubComponent.Publish(new KillPlayer());
@@ -250,7 +254,7 @@ public class PlayerCharactor : MonoBehaviour ,
     {
         takeAble = box;
         takeAble.Take(takePath);
-        AudioManager.Instance.PlaySFX("sfx_liftbox");
+        AudioManager.Instance.PlaySFX("sfx-liftbox");
         if(takeAble is IRecordObj re)re.AddDirty();
     }
     public void RemoveTake(ITakeAble box)

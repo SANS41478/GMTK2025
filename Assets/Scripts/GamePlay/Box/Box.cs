@@ -126,7 +126,8 @@ public class Box : MonoBehaviour  , IBox, ITakeAble , IAnimationMake ,IRecordObj
         }
         else if (fly)
         {
-            AudioManager.Instance.PlaySFX("sfx_boxland");
+            fly = false;
+            AudioManager.Instance.PlaySFX("sfx-boxland");
         }
     }
     public void Update(ILifecycleManager.UpdateContext ctx)
