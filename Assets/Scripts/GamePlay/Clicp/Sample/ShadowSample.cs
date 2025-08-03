@@ -11,7 +11,7 @@ namespace GamePlay
 
         public void Init( IList<IList<IMoveEventData>> datas, GameObject samplePointPrefab )
         {
-            for (int i = 0; i < datas.Count; i++)
+            for (int i = 0; i < datas.Count+1; i++)
             {
                 var obj = Instantiate(samplePointPrefab, transform);
                 cenplePoints.Add(obj.GetComponent<SamplePointObj>());
@@ -21,29 +21,61 @@ namespace GamePlay
         public void SamplePoints(Vector2Int startPoint)
         {
             Vector2Int temp = startPoint;
-            bool start = false;
+            bool breakMark = false;
             for (int i = 0; i < datas.Count; i++)
             {
                 if (datas[i].Count <= 0)
                 {
-                    cenplePoints[ i ].gameObject.SetActive(false);
+                    cenplePoints[i+1].gameObject.SetActive(false);
                     continue;
                 }
-                start = true;
-                temp = startPoint + datas[i][^1].endPosition;
-                cenplePoints[i].gameObject.SetActive(true);
-                if (WorldInfo.IsBlocked(temp))
+                foreach (var data in datas[i])
                 {
-                    cenplePoints[i].Set(Color.red, temp);
-                    for (int j = i + 1; j < datas.Count; j++)
+                    temp = startPoint + data.endPosition;
+                    if (WorldInfo.IsBlocked(temp))
                     {
-                        cenplePoints[ j ].gameObject.SetActive(false);
+                        cenplePoints[i+1].gameObject.SetActive(true);
+                        cenplePoints[i+1].Set(Color.red, temp);
+                        breakMark = true;
+                        for (int j = i + 1; j < datas.Count; j++)
+                        {
+                            cenplePoints[ j+1 ].gameObject.SetActive(false);
+                        }
+                        break;
                     }
-                    return;
                 }
-                cenplePoints[i].gameObject.SetActive(true);
-                cenplePoints[i].Set(Color.green, temp);
+                if(breakMark)return;
+                cenplePoints[i+1].gameObject.SetActive(true);
+                cenplePoints[i+1].gameObject.SetActive(true);
+                cenplePoints[i+1].Set(Color.green, temp);
+            }
+            if (datas[0].Count > 0)
+            {
+                temp = startPoint + datas[0][0].startPosition;
+                cenplePoints[0].Set(Color.cyan, temp);
+                cenplePoints[0].gameObject.SetActive(true);
+            }
+            else
+            {
+                cenplePoints[0].gameObject.SetActive(false);
             }
         }
+        public bool  IsPointsBeBlock(Vector2Int startPoint)
+        {
+            bool mark= false;
+            foreach (var dataLis in datas)
+            {
+                if(dataLis.Count > 0)
+                foreach (var te in dataLis)
+                {
+                    var  temp = startPoint + te.endPosition;
+                    mark = WorldInfo.IsBlocked(temp);
+                    if(mark)return mark;
+                }
+            }
+           return false;
+
+        }
+        
     }
 }

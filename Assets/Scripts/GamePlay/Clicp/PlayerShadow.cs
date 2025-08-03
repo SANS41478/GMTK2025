@@ -9,7 +9,7 @@ using UnityEngine;
 using Utility;
 namespace GamePlay
 {
-    public class PlayerShadow : MonoBehaviour , IShadow  ,IAnimationMake
+    public class PlayerShadow : MonoBehaviour , IShadow  ,IAnimationMake ,IBlackPlayer
     {
         private EntityInfo worldEntityInfo=new EntityInfo();
         private ShadowCalculate worldShadowCalculate=new ShadowCalculate();
@@ -27,7 +27,7 @@ namespace GamePlay
                 gameObject =   gameObject,
                 Self = worldShadowCalculate,
                 Tags = new List<string>
-                    { WorldEntityType.Shadow, WorldEntityType.Block },
+                    { WorldEntityType.Shadow, WorldEntityType.Block  },
             };
             WorldInfo.AddInfo(worldEntityInfo);
             worldShadowCalculate.Init(clip, worldEntityInfo,GlobalLifecycle.Instance, () => {
@@ -60,6 +60,11 @@ namespace GamePlay
          {
          }
 
+         public bool active => true;
+         public bool BlockInPos(Vector2Int pos)
+         {
+             return worldEntityInfo.Position.Equals(pos);
+         }
     }
     public interface IShadow
     {

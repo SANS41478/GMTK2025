@@ -118,7 +118,7 @@ public class Box : MonoBehaviour  , IBox, ITakeAble , IAnimationMake ,IRecordObj
     {
         gameObject.transform.DOMove( WorldCellTool.CellToWorld(_entityInfo.Position),
             GlobalLifecycleManager.Instance.GlobalLifecycleTime/2f);
-        if(! takeMark)         gravity.UpdateGravity(_entityInfo);
+         gravity.UpdateGravity(_entityInfo);
     }
     public void Update(ILifecycleManager.UpdateContext ctx)
     {

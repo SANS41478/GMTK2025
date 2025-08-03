@@ -34,7 +34,7 @@ namespace GamePlay
             {
                 // 如果被阻挡，且阻挡的物品不是箱子或者玩家
                 if ( WorldInfo.IsBlocked(b.endPosition) && 
-                     !WorldInfo.IsPush(b.endPosition) )
+                     !WorldInfo.IsPush(b.endPosition)  && !WorldInfo.IsShadow(b.endPosition))
                 {
                     KillShadow();
                 }

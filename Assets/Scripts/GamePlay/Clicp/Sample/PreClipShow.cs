@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using GamePlay.Entity;
 using Lifecycels;
 using Space.EventFramework;
@@ -23,6 +24,11 @@ namespace GamePlay
                 pp.SamplePoints(position);
                 pp.gameObject.SetActive(true);
             }
+        }
+        public bool IsClipBeBlock(int num,Vector2Int position)
+        {
+            if (shadowSamples.Count <=num)return true;
+            return shadowSamples[num].Any(pp => pp.IsPointsBeBlock(position));
         }
         public void Add(IEnumerable<IList<IList<IMoveEventData>>> enumerator)
         {

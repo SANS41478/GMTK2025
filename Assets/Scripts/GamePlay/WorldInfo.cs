@@ -134,5 +134,15 @@ namespace GamePlay
             }
             return false;
         }
+        public static bool IsShadow(Vector2Int pos)
+        {
+            IEnumerable<EntityInfo> blocker = GetInfo(WorldEntityType.Shadow);
+            if (blocker == null) return false;
+            foreach (var box in blocker)
+            {
+                if (box.Position.Equals(pos)) return true;
+            }
+            return false;
+        }
     }
 }

@@ -11,7 +11,7 @@ public struct ClipePlayInfo : IEventData
     /// </summary>
     public bool isCycles;
     public ClipePlayType playType;
-
+    public Vector2Int clickPos;
     //其它参数
 }
 

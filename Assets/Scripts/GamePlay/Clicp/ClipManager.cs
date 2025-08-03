@@ -133,8 +133,10 @@ public class ClipManager : MonoBehaviour , IClipAction , IPlayClip
         //     _model=ClipModel.Pause;
         // }
         int num = InputHandler.Instance.Info.ClipPlayInfo.num;
-        if (num == -1) return;
-            EntityInfo player = WorldInfo.GetPlayer();
+        if (num <= -1 || num>=clipList.Count) return;
+        Vector2Int clickPos =  InputHandler.Instance.Info.ClipPlayInfo.clickPos;
+        //TODO: 提示
+        if(preClipShow.IsClipBeBlock(num,clickPos)) return;
             ClipContener shadowInfo = clipList[num];
             foreach (var info in shadowInfo.IRecordAblesList)
             {
@@ -149,10 +151,10 @@ public class ClipManager : MonoBehaviour , IClipAction , IPlayClip
                         break;
                 }
                GameObject  obj= Instantiate(info.ShadowPrefab, 
-                    WorldCellTool.CellToWorld(player.prePosition+dateCreatPos),
+                    WorldCellTool.CellToWorld(clickPos+dateCreatPos),
                     Quaternion.identity);
-               obj.GetComponent<IShadow>().Init(shadowInfo.dataDict[info.ID].moves,player.prePosition+dateCreatPos
-                   ,InputHandler.Instance.Info.ClipPlayInfo,player.prePosition);
+               obj.GetComponent<IShadow>().Init(shadowInfo.dataDict[info.ID].moves,clickPos+dateCreatPos
+                   ,InputHandler.Instance.Info.ClipPlayInfo,clickPos);
             }
             num = -1;
         
