@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using Event;
 using GamePlay;
 using GamePlay.Entity;
@@ -12,7 +13,7 @@ using UnityEngine;
 using Utility;
 [RequireComponent(typeof(MonoEventSubComponent), typeof(GravityComponent))]
 public class PlayerCharactor : MonoBehaviour ,
-    IPlayerMoveCharge , IPlayerMove , IPushAble,ITakeCube
+    IPlayerMoveCharge , IPlayerMove , IPushAble,ITakeCube , IAnimationMake
 {
 
     public enum PlayerMoveEnum
@@ -59,6 +60,9 @@ public class PlayerCharactor : MonoBehaviour ,
                 PlayerMoveEnum = _playerMoveEnum
                 ,endPosition = newPos,
                 startPosition = oldPos
+            },
+            () => {
+                if(takeAble is IRecordObj re)re.AddDirty();
             }
         );
     }
@@ -74,10 +78,10 @@ public class PlayerCharactor : MonoBehaviour ,
                 endPosition = _entityInfo.Position 
             });
         }
-
+        transform.DOMove(WorldCellTool.CellToWorld(_entityInfo.Position), GlobalLifecycleManager.Instance.GlobalLifecycleTime/2f);
         //TODO: 动画队列播放
+        ClipManager.Instance.CreatPreviewPoints(0, _entityInfo.Position);
 
-        transform.position = WorldCellTool.CellToWorld(_entityInfo.Position);
     }
     private void OnDestroy()
     {
@@ -131,7 +135,9 @@ public class PlayerCharactor : MonoBehaviour ,
             _monoEventSubComponent.Publish(new PlayerDie());
         }
         
+
     }
+
     private PlayerMoveEnum  GetDirection(Vector2Int direction, IEnumerable<IBlackPlayer> blocks)
     {
         bool mark;
@@ -192,6 +198,7 @@ public class PlayerCharactor : MonoBehaviour ,
     {
         takeAble = box;
         takeAble.Take(takePath);
+        if(takeAble is IRecordObj re)re.AddDirty();
     }
     public void RemoveTake(ITakeAble box)
     {

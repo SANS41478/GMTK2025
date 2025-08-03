@@ -45,6 +45,7 @@ namespace Lifecycels
             pipelineManager.AddPhase(new MonoUpdatePipe<IAnimationMake>().SetParams(new MonoUpdatePipe<IAnimationMake>.PipeCreatInfo(
                 (int)GameUpdateLifePipeline.AnimationClip, GameUpdateLifePipeline.AnimationClip.ToString(),
                 (a, c) => a.Update(c.UpdateContext))));
+            pipelineManager.AddPhase(new Lifecycels.ApplySubscriberPipe().SetParams((int)GameUpdateLifePipeline.RefreshSubscriber) as ILifecyclePhase);
         }
         public void Update(ILifecycleManager.UpdateContext context)
         {

@@ -7,6 +7,32 @@ using Space.GlobalInterface.EventInterface;
 using UnityEngine;
 namespace GamePlay
 {
+    public class MoveEventDate : IMoveEventData
+    {
+
+        public Vector2Int direction {
+            get;
+            set;
+        }
+        public Vector2Int startPosition {
+            get;
+            set;
+        }
+        public Vector2Int endPosition {
+            get;
+            set;
+        }
+        public IMoveEventData Clone()
+        {
+            return new MoveEventDate()
+            {
+                direction = this.direction,
+                endPosition = this.endPosition,
+                startPosition = this.startPosition,
+            };
+        }
+    }
+    
     [RequireComponent(typeof(MonoEventSubComponent))]
     public class RecordComponent : MonoBehaviour , IRecordAble 
     {
@@ -33,9 +59,6 @@ namespace GamePlay
             }
             return playerListBuffer;
         }
-        public IList<IList<IMoveEventData>> Data {
-            get;
-        }
         private bool recording = false;
         private MonoEventSubComponent monoEventSubComponent;
         private void Awake()
@@ -46,6 +69,7 @@ namespace GamePlay
         {
             monoEventSubComponent.Subscribe<ClipRecordEvent>(OnClipRecord);
         }
+
         private void OnClipRecord(in ClipRecordEvent data)
         {
             if (owner == null)
@@ -73,16 +97,22 @@ namespace GamePlay
         }
         private EntityInfo owner;
         private RecordShoot _recordShootFactory;
-        public void Init(EntityInfo entityInfo,RecordShoot recordShoot)
+        private Action onDirty;
+        public void Init(EntityInfo entityInfo,RecordShoot recordShoot,Action OnDirty)
         {
             owner= entityInfo;
             _recordShootFactory = recordShoot;
+            this.onDirty = OnDirty;
         }
         private void ChangeLicen(Vector2Int oldData, Vector2Int newData)
         {
             if(recording)
                 currentMoveList.Add( _recordShootFactory.Invoke(owner, oldData, newData));
         }
-
+        public void AddDirty()
+        {
+                ClipManager.Instance.AddDirty(this);
+                onDirty.Invoke();
+        }
     }
 }

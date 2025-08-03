@@ -1,0 +1,41 @@
+﻿using System;
+using System.Collections.Generic;
+using GamePlay.Entity;
+using Lifecycels;
+using Space.EventFramework;
+using Space.GlobalInterface.Lifecycle;
+using Space.LifeControllerFramework.PipelineLifeController;
+using UnityEngine;
+using Utility;
+namespace GamePlay
+{
+    //TODO:
+    public class PreClipShow : MonoBehaviour  
+    {
+        private List<List<ShadowSample>> shadowSamples = new List<List<ShadowSample>>();
+        [SerializeField] private GameObject shadowSamplePrefab;
+        [SerializeField] private GameObject pointPrefabParent;
+        public void ShowPreClip(int num ,Vector2Int position)
+        {
+            if (shadowSamples.Count <=num)return;
+            foreach (var pp in shadowSamples[num])
+            {
+                pp.SamplePoints(position);
+                pp.gameObject.SetActive(true);
+            }
+        }
+        public void Add(IEnumerable<IList<IList<IMoveEventData>>> enumerator)
+        {
+            List<ShadowSample> samples = new List<ShadowSample>();
+            foreach (var value in enumerator)
+            {
+                var temp =Instantiate( shadowSamplePrefab);
+                temp.SetActive(false);
+               var sample= temp.GetComponent<ShadowSample>();
+               sample.Init(value,pointPrefabParent);
+               samples.Add(sample);
+            }
+            shadowSamples.Add(samples);
+        }
+    }
+}

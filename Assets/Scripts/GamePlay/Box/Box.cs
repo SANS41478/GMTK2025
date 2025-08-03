@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Event;
 using GamePlay;
 using GamePlay.Entity;
@@ -12,7 +13,7 @@ using Utility;
 
 
 [RequireComponent(typeof(MonoEventSubComponent))]
-public class Box : MonoBehaviour  , IBox, ITakeAble 
+public class Box : MonoBehaviour  , IBox, ITakeAble , IAnimationMake ,IRecordObj
 {
     private EntityInfo _entityInfo;
     private bool takeMark = false;
@@ -21,6 +22,7 @@ public class Box : MonoBehaviour  , IBox, ITakeAble
     public bool blackMask=true;
     private int counter;
     private MonoEventSubComponent eventSubComponent;
+    private RecordComponent _recordComponent;
     private void Awake()
     {
         _entityInfo = new EntityInfo()
@@ -34,6 +36,7 @@ public class Box : MonoBehaviour  , IBox, ITakeAble
                 WorldEntityType.Block,WorldEntityType.BOX,WorldEntityType.PushAble
             }
         };
+        _recordComponent = GetComponent<RecordComponent>();
         WorldInfo.AddInfo(_entityInfo);
         eventSubComponent=GetComponent<MonoEventSubComponent>();
         gravity = GetComponent<GravityComponent>();
@@ -42,6 +45,12 @@ public class Box : MonoBehaviour  , IBox, ITakeAble
     private void Start()
     {
         eventSubComponent.Subscribe<TakeEventData>(OnTakeEvent);
+        _recordComponent.Init(_entityInfo, (a, old, ner) =>new MoveEventDate()
+        {
+            direction = ner-old,
+            endPosition = ner,
+            startPosition = old
+        },()=>{});
     }
     private void OnTakeEvent(in TakeEventData data)
     {
@@ -50,6 +59,7 @@ public class Box : MonoBehaviour  , IBox, ITakeAble
         {
             owner = data.player;
             owner.Take(this);
+            _recordComponent.AddDirty();
         }
     }
     public bool active => blackMask;
@@ -86,6 +96,7 @@ public class Box : MonoBehaviour  , IBox, ITakeAble
         {
             counter = takeCount;
             takeMark = true;
+            _recordComponent.AddDirty();
         }
     }
     public void Put()
@@ -94,19 +105,20 @@ public class Box : MonoBehaviour  , IBox, ITakeAble
         takeMark = false;
         if (!WorldInfo.IsBlocked(_entityInfo.Position + owner.Direction))
         {
-            _entityInfo.Position = _entityInfo.Position + owner.Direction;
+            _entityInfo.Position += owner.Direction;
         }
         else
         {
             //TODO: 没有其它判断惹
-            _entityInfo.Position = _entityInfo.Position - owner.Direction;
+            _entityInfo.Position -= owner.Direction;
         }
+        _recordComponent.AddDirty();
     }
     void Update()
     {
-        gameObject.transform.position = WorldCellTool.CellToWorld(_entityInfo.Position);
+        gameObject.transform.DOMove( WorldCellTool.CellToWorld(_entityInfo.Position),
+            GlobalLifecycleManager.Instance.GlobalLifecycleTime/2f);
         if(! takeMark)         gravity.UpdateGravity(_entityInfo);
-
     }
     public void Update(ILifecycleManager.UpdateContext ctx)
     {
@@ -116,5 +128,13 @@ public class Box : MonoBehaviour  , IBox, ITakeAble
         {
             Put();
         }
+    }
+    void IAnimationMake.Update(ILifecycleManager.UpdateContext  ctx)
+    {
+        
+    }
+    public void AddDirty()
+    {
+        _recordComponent.AddDirty();
     }
 }
