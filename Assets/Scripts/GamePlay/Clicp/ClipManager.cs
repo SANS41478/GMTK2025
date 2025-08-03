@@ -7,7 +7,6 @@ using GamePlay.Entity;
 using Lifecycels;
 using Space.EventFramework;
 using Space.GlobalInterface.Lifecycle;
-using Unity.Mathematics;
 using UnityEngine;
 using Utility;
 [RequireComponent(typeof(MonoEventSubComponent),typeof(PreClipShow))]
