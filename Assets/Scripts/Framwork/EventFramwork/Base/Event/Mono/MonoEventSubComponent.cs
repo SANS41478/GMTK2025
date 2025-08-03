@@ -15,26 +15,9 @@ namespace Space.EventFramework
             _eventSubscribeComponent =FrameworkFactory.GetInstance<IEventComponent>();
             _eventSubscribeComponent.BindBus(GlobalEventBus.Instance);
         }
-        protected void OnEnable()
-        {
-            // 自动绑定生命周期事件
-            _eventSubscribeComponent.Subscribe<GameObjectDestroyedEvent>(OnOwnerDestroyed);
-        }
-        private void Update()
-        {
-        }
         private void OnDestroy()
         {
-            _eventSubscribeComponent.Publish(new GameObjectDestroyedEvent(gameObject) );
-            _eventSubscribeComponent.UnSubscribe<GameObjectDestroyedEvent>(OnOwnerDestroyed);
-        }
-        
-        private void OnOwnerDestroyed(in GameObjectDestroyedEvent e)
-        {
-            if (e.ObjectInstance == gameObject)
-            {
-                _eventSubscribeComponent.Clear();
-            }
+            _eventSubscribeComponent.Clear();
         }
         public void Subscribe<T>(GameEventDelegate<T> handler) where T : IEventData
         {

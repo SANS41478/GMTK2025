@@ -111,7 +111,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2265326883557759016}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -129,7 +129,6 @@ GameObject:
   - component: {fileID: 5544306710844710509}
   - component: {fileID: 6885957866601967023}
   - component: {fileID: 506177691296136854}
-  - component: {fileID: 8328862733104205029}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -218,18 +217,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shadowSamplePrefab: {fileID: 3333924497315289596, guid: 196d9bf72e8555f40a0b922470742d22, type: 3}
   pointPrefabParent: {fileID: 7469354719191118829, guid: 0ae2da7f44caf5d4aba9569b04f0e194, type: 3}
---- !u!114 &8328862733104205029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5837621214448701716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c22ab8e8cf28a944081d76bcd356f85e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7580583343211033769
 GameObject:
   m_ObjectHideFlags: 0

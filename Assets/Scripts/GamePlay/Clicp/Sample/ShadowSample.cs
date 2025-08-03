@@ -44,7 +44,7 @@ namespace GamePlay
                         break;
                     }
                 }
-                if(breakMark)return;
+                if(breakMark) break;
                 cenplePoints[i+1].gameObject.SetActive(true);
                 cenplePoints[i+1].gameObject.SetActive(true);
                 cenplePoints[i+1].Set(Color.green, temp);
