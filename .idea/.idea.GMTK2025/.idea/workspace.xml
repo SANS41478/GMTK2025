@@ -105,7 +105,7 @@
       <method v="2" />
     </configuration>
     <configuration name="独立播放器" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../BUild/002\GMTK.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../BUild/003\GMTK.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="O:\UnityProject\BUild\001" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -156,7 +156,7 @@
       <workItem from="1754127438021" duration="2768000" />
       <workItem from="1754131353748" duration="23812000" />
       <workItem from="1754187855403" duration="510000" />
-      <workItem from="1754190515673" duration="38710000" />
+      <workItem from="1754190515673" duration="39061000" />
     </task>
     <servers />
   </component>
