@@ -137,8 +137,18 @@ namespace GamePlay
                 foreach (var box in resBoxes)
                 {
                     if(box.BlockInPos(res.endPosition))
+                    {
                         if (!box.Push(res.direction))
+                        {
                             KillShadow();
+                        }
+                        else
+                        {
+                            if(res.self is Box)
+                                AudioManager.Instance.PlaySFX("sfx-pushbox");
+                        }
+                    }
+                    
                 }
             }
         }

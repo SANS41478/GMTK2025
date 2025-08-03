@@ -77,6 +77,7 @@ public class ClipManager : MonoBehaviour , IClipAction , IPlayClip
             Debug.Log("开始记录");
             InputHandler.Instance.Info.RecordClip = false;
             InputHandler.Instance.Info.ClipPlayInfo.playType = ClipePlayType.Null;
+            AudioManager.Instance.PlaySFX("sfx-record");
         }
         if(!recordMode)return;
 
@@ -141,6 +142,7 @@ public class ClipManager : MonoBehaviour , IClipAction , IPlayClip
         preClipShow.ShowPreClip(num,pos);
     }
     private ClipModel _tempModel;
+    private List<(int,GameObject)> hasCreateObj = new List<(int, GameObject)>();
     void IPlayClip.Update(ILifecycleManager.UpdateContext ctx)
     {
         // if (_model!=ClipModel.Pause && InputHandler.Instance.Info.StopClip)
@@ -160,7 +162,12 @@ public class ClipManager : MonoBehaviour , IClipAction , IPlayClip
         if( InputHandler.Instance.Info.ClipPlayInfo.playType == ClipePlayType.Null )return;
         Vector2Int clickPos =  InputHandler.Instance.Info.ClipPlayInfo.clickPos;
         //TODO: 提示
-        if(preClipShow.IsClipBeBlock(num,clickPos)) return;
+        if (preClipShow.IsClipBeBlock(num, clickPos) || hasCreateObj.Any(te => te.Item1==num) )
+        {
+            AudioManager.Instance.PlaySFX("sfx-warning");
+        } 
+        AudioManager.Instance.PlaySFX("sfx-filmlan");
+
             ClipContener shadowInfo = clipList[num];
             foreach (var info in shadowInfo.IRecordAblesList)
             {
@@ -177,6 +184,7 @@ public class ClipManager : MonoBehaviour , IClipAction , IPlayClip
                GameObject  obj= Instantiate(info.ShadowPrefab, 
                     WorldCellTool.CellToWorld(clickPos+dateCreatPos),
                     Quaternion.identity);
+               hasCreateObj.Add((num,obj));
                obj.GetComponent<IShadow>().Init(shadowInfo.dataDict[info.ID].moves,clickPos+dateCreatPos
                    ,InputHandler.Instance.Info.ClipPlayInfo,clickPos);
             }

@@ -40,11 +40,13 @@ namespace GamePlay.LevelObj.Door
             {
                 info.prePosition=info.Position;
                 info.Position+=Vector2Int.up*2;
+                AudioManager.Instance.PlaySFX("sfx-door");
             }
             else
             {
                 info.prePosition=info.Position;
                 info.Position-=Vector2Int.up*2;
+                AudioManager.Instance.PlaySFX("sfx-door");
             }
         }
         private void Update()
