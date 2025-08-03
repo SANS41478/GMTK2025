@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="efffa3a2-229a-4c23-85f9-6589dec5ab6e" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level/TestL2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level/TestL2.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level/TestL3.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level/TestL3.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level/TestL4.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level/TestL4.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level/TestL5.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level/TestL5.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp-firstpass.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp-firstpass.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefab/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefab/Player.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level/TestLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level/TestLevel.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Player/PlayerCharactor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GamePlay/Player/PlayerCharactor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-firstpass.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp-firstpass.csproj.AssemblyReference.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +146,7 @@
       <workItem from="1754127438021" duration="2768000" />
       <workItem from="1754131353748" duration="23812000" />
       <workItem from="1754187855403" duration="510000" />
-      <workItem from="1754190515673" duration="27961000" />
+      <workItem from="1754190515673" duration="28580000" />
     </task>
     <servers />
   </component>
