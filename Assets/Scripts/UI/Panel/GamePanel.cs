@@ -65,7 +65,6 @@ public class GamePanel : BasePanel
             lu1.onClick.AddListener(() => {
                 SetupRoute("lu1", bo, dao, xun, quit);
                 _eventSubscribeComponent.Publish(new ChoiceClip(){num = 0});
-
             });
         }
         if (lu2 != null)

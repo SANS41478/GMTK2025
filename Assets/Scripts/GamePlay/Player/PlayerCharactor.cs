@@ -17,6 +17,7 @@ public class PlayerCharactor : MonoBehaviour ,
     IPlayerMoveCharge , IPlayerMove , IPushAble,ITakeCube , IAnimationMake
 {
 
+    
     public enum PlayerMoveEnum
     {
         CantMove,
@@ -54,6 +55,8 @@ public class PlayerCharactor : MonoBehaviour ,
         GlobalLifecycle.Instance.Subscribe(GameUpdateLifePipeline.PlayerMoveCharge.ToString(), this);
         GlobalLifecycle.Instance.Subscribe(GameUpdateLifePipeline.PlayerMove.ToString(), this);
         GlobalLifecycle.Instance.Subscribe(GameUpdateLifePipeline.TakeCube.ToString(), this);
+        _monoEventSubComponent.Subscribe<GamePanel.PauseGameEvent>(StopPlayer);
+
         _recordComponent.Init(_entityInfo, (a, oldPos, newPos) => 
             new PlayerMoveEventData()
             {
@@ -70,25 +73,39 @@ public class PlayerCharactor : MonoBehaviour ,
         gravityDelay=GlobalLifecycleManager.Instance.GlobalLifecycleTime/5f;
         
     }
+    private bool playerStop;
+    private void StopPlayer(in GamePanel.PauseGameEvent data)
+    {
+        playerStop = !playerStop;
+    }
     private void OnKillPlayer(in KillPlayer data)
     {
         SceneLoader.Instance.LoadScene(SceneManager.GetActiveScene().name);
     }
     private float gravityDelay;
     private float timer = 0;
+    bool fly=false;
+
     private void Update()
     {
         if(timer>0)
             timer-=Time.deltaTime;
         if (timer<0 &&_gravityComponent.UpdateGravity(_entityInfo))
         {
+            fly = true;
             _monoEventSubComponent.Publish(new PlayerMoveEventData
             {
                 direction = direction,
                 startPosition = _entityInfo.Position + Vector2Int.up,
                 PlayerMoveEnum = PlayerMoveEnum.down,
-                endPosition = _entityInfo.Position 
+                endPosition = _entityInfo.Position ,
+                self = this
             });
+        }
+        else if (fly)
+        {
+            fly = false;
+            AudioManager.Instance.PlaySFX("sfx_land");
         }
         transform.DOMove(WorldCellTool.CellToWorld(_entityInfo.Position), GlobalLifecycleManager.Instance.GlobalLifecycleTime/2f);
     }
@@ -99,6 +116,7 @@ public class PlayerCharactor : MonoBehaviour ,
     }
     void IPlayerMove.Update(ILifecycleManager.UpdateContext ctx)
     {
+        if(playerStop) return;
         // Debug.Log($"PlayerMoveEnum : {_playerMoveEnum.ToString()}");
         _entityInfo.prePosition = _entityInfo.Position;
         switch (_playerMoveEnum)
@@ -110,8 +128,11 @@ public class PlayerCharactor : MonoBehaviour ,
                     direction = direction,
                     startPosition = _entityInfo.prePosition,
                     PlayerMoveEnum = _playerMoveEnum,
-                    endPosition = _entityInfo.Position 
+                    endPosition = _entityInfo.Position ,
+                    self = this
+
                 });
+                AudioManager.Instance.PlaySFX("sfx_jump");
                 break;
             case PlayerMoveEnum.move:
                 _entityInfo.Position += direction;
@@ -120,8 +141,15 @@ public class PlayerCharactor : MonoBehaviour ,
                     direction = direction,
                     startPosition = _entityInfo.prePosition,
                     PlayerMoveEnum = _playerMoveEnum,
-                    endPosition = _entityInfo.Position 
+                    endPosition = _entityInfo.Position ,
+                    self = this
+
                 });
+                AudioManager.Instance.PlaySFX("sfx_walk");
+                break;
+            case PlayerMoveEnum.CantMove : 
+                _monoEventSubComponent.Publish(new KillPlayer());
+                AudioManager.Instance.PlaySFX("sfx-dead");
                 break;
         }
         takeAble?.Follow(_entityInfo);
@@ -130,6 +158,8 @@ public class PlayerCharactor : MonoBehaviour ,
     }
     void IPlayerMoveCharge.Update(ILifecycleManager.UpdateContext ctx)
     {
+        if(playerStop) return;
+
         takeAble?.BeforeFollow();
         IEnumerable<EntityInfo> walls =  WorldInfo.GetInfo(WorldEntityType.Block);
         IEnumerable<IBlackPlayer> blocker = walls.Where(a => a.Self as IBlackPlayer != null).Select(a => a.Self as IBlackPlayer);
@@ -144,8 +174,6 @@ public class PlayerCharactor : MonoBehaviour ,
         {
             _monoEventSubComponent.Publish(new PlayerDie());
         }
-        
-
     }
 
     private PlayerMoveEnum  GetDirection(Vector2Int direction, IEnumerable<IBlackPlayer> blocks)
@@ -181,6 +209,10 @@ public class PlayerCharactor : MonoBehaviour ,
         public PlayerMoveEnum PlayerMoveEnum { get; set; }
         public Vector2Int startPosition { get; set; }
         public Vector2Int endPosition { get; set; }
+        public object self {
+            get;
+            set;
+        }
         public IMoveEventData Clone()
         {
             return   new PlayerMoveEventData
@@ -189,7 +221,7 @@ public class PlayerCharactor : MonoBehaviour ,
                 PlayerMoveEnum = PlayerMoveEnum,
                 startPosition = startPosition,
                 endPosition = endPosition
-            };
+                    ,self =   this.self };
         }
     }
     public bool active => true;
@@ -220,6 +252,7 @@ public class PlayerCharactor : MonoBehaviour ,
     {
         takeAble = box;
         takeAble.Take(takePath);
+        AudioManager.Instance.PlaySFX("sfx_liftbox");
         if(takeAble is IRecordObj re)re.AddDirty();
     }
     public void RemoveTake(ITakeAble box)

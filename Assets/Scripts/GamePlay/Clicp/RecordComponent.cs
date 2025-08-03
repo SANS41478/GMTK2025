@@ -22,6 +22,10 @@ namespace GamePlay
             get;
             set;
         }
+        public object self {
+            get;
+            set;
+        }
         public IMoveEventData Clone()
         {
             return new MoveEventDate()
@@ -29,6 +33,7 @@ namespace GamePlay
                 direction = this.direction,
                 endPosition = this.endPosition,
                 startPosition = this.startPosition,
+                self = this.self
             };
         }
     }
@@ -57,7 +62,9 @@ namespace GamePlay
                     item.startPosition -= startPos;
                 }
             }
-            return playerListBuffer;
+            var temp = playerListBuffer;
+            playerListBuffer = new List<IList<IMoveEventData>>();
+            return temp;
         }
         private bool recording = false;
         private MonoEventSubComponent monoEventSubComponent;

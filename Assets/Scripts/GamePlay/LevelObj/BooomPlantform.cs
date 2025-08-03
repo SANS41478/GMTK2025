@@ -51,6 +51,7 @@ namespace GamePlay.LevelObj
         private void KillSelf()
         {
             hasBeDes=true;
+            AudioManager.Instance.PlaySFX("sfx-fragileplat");
             _renderer.DOFade(0, GlobalLifecycleManager.Instance.GlobalLifecycleTime / 1.5f).OnComplete(()=>Destroy(gameObject));
             WorldInfo.RemoveInfo(_info);
         }

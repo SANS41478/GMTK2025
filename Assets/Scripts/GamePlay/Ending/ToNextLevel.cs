@@ -25,9 +25,10 @@ public class ToNextLevel : MonoBehaviour
     void Update()
     {
         var player = WorldInfo.GetPlayer();
-        if  (player!=null && player.Position.Equals(pos) )
+        if  (player!=null && player.Position.Equals(pos) &&!mark )
         {
             mark=true;
+            AudioManager.Instance.PlaySFX("sfx-win");
         }
         if (mark)
         {

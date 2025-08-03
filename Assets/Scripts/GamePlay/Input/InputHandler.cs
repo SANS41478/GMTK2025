@@ -15,7 +15,10 @@ namespace GamePlay
         {
             GlobalLifecycle.Instance.Subscribe(GameUpdateLifePipeline.Refresh.ToString(), this);
             Instance = this;
-            Info = new InputInfo();
+            Info = new InputInfo()
+            {
+                ClipPlayInfo = new ClipePlayInfo()
+            };
             Info.Refresh();
         }
         private void Start()
@@ -27,6 +30,7 @@ namespace GamePlay
             res.Subscribe<GamePanel.RouteBoEvent>(DefaultPlay);
             res.Subscribe<GamePanel.RouteDaoEvent>(BackwordPlay);
         }
+
         private void BackwordPlay(in GamePanel.RouteDaoEvent data)
         {
             Info.ClipPlayInfo.playType = ClipePlayType.Backword;
@@ -45,6 +49,7 @@ namespace GamePlay
         private void OnChoiceClip(in GamePanel.ChoiceClip data)
         {
             Info.choiceNum = data.num;
+            Info.ClipPlayInfo.num= data.num;
         }
         private void OnClipePlayInfo(in ClipePlayInfo data)
         {
@@ -61,14 +66,21 @@ namespace GamePlay
                 Info.TakeCube = true;
             }
             Vector2Int mousePos = WorldCellTool.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition))-Vector2Int.one;
-                Info.ClipPlayInfo.clickPos=mousePos;
-                if (Input.GetKeyDown(0))
+            if (Info.ClipPlayInfo.num >= 0 && Info.ClipPlayInfo.playType!=ClipePlayType.Null)
+            {
+                ClipManager.Instance.CreatPreviewPoints(Info.choiceNum,mousePos);
+            }
+            else
+            {
+                ClipManager.Instance.HidePreviewPoints();
+            }
+            if (Input.GetMouseButtonDown(0))
                 {
+                    Info.ClipPlayInfo.clickPos=mousePos;
                     Info.ClipPlayInfo.num = Info.choiceNum;
                 }
             if(Input.GetKeyDown(KeyCode.R))
                 SceneLoader.Instance.LoadScene(SceneManager.GetActiveScene().name);
-            ClipManager.Instance.CreatPreviewPoints(Info.choiceNum,mousePos);
         }
         public void Refresh()
         {
@@ -85,10 +97,6 @@ namespace GamePlay
             public void Refresh()
             {
                 RecordClip = false;
-                ClipPlayInfo = new ClipePlayInfo()
-                {
-                    num = -1,
-                };
                 TakeCube = false;
             }
         }

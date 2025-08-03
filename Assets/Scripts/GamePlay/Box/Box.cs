@@ -49,7 +49,8 @@ public class Box : MonoBehaviour  , IBox, ITakeAble , IAnimationMake ,IRecordObj
         {
             direction = ner-old,
             endPosition = ner,
-            startPosition = old
+            startPosition = old,
+            self = this
         },()=>{});
     }
     private void OnTakeEvent(in TakeEventData data)
@@ -114,11 +115,19 @@ public class Box : MonoBehaviour  , IBox, ITakeAble , IAnimationMake ,IRecordObj
         }
         _recordComponent.AddDirty();
     }
+    private bool fly;
     void Update()
     {
         gameObject.transform.DOMove( WorldCellTool.CellToWorld(_entityInfo.Position),
             GlobalLifecycleManager.Instance.GlobalLifecycleTime/2f);
-         gravity.UpdateGravity(_entityInfo);
+        if (gravity.UpdateGravity(_entityInfo))
+        {
+            fly = true;
+        }
+        else if (fly)
+        {
+            AudioManager.Instance.PlaySFX("sfx_boxland");
+        }
     }
     public void Update(ILifecycleManager.UpdateContext ctx)
     {
