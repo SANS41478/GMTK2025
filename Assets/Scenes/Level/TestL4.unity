@@ -1947,6 +1947,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7950618668682083229, guid: 7e132cf034ade2745827d72396d55b75, type: 3}
+      propertyPath: doorID
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8717281813159859332, guid: 7e132cf034ade2745827d72396d55b75, type: 3}
       propertyPath: m_Name
       value: Door Variant
@@ -2116,7 +2120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 172730497}
-  doorID: 0
+  doorID: 1
 --- !u!114 &1841253967
 MonoBehaviour:
   m_ObjectHideFlags: 0
