@@ -57,7 +57,9 @@ namespace GamePlay
                     item.startPosition -= startPos;
                 }
             }
-            return playerListBuffer;
+            var temp = playerListBuffer;
+            playerListBuffer = new List<IList<IMoveEventData>>();
+            return temp;
         }
         private bool recording = false;
         private MonoEventSubComponent monoEventSubComponent;

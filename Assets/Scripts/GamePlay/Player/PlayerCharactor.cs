@@ -54,6 +54,8 @@ public class PlayerCharactor : MonoBehaviour ,
         GlobalLifecycle.Instance.Subscribe(GameUpdateLifePipeline.PlayerMoveCharge.ToString(), this);
         GlobalLifecycle.Instance.Subscribe(GameUpdateLifePipeline.PlayerMove.ToString(), this);
         GlobalLifecycle.Instance.Subscribe(GameUpdateLifePipeline.TakeCube.ToString(), this);
+        _monoEventSubComponent.Subscribe<GamePanel.PauseGameEvent>(StopPlayer);
+
         _recordComponent.Init(_entityInfo, (a, oldPos, newPos) => 
             new PlayerMoveEventData()
             {
@@ -69,6 +71,11 @@ public class PlayerCharactor : MonoBehaviour ,
         _monoEventSubComponent.Subscribe<KillPlayer>(OnKillPlayer);
         gravityDelay=GlobalLifecycleManager.Instance.GlobalLifecycleTime/5f;
         
+    }
+    private bool playerStop;
+    private void StopPlayer(in GamePanel.PauseGameEvent data)
+    {
+        playerStop = !playerStop;
     }
     private void OnKillPlayer(in KillPlayer data)
     {
@@ -99,6 +106,7 @@ public class PlayerCharactor : MonoBehaviour ,
     }
     void IPlayerMove.Update(ILifecycleManager.UpdateContext ctx)
     {
+        if(playerStop) return;
         // Debug.Log($"PlayerMoveEnum : {_playerMoveEnum.ToString()}");
         _entityInfo.prePosition = _entityInfo.Position;
         switch (_playerMoveEnum)
@@ -123,6 +131,9 @@ public class PlayerCharactor : MonoBehaviour ,
                     endPosition = _entityInfo.Position 
                 });
                 break;
+            case PlayerMoveEnum.CantMove : 
+                _monoEventSubComponent.Publish(new KillPlayer());
+                break;
         }
         takeAble?.Follow(_entityInfo);
         takeAble?.FollowFinish();
@@ -130,6 +141,8 @@ public class PlayerCharactor : MonoBehaviour ,
     }
     void IPlayerMoveCharge.Update(ILifecycleManager.UpdateContext ctx)
     {
+        if(playerStop) return;
+
         takeAble?.BeforeFollow();
         IEnumerable<EntityInfo> walls =  WorldInfo.GetInfo(WorldEntityType.Block);
         IEnumerable<IBlackPlayer> blocker = walls.Where(a => a.Self as IBlackPlayer != null).Select(a => a.Self as IBlackPlayer);

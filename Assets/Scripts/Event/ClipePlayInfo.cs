@@ -20,6 +20,7 @@ public enum ClipePlayType
     /// <summary>
     /// 播放某个片段
     /// </summary>
-    Play,
-    Backword
+    Null
+    ,Play,
+    Backword,
 }

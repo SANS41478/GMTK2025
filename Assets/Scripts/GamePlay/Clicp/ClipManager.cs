@@ -60,13 +60,14 @@ public class ClipManager : MonoBehaviour , IClipAction , IPlayClip
     private Vector2Int startPosition;
     void Update()
     {
-        if (! (InputHandler.Instance.Info.choiceNum > clipList.Count ||         InputHandler.Instance.Info.choiceNum < 0))
-        {
-            preClipShow.ShowPreClip( InputHandler.Instance.Info.choiceNum, InputHandler.Instance.Info.ClipPlayInfo.clickPos);
-        }
+        // if (! (InputHandler.Instance.Info.choiceNum > clipList.Count ||         InputHandler.Instance.Info.choiceNum < 0))
+        // {
+        //     preClipShow.ShowPreClip( InputHandler.Instance.Info.choiceNum, InputHandler.Instance.Info.ClipPlayInfo.clickPos);
+        // }
     }
     void IClipAction.Update(ILifecycleManager.UpdateContext ctx)
     {
+        if(maxClipCount<=clipList.Count) return;
         if (InputHandler.Instance.Info.RecordClip && !recordMode)
         {
             recordMode = true;
@@ -74,15 +75,22 @@ public class ClipManager : MonoBehaviour , IClipAction , IPlayClip
             recordList.Clear();
             startPosition=WorldInfo.GetPlayer().Position;
             Debug.Log("开始记录");
+            InputHandler.Instance.Info.RecordClip = false;
+            InputHandler.Instance.Info.ClipPlayInfo.playType = ClipePlayType.Null;
         }
         if(!recordMode)return;
-        if (recordCount > maxRecordCount)
+
+        if (recordCount >= maxRecordCount)
         {
             recordMode = false;
         }
+        if(!recordMode) MakeResult();
+        if (recordMode && InputHandler.Instance.Info.RecordClip)
+        {
+            MakeResult();
+        }
         currentSubComponent.Publish(new ClipRecordEvent
             { recordModel = recordMode });
-        if(!recordMode) MakeResult();
         recordCount ++;
     }
     List<RecordComponent> recordList = new List<RecordComponent>();
@@ -118,17 +126,23 @@ public class ClipManager : MonoBehaviour , IClipAction , IPlayClip
         }
         clipList.Add(record);
         preClipShow.Add(moves);
+        recordMode = false;
+        recordList.Clear(); 
     }
     public void CreatPreviewPoints(int num,Vector2Int pos)
     {
-        if (clipList.Count <= num)return;
+        if (clipList.Count <= num)
+        {
+            preClipShow.Hide();
+            return;
+        }
         if(num < 0)return;
+        preClipShow.Hide();
         preClipShow.ShowPreClip(num,pos);
     }
     private ClipModel _tempModel;
     void IPlayClip.Update(ILifecycleManager.UpdateContext ctx)
     {
-        if(maxClipCount<=clipList.Count) return;
         // if (_model!=ClipModel.Pause && InputHandler.Instance.Info.StopClip)
         // {
         //     currentSubComponent.Publish(new ClipSpeedChangeInfo()
@@ -143,6 +157,7 @@ public class ClipManager : MonoBehaviour , IClipAction , IPlayClip
         // }
         int num = InputHandler.Instance.Info.ClipPlayInfo.num;
         if (num <= -1 || num>=clipList.Count) return;
+        if( InputHandler.Instance.Info.ClipPlayInfo.playType == ClipePlayType.Null )return;
         Vector2Int clickPos =  InputHandler.Instance.Info.ClipPlayInfo.clickPos;
         //TODO: 提示
         if(preClipShow.IsClipBeBlock(num,clickPos)) return;
@@ -165,9 +180,14 @@ public class ClipManager : MonoBehaviour , IClipAction , IPlayClip
                obj.GetComponent<IShadow>().Init(shadowInfo.dataDict[info.ID].moves,clickPos+dateCreatPos
                    ,InputHandler.Instance.Info.ClipPlayInfo,clickPos);
             }
-            num = -1;
+            InputHandler.Instance.Info.ClipPlayInfo.playType=ClipePlayType.Null;
+
         
     }
-    
+
+    public void HidePreviewPoints()
+    {
+       preClipShow.Hide();
+    }
 }
 

@@ -56,5 +56,15 @@ namespace GamePlay
             }
             shadowSamples.Add(samples);
         }
+        public void Hide()
+        {
+            foreach (var sL in shadowSamples)
+            {
+                foreach (var s in sL)
+                {
+                    s.gameObject.SetActive(false);
+                }
+            }
+        }
     }
 }
