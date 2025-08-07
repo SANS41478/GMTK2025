@@ -43,6 +43,7 @@ public class StartPanel : BasePanel
         // 隐藏自己
         UIManager.Instance.HidePanel<StartPanel>();
         SceneLoader.Instance.LoadScene("TestL1");
+        AudioManager.Instance.PlayMusic("gameplay2");
         //// 打开游戏主面板（假设已经实现了 GamePanel）
         UIManager.Instance.ShowPanel<GamePanel>();
     }

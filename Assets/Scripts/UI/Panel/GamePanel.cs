@@ -2,12 +2,14 @@ using System;
 using Space.EventFramework;
 using Space.GlobalInterface.EventInterface;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 [RequireComponent(typeof(MonoEventSubComponent))]
 public class GamePanel : BasePanel
 {
     private MonoEventSubComponent _eventSubscribeComponent;
     private string currentRoute  ;
+   [SerializeField]  private Button restartButton;
     public override void Init()
     {
         _eventSubscribeComponent = GetComponent<MonoEventSubComponent>();
@@ -98,6 +100,9 @@ public class GamePanel : BasePanel
                 PublishIfRoute(r => new RouteQuitEvent(r));
                 AudioManager.Instance.PlaySFX("sfx-mechbutton");
             });
+        restartButton.onClick.AddListener(() => {
+            SceneLoader.Instance.LoadScene(SceneManager.GetActiveScene().name);
+        });
     }
 
     private Button FindButton(string name)
